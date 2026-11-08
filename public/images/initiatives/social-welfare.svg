@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgWelfare" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#001B5C" />
+      <stop offset="60%" stop-color="#004500" />
+      <stop offset="100%" stop-color="#F27501" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bgWelfare)" />
+  <circle cx="400" cy="220" r="240" fill="#FFFFFF" opacity="0.1" />
+  <!-- Heart and Hands Symbol of Welfare -->
+  <g fill="#FFFFFF" opacity="0.95">
+    <path d="M400,150 C360,110 300,120 280,170 C250,240 400,320 400,320 C400,320 550,240 520,170 C500,120 440,110 400,150 Z" fill="#F27501" />
+    <path d="M260,350 C300,380 350,390 400,390 C450,390 500,380 540,350 C510,385 450,420 400,420 C350,420 290,385 260,350 Z" fill="#FFFFFF" opacity="0.9" />
+  </g>
+  <text x="400" y="475" text-anchor="middle" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="700" font-size="20" letter-spacing="1">
+    SOCIAL WELFARE &amp; HUMANITARIAN RELIEF
+  </text>
+</svg>

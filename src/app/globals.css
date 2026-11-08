@@ -1,26 +1,86 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary-navy: #002887;
+  --primary-navy-dark: #001B5C;
+  --secondary-green: #006000;
+  --secondary-green-dark: #004500;
+  --saffron-orange: #F27501;
+  --blood-red: #C62828;
+  --bg-default: #FFFFFF;
+  --bg-paper: #F7F8FC;
+  --text-dark: #172033;
+  --text-muted: #667085;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-dark);
+  background: var(--bg-default);
+  font-family: var(--font-inter, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: #F27501;
+  color: #FFFFFF;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F4F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00288780;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #002887;
+}
+
+/* Glassmorphism navigation effect */
+.glass-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 40, 135, 0.08);
+}
+
+/* Hero pattern */
+.hero-gradient-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 40, 135, 0.92) 0%,
+    rgba(0, 27, 92, 0.95) 60%,
+    rgba(0, 96, 0, 0.88) 100%
+  );
+}
+
+/* Ensure images maintain aspect ratio without distortion */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Accessible focus outline */
+:focus-visible {
+  outline: 2px solid var(--saffron-orange);
+  outline-offset: 2px;
 }

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgMasjid" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#001B5C" />
+      <stop offset="60%" stop-color="#002887" />
+      <stop offset="100%" stop-color="#006000" />
+    </linearGradient>
+    <radialGradient id="glowMasjid" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#F27501" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#002887" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bgMasjid)" />
+  <circle cx="400" cy="220" r="260" fill="url(#glowMasjid)" />
+  <!-- Dome and Minarets Silhouette -->
+  <g fill="#FFFFFF" opacity="0.95">
+    <!-- Crescent & Star -->
+    <path d="M400,90 a25,25 0 1,0 20,40 a20,20 0 1,1 -20,-40 z" fill="#F27501" />
+    <!-- Center Dome -->
+    <path d="M300,320 C300,210 350,150 400,130 C450,150 500,210 500,320 Z" fill="#FFFFFF" opacity="0.9" />
+    <rect x="280" y="320" width="240" height="120" rx="6" fill="#FFFFFF" opacity="0.9" />
+    <path d="M360,440 L360,360 C360,340 440,340 440,360 L440,440 Z" fill="#001B5C" />
+    <!-- Left Minaret -->
+    <rect x="220" y="200" width="30" height="240" rx="3" fill="#FFFFFF" opacity="0.85" />
+    <path d="M220,200 L235,160 L250,200 Z" fill="#F27501" />
+    <!-- Right Minaret -->
+    <rect x="550" y="200" width="30" height="240" rx="3" fill="#FFFFFF" opacity="0.85" />
+    <path d="M550,200 L565,160 L580,200 Z" fill="#F27501" />
+  </g>
+  <!-- Text Label -->
+  <text x="400" y="475" text-anchor="middle" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="700" font-size="20" letter-spacing="1">
+    MASJID IMAM MONTHLY SUPPORT
+  </text>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgEdu" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#001B5C" />
+      <stop offset="50%" stop-color="#002887" />
+      <stop offset="100%" stop-color="#006000" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bgEdu)" />
+  <circle cx="400" cy="220" r="240" fill="#F27501" opacity="0.15" />
+  <!-- Graduation Cap & Open Book -->
+  <g fill="#FFFFFF" opacity="0.95">
+    <!-- Cap Diamond -->
+    <polygon points="400,120 540,170 400,220 260,170" fill="#F27501" />
+    <path d="M330,195 L330,240 C330,265 470,265 470,240 L470,195" fill="#FFFFFF" opacity="0.85" />
+    <polygon points="535,175 565,220 560,225 530,180" fill="#FFFFFF" />
+    <!-- Open Book -->
+    <path d="M280,330 C340,310 390,320 400,340 C410,320 460,310 520,330 L520,410 C460,390 410,400 400,420 C390,400 340,390 280,410 Z" fill="#FFFFFF" opacity="0.9" />
+    <path d="M400,340 L400,420" stroke="#001B5C" stroke-width="4" />
+  </g>
+  <text x="400" y="475" text-anchor="middle" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="700" font-size="20" letter-spacing="1">
+    EDUCATIONAL DEVELOPMENT INITIATIVES
+  </text>
+</svg>

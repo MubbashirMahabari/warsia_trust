@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgBlood" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#001B5C" />
+      <stop offset="60%" stop-color="#3E0000" />
+      <stop offset="100%" stop-color="#C62828" />
+    </linearGradient>
+    <radialGradient id="glowBlood" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#FF5252" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#001B5C" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bgBlood)" />
+  <circle cx="400" cy="220" r="260" fill="url(#glowBlood)" />
+  <!-- Blood Drop & Supporting Hands -->
+  <g fill="#FFFFFF" opacity="0.95">
+    <!-- Stylized Heart/Drop in Center -->
+    <path d="M400,100 C400,100 480,220 480,280 C480,330 440,360 400,360 C360,360 320,330 320,280 C320,220 400,100 400,100 Z" fill="#C62828" stroke="#FFFFFF" stroke-width="6" />
+    <!-- White Cross / Medical Aid symbol inside drop -->
+    <rect x="388" y="230" width="24" height="60" rx="4" fill="#FFFFFF" />
+    <rect x="370" y="248" width="60" height="24" rx="4" fill="#FFFFFF" />
+    <!-- Caring Hands Cradle -->
+    <path d="M260,380 C300,410 360,420 400,420 C440,420 500,410 540,380 C520,410 460,440 400,440 C340,440 280,410 260,380 Z" fill="#FFFFFF" opacity="0.9" />
+  </g>
+  <text x="400" y="475" text-anchor="middle" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="700" font-size="20" letter-spacing="1">
+    BLOOD DONATION &amp; EMERGENCY SUPPORT
+  </text>
+</svg>

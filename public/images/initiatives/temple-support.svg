@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgTemple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#001B5C" />
+      <stop offset="60%" stop-color="#002887" />
+      <stop offset="100%" stop-color="#C75F00" />
+    </linearGradient>
+    <radialGradient id="glowTemple" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#F27501" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#002887" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bgTemple)" />
+  <circle cx="400" cy="220" r="260" fill="url(#glowTemple)" />
+  <!-- Temple Shikhara / Mandir Silhouette -->
+  <g fill="#FFFFFF" opacity="0.95">
+    <!-- Kalasha / Flag -->
+    <path d="M400,90 L400,70 L430,80 Z" fill="#F27501" />
+    <circle cx="400" cy="98" r="8" fill="#F27501" />
+    <!-- Tower Steps -->
+    <polygon points="380,120 420,120 415,105 385,105" fill="#FFFFFF" opacity="0.95" />
+    <polygon points="360,150 440,150 430,125 370,125" fill="#FFFFFF" opacity="0.9" />
+    <polygon points="340,190 460,190 450,155 350,155" fill="#FFFFFF" opacity="0.9" />
+    <polygon points="320,240 480,240 470,195 330,195" fill="#FFFFFF" opacity="0.9" />
+    <polygon points="300,300 500,300 490,245 310,245" fill="#FFFFFF" opacity="0.9" />
+    <rect x="280" y="300" width="240" height="140" rx="6" fill="#FFFFFF" opacity="0.9" />
+    <!-- Sanctum Doorway -->
+    <path d="M360,440 L360,360 C360,340 440,340 440,360 L440,440 Z" fill="#001B5C" />
+    <!-- Side Pillars -->
+    <rect x="230" y="240" width="30" height="200" rx="3" fill="#FFFFFF" opacity="0.85" />
+    <path d="M230,240 L245,210 L260,240 Z" fill="#F27501" />
+    <rect x="540" y="240" width="30" height="200" rx="3" fill="#FFFFFF" opacity="0.85" />
+    <path d="M540,240 L555,210 L570,240 Z" fill="#F27501" />
+  </g>
+  <!-- Text Label -->
+  <text x="400" y="475" text-anchor="middle" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="700" font-size="20" letter-spacing="1">
+    TEMPLE PANDIT MONTHLY SUPPORT
+  </text>
+</svg>
