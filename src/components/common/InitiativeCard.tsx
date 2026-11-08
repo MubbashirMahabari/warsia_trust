@@ -16,31 +16,38 @@ import {
   BloodtypeIcon,
   SchoolIcon,
   VolunteerActivismIcon,
+  Diversity3Icon,
 } from "@/components/common/Icons";
 
 interface InitiativeCardProps {
   initiative: Initiative;
+  index?: number;
   featured?: boolean;
 }
 
 export default function InitiativeCard({
   initiative,
+  index,
   featured = false,
 }: InitiativeCardProps) {
   const getIcon = (name: string) => {
     switch (name) {
       case "Mosque":
-        return <MosqueIcon sx={{ fontSize: 32, color: initiative.themeColor }} />;
+        return <MosqueIcon sx={{ fontSize: 30, color: "#006000" }} />;
       case "TempleHindu":
-        return <TempleHinduIcon sx={{ fontSize: 32, color: initiative.themeColor }} />;
+        return <TempleHinduIcon sx={{ fontSize: 30, color: "#F27501" }} />;
       case "Bloodtype":
-        return <BloodtypeIcon sx={{ fontSize: 32, color: "#C62828" }} />;
+        return <BloodtypeIcon sx={{ fontSize: 30, color: "#C62828" }} />;
       case "School":
-        return <SchoolIcon sx={{ fontSize: 32, color: initiative.themeColor }} />;
+        return <SchoolIcon sx={{ fontSize: 30, color: "#002887" }} />;
+      case "Diversity3":
+        return <Diversity3Icon sx={{ fontSize: 30, color: "#006000" }} />;
       default:
-        return <VolunteerActivismIcon sx={{ fontSize: 32, color: initiative.accentColor }} />;
+        return <VolunteerActivismIcon sx={{ fontSize: 30, color: "#F27501" }} />;
     }
   };
+
+  const numberStr = typeof index === "number" ? `0${index + 1}` : undefined;
 
   return (
     <Card
@@ -49,15 +56,16 @@ export default function InitiativeCard({
         display: "flex",
         flexDirection: "column",
         position: "relative",
-        borderRadius: 4,
+        borderRadius: 4.5,
         overflow: "hidden",
-        border: "1px solid #E2E8F0",
+        border: "1.5px solid #E2E8F0",
         bgcolor: "#FFFFFF",
-        transition: "all 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
+        boxShadow: "0 8px 24px rgba(0, 40, 135, 0.05)",
+        transition: "all 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
         "&:hover": {
           transform: "translateY(-6px)",
-          boxShadow: "0 16px 40px rgba(0, 40, 135, 0.12)",
-          borderColor: "rgba(0, 40, 135, 0.25)",
+          boxShadow: "0 18px 45px rgba(0, 40, 135, 0.12)",
+          borderColor: initiative.accentColor || "#002887",
         },
       }}
     >
@@ -66,19 +74,19 @@ export default function InitiativeCard({
         sx={{
           height: 6,
           width: "100%",
-          bgcolor: initiative.accentColor || initiative.themeColor,
+          bgcolor: initiative.accentColor || "#002887",
         }}
       />
 
       <CardContent
         sx={{
-          p: { xs: 3, md: 3.5 },
+          p: { xs: 3.5, md: 4 },
           flexGrow: 1,
           display: "flex",
           flexDirection: "column",
         }}
       >
-        {/* Icon & Category Header */}
+        {/* Header with Icon & Index / Badge */}
         <Box
           sx={{
             display: "flex",
@@ -91,31 +99,46 @@ export default function InitiativeCard({
             sx={{
               width: 58,
               height: 58,
-              borderRadius: 3,
+              borderRadius: 3.5,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              bgcolor: "background.paper",
+              bgcolor: "#F7F8FC",
               border: "1px solid #E2E8F0",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.03)",
             }}
           >
             {getIcon(initiative.iconName)}
           </Box>
 
-          {initiative.badge && (
-            <Chip
-              label={initiative.badge}
-              size="small"
-              sx={{
-                bgcolor: "rgba(0, 40, 135, 0.08)",
-                color: "primary.main",
-                fontWeight: 700,
-                fontSize: "0.72rem",
-                borderRadius: 2,
-              }}
-            />
-          )}
+          <Box sx={{ textAlign: "right" }}>
+            {numberStr && (
+              <Typography
+                variant="caption"
+                sx={{
+                  fontFamily: "monospace",
+                  fontWeight: 800,
+                  fontSize: "0.95rem",
+                  color: initiative.accentColor || "text.secondary",
+                  display: "block",
+                }}
+              >
+                {numberStr}
+              </Typography>
+            )}
+            {initiative.badge && (
+              <Chip
+                label={initiative.badge}
+                size="small"
+                sx={{
+                  bgcolor: "rgba(0, 40, 135, 0.08)",
+                  color: "primary.main",
+                  fontWeight: 700,
+                  fontSize: "0.72rem",
+                  mt: 0.5,
+                }}
+              />
+            )}
+          </Box>
         </Box>
 
         {/* Title */}
@@ -124,9 +147,9 @@ export default function InitiativeCard({
           component="h3"
           sx={{
             fontWeight: 800,
-            fontSize: { xs: "1.2rem", md: "1.3rem" },
+            fontSize: { xs: "1.25rem", md: "1.35rem" },
             lineHeight: 1.3,
-            color: "primary.main",
+            color: "primary.dark",
             mb: 1.5,
           }}
         >
@@ -138,8 +161,8 @@ export default function InitiativeCard({
           variant="body2"
           sx={{
             color: "text.secondary",
-            fontSize: "0.92rem",
-            lineHeight: 1.65,
+            fontSize: "0.94rem",
+            lineHeight: 1.7,
             mb: 3,
             flexGrow: 1,
           }}
@@ -148,20 +171,20 @@ export default function InitiativeCard({
         </Typography>
 
         {/* Action Link Button */}
-        <Box sx={{ pt: 1, borderTop: "1px solid #F1F4F9" }}>
+        <Box sx={{ pt: 2, borderTop: "1px solid #F1F4F9" }}>
           <Button
             component={Link}
             href={initiative.href}
             endIcon={<ArrowForwardIcon sx={{ fontSize: 18 }} />}
             sx={{
               p: 0,
-              fontWeight: 700,
-              color: "primary.main",
-              fontSize: "0.92rem",
+              fontWeight: 800,
+              color: initiative.accentColor || "primary.main",
+              fontSize: "0.94rem",
               justifyContent: "flex-start",
               "&:hover": {
                 bgcolor: "transparent",
-                color: "warning.main",
+                color: "primary.main",
                 "& .MuiSvgIcon-root": {
                   transform: "translateX(4px)",
                 },
@@ -171,7 +194,7 @@ export default function InitiativeCard({
               },
             }}
           >
-            Learn More
+            {initiative.actionText || "Learn More"}
           </Button>
         </Box>
       </CardContent>

@@ -11,6 +11,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { WhatsAppIcon } from "@/components/common/Icons";
 import { getWhatsAppLink } from "@/lib/utils";
+import MagneticButton from "@/components/animations/MagneticButton";
 
 const inquiryTypes = [
   "General Trust Inquiry",
@@ -51,7 +52,6 @@ export default function ContactForm() {
     const fullMsg = `Inquiry regarding: ${inquiryType}\nName: ${fullName.trim()}\nPhone: ${phone.trim()}\nMessage: ${message.trim()}`;
     const link = getWhatsAppLink(fullMsg);
 
-    // Trigger WhatsApp handoff
     setTimeout(() => {
       window.open(link, "_blank", "noopener,noreferrer");
     }, 400);
@@ -60,10 +60,10 @@ export default function ContactForm() {
   return (
     <Card
       sx={{
-        borderRadius: 4,
-        border: "1px solid #E2E8F0",
-        boxShadow: "0 10px 30px rgba(0, 40, 135, 0.06)",
-        p: { xs: 3, sm: 4.5 },
+        borderRadius: 4.5,
+        border: "1.5px solid #E2E8F0",
+        boxShadow: "0 12px 35px rgba(0, 40, 135, 0.08)",
+        p: { xs: 3.5, sm: 5 },
         bgcolor: "#FFFFFF",
       }}
     >
@@ -71,9 +71,9 @@ export default function ContactForm() {
         <Typography
           variant="h4"
           sx={{
-            fontWeight: 800,
+            fontWeight: 900,
             color: "primary.main",
-            fontSize: { xs: "1.4rem", md: "1.75rem" },
+            fontSize: { xs: "1.5rem", md: "1.85rem" },
             mb: 1,
           }}
         >
@@ -82,21 +82,20 @@ export default function ContactForm() {
 
         <Typography
           variant="body2"
-          sx={{ color: "text.secondary", mb: 3.5, lineHeight: 1.6 }}
+          sx={{ color: "text.secondary", mb: 3.5, lineHeight: 1.7 }}
         >
-          Submit your message below. As a static, transparent portal, this form
-          formats and directly delivers your request to the trust’s official
-          WhatsApp desk for immediate review by our team.
+          Submit your message below. As a transparent portal, this form directly
+          connects your request with the trust&apos;s official WhatsApp desk for immediate review.
         </Typography>
 
         {error && (
-          <Alert severity="error" sx={{ mb: 3, borderRadius: 2 }}>
+          <Alert severity="error" sx={{ mb: 3, borderRadius: 2.5 }}>
             {error}
           </Alert>
         )}
 
         {submitted && (
-          <Alert severity="success" sx={{ mb: 3, borderRadius: 2 }}>
+          <Alert severity="success" sx={{ mb: 3, borderRadius: 2.5 }}>
             Thank you! Connecting you to the Warsia Trust official WhatsApp line...
           </Alert>
         )}
@@ -109,7 +108,8 @@ export default function ContactForm() {
               label="Your Full Name"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              placeholder="e.g. Mohammed / Anand"
+              placeholder="e.g. Mohammed / Ramesh"
+              sx={{ "& .MuiOutlinedInput-root": { borderRadius: 3 } }}
             />
 
             <TextField
@@ -119,6 +119,7 @@ export default function ContactForm() {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="10-digit mobile number"
+              sx={{ "& .MuiOutlinedInput-root": { borderRadius: 3 } }}
             />
 
             <TextField
@@ -127,6 +128,7 @@ export default function ContactForm() {
               label="Subject of Inquiry"
               value={inquiryType}
               onChange={(e) => setInquiryType(e.target.value)}
+              sx={{ "& .MuiOutlinedInput-root": { borderRadius: 3 } }}
             >
               {inquiryTypes.map((type) => (
                 <MenuItem key={type} value={type}>
@@ -144,24 +146,29 @@ export default function ContactForm() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Please describe how we can assist you or how you would like to collaborate..."
+              sx={{ "& .MuiOutlinedInput-root": { borderRadius: 3 } }}
             />
 
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              size="large"
-              startIcon={<WhatsAppIcon sx={{ fontSize: 22 }} />}
-              sx={{
-                py: 1.5,
-                fontWeight: 700,
-                fontSize: "1rem",
-                bgcolor: "primary.main",
-                "&:hover": { bgcolor: "primary.dark" },
-              }}
-            >
-              Send Message via WhatsApp Desk
-            </Button>
+            <MagneticButton strength={0.15} style={{ width: "100%" }}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                size="large"
+                fullWidth
+                startIcon={<WhatsAppIcon sx={{ fontSize: 22 }} />}
+                sx={{
+                  py: 1.6,
+                  fontWeight: 800,
+                  fontSize: "1.02rem",
+                  bgcolor: "primary.main",
+                  borderRadius: 9999,
+                  "&:hover": { bgcolor: "primary.dark" },
+                }}
+              >
+                Send Message via WhatsApp Desk
+              </Button>
+            </MagneticButton>
 
             <Typography
               variant="caption"

@@ -38,3 +38,4 @@ export function getVolunteerWhatsAppLink(data?: {
   const message = `Hello Warsia Trust, I would like to join as a volunteer. ${name}${interest}${city}Please let me know how I can contribute.`;
   return getWhatsAppLink(message);
 }
+

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgCommunity" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#001B5C" />
+      <stop offset="50%" stop-color="#002887" />
+      <stop offset="100%" stop-color="#004500" />
+    </linearGradient>
+    <radialGradient id="glowCommunity" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#F27501" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#001B5C" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#006000" />
+      <stop offset="50%" stop-color="#F27501" />
+      <stop offset="100%" stop-color="#002887" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bgCommunity)" />
+  <circle cx="400" cy="220" r="240" fill="url(#glowCommunity)" />
+
+  <!-- Community Unity & Harmony Silhouette -->
+  <g fill="#FFFFFF" opacity="0.95">
+    <!-- Center Hands / Unity Emblem -->
+    <circle cx="400" cy="180" r="55" fill="#FFFFFF" opacity="0.15" />
+    <circle cx="400" cy="180" r="45" fill="none" stroke="#F27501" stroke-width="4" />
+    
+    <!-- Heart & Diversity Symbol -->
+    <path d="M400,165 C390,145 365,150 365,175 C365,195 400,215 400,215 C400,215 435,195 435,175 C435,150 410,145 400,165 Z" fill="#F27501" />
+
+    <!-- United People Silhouettes Standing Together -->
+    <!-- Center Figure -->
+    <circle cx="400" cy="265" r="22" fill="#FFFFFF" />
+    <path d="M370,360 L370,310 C370,295 430,295 430,310 L430,360 Z" fill="#FFFFFF" />
+
+    <!-- Left Figure (Hindu/Temple Priest / Community Leader) -->
+    <circle cx="320" cy="280" r="20" fill="#FFA040" />
+    <path d="M295,370 L295,325 C295,310 345,310 345,325 L345,370 Z" fill="#FFA040" opacity="0.9" />
+
+    <!-- Right Figure (Masjid Imam / Community Leader) -->
+    <circle cx="480" cy="280" r="20" fill="#81C784" />
+    <path d="M455,370 L455,325 C455,310 505,310 505,325 L505,370 Z" fill="#81C784" opacity="0.9" />
+
+    <!-- Outer Left Figure -->
+    <circle cx="240" cy="305" r="18" fill="#FFFFFF" opacity="0.8" />
+    <path d="M218,380 L218,345 C218,332 262,332 262,345 L262,380 Z" fill="#FFFFFF" opacity="0.8" />
+
+    <!-- Outer Right Figure -->
+    <circle cx="560" cy="305" r="18" fill="#FFFFFF" opacity="0.8" />
+    <path d="M538,380 L538,345 C538,332 582,332 582,345 L582,380 Z" fill="#FFFFFF" opacity="0.8" />
+
+    <!-- Base Horizon Ground Line -->
+    <rect x="160" y="380" width="480" height="4" rx="2" fill="url(#accentGrad)" />
+  </g>
+
+  <!-- Typography Label -->
+  <text x="400" y="445" text-anchor="middle" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="800" font-size="22" letter-spacing="2">
+    COMMUNITY DEVELOPMENT &amp; HARMONY
+  </text>
+  <text x="400" y="475" text-anchor="middle" fill="#FFB74D" font-family="Inter, sans-serif" font-weight="600" font-size="14" letter-spacing="1">
+    WARSIA TRUST • VIJAYAPURA
+  </text>
+</svg>
+

@@ -18,10 +18,15 @@ import Chip from "@mui/material/Chip";
 import { siteConfig } from "@/config/site";
 import { mainNavigation } from "@/config/navigation";
 import {
-  MenuIcon,
   KeyboardArrowDownIcon,
   PhoneIcon,
   WhatsAppIcon,
+  VerifiedIcon,
+  MosqueIcon,
+  TempleHinduIcon,
+  BloodtypeIcon,
+  SchoolIcon,
+  VolunteerActivismIcon,
 } from "@/components/common/Icons";
 import MobileNavigation from "./MobileNavigation";
 import { getTelLink, getWhatsAppLink, formatPhone } from "@/lib/utils";
@@ -37,6 +42,7 @@ export default function Header() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -49,36 +55,62 @@ export default function Header() {
     setInitiativesAnchor(null);
   };
 
+  const getInitiativeIcon = (href: string) => {
+    if (href.includes("masjid"))
+      return <MosqueIcon sx={{ fontSize: 20, color: "#006000" }} />;
+    if (href.includes("temple"))
+      return <TempleHinduIcon sx={{ fontSize: 20, color: "#F27501" }} />;
+    if (href.includes("blood"))
+      return <BloodtypeIcon sx={{ fontSize: 20, color: "#C62828" }} />;
+    if (href.includes("education"))
+      return <SchoolIcon sx={{ fontSize: 20, color: "#002887" }} />;
+    return <VolunteerActivismIcon sx={{ fontSize: 20, color: "#006000" }} />;
+  };
+
   return (
     <>
-      {/* Top Notification / Information Bar */}
+      {/* Top Government & Contact Bar */}
       <Box
         sx={{
-          bgcolor: "primary.dark",
+          bgcolor: "#001B5C",
           color: "#FFFFFF",
-          py: 0.8,
+          py: 0.9,
           px: 2,
           fontSize: "0.8rem",
           display: { xs: "none", md: "block" },
-          borderBottom: "1px solid rgba(255,255,255,0.08)",
+          borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
         }}
       >
         <Container
-          maxWidth="lg"
+          maxWidth="xl"
           sx={{
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
+            px: { xs: 2.5, sm: 4, md: 6, lg: 8 },
           }}
         >
           <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
-            <Typography variant="caption" sx={{ color: "#E2E8F0", fontWeight: 500 }}>
-              Official NGO Darphan ID: <strong>{siteConfig.darphanId}</strong>
-            </Typography>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 0.8 }}>
+              <VerifiedIcon sx={{ fontSize: 16, color: "#F27501" }} />
+              <Typography variant="caption" sx={{ color: "#E2E8F0", fontWeight: 600 }}>
+                Govt. NGO Darphan ID: <strong>{siteConfig.darphanId}</strong>
+              </Typography>
+            </Box>
+
+            <Box
+              sx={{
+                width: 4,
+                height: 4,
+                borderRadius: "50%",
+                bgcolor: "rgba(255, 255, 255, 0.3)",
+              }}
+            />
+
             <Typography
               variant="caption"
               sx={{
-                color: "warning.main",
+                color: "#FFA040",
                 fontWeight: 600,
                 letterSpacing: "0.02em",
                 fontStyle: "italic",
@@ -88,83 +120,93 @@ export default function Header() {
             </Typography>
           </Box>
 
-          <Box sx={{ display: "flex", alignItems: "center", gap: 2.5 }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
             <Box sx={{ display: "flex", alignItems: "center", gap: 0.8 }}>
-              <PhoneIcon sx={{ fontSize: 15, color: "warning.main" }} />
+              <PhoneIcon sx={{ fontSize: 15, color: "#F27501" }} />
               <Typography
                 component="a"
                 href={getTelLink(siteConfig.contact.primaryPhone)}
                 variant="caption"
                 sx={{
                   color: "#FFFFFF",
-                  fontWeight: 600,
+                  fontWeight: 700,
                   textDecoration: "none",
-                  "&:hover": { color: "warning.main" },
+                  "&:hover": { color: "#F27501" },
                 }}
               >
                 +91 {formatPhone(siteConfig.contact.primaryPhone)}
               </Typography>
             </Box>
 
-            <Chip
-              label="Vijayapura, Karnataka"
-              size="small"
+            <Box
               sx={{
-                height: 22,
-                fontSize: "0.7rem",
-                bgcolor: "rgba(255,255,255,0.12)",
+                px: 1.4,
+                py: 0.3,
+                borderRadius: 9999,
+                bgcolor: "rgba(255, 255, 255, 0.12)",
+                fontSize: "0.72rem",
+                fontWeight: 600,
                 color: "#FFFFFF",
-                fontWeight: 500,
               }}
-            />
+            >
+              Vijayapura, Karnataka
+            </Box>
           </Box>
         </Container>
       </Box>
 
-      {/* Main Sticky Navigation Header */}
+      {/* Main Sticky Header */}
       <AppBar
         position="sticky"
-        elevation={scrolled ? 3 : 0}
+        elevation={0}
         sx={{
           bgcolor: scrolled ? "rgba(255, 255, 255, 0.98)" : "#FFFFFF",
-          backdropFilter: "blur(10px)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
           color: "text.primary",
-          transition: "all 0.3s ease",
           borderBottom: "1px solid",
-          borderColor: scrolled ? "rgba(0, 40, 135, 0.1)" : "divider",
+          borderColor: scrolled ? "rgba(0, 40, 135, 0.12)" : "#E2E8F0",
+          boxShadow: scrolled
+            ? "0 4px 20px rgba(0, 27, 92, 0.06)"
+            : "0 1px 3px rgba(0, 0, 0, 0.02)",
+          transition: "all 0.3s ease",
         }}
       >
-        <Container maxWidth="lg">
+        <Container maxWidth="xl" sx={{ px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
           <Toolbar
             disableGutters
             sx={{
-              minHeight: { xs: 68, md: 80 },
+              minHeight: { xs: 68, md: 78 },
               justifyContent: "space-between",
             }}
           >
-            {/* Logo and Trust Title */}
+            {/* Logo and Brand Title */}
             <Link
               href="/"
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: 12,
+                gap: 14,
                 textDecoration: "none",
               }}
             >
               <Box
                 sx={{
                   position: "relative",
-                  width: { xs: 48, md: 58 },
-                  height: { xs: 48, md: 58 },
+                  width: { xs: 46, md: 54 },
+                  height: { xs: 46, md: 54 },
                   flexShrink: 0,
+                  transition: "transform 0.25s ease",
+                  "&:hover": {
+                    transform: "scale(1.03)",
+                  },
                 }}
               >
                 <Image
                   src="/logo/warsia-logo.png"
                   alt={`${siteConfig.name} official emblem`}
                   fill
-                  sizes="(max-width: 768px) 48px, 58px"
+                  sizes="(max-width: 768px) 46px, 54px"
                   style={{ objectFit: "contain" }}
                   priority
                 />
@@ -175,10 +217,10 @@ export default function Header() {
                   component="span"
                   sx={{
                     display: "block",
-                    fontWeight: 800,
-                    fontSize: { xs: "0.95rem", sm: "1.1rem", md: "1.15rem" },
+                    fontWeight: 900,
+                    fontSize: { xs: "1.05rem", sm: "1.2rem", md: "1.28rem" },
                     color: "primary.main",
-                    letterSpacing: "-0.01em",
+                    letterSpacing: "-0.02em",
                     lineHeight: 1.15,
                   }}
                 >
@@ -189,9 +231,9 @@ export default function Header() {
                   sx={{
                     display: { xs: "none", sm: "block" },
                     fontSize: { xs: "0.68rem", md: "0.72rem" },
-                    fontWeight: 600,
+                    fontWeight: 700,
                     color: "text.secondary",
-                    letterSpacing: "0.02em",
+                    letterSpacing: "0.04em",
                     textTransform: "uppercase",
                   }}
                 >
@@ -201,8 +243,8 @@ export default function Header() {
                   component="span"
                   sx={{
                     display: { xs: "block", sm: "none" },
-                    fontSize: "0.65rem",
-                    fontWeight: 500,
+                    fontSize: "0.68rem",
+                    fontWeight: 700,
                     color: "secondary.main",
                   }}
                 >
@@ -229,28 +271,26 @@ export default function Header() {
                     <Box key={item.title}>
                       <Button
                         onClick={handleOpenInitiatives}
-                        endIcon={<KeyboardArrowDownIcon sx={{ fontSize: 18 }} />}
+                        endIcon={
+                          <KeyboardArrowDownIcon
+                            sx={{
+                              fontSize: 18,
+                              transform: Boolean(initiativesAnchor)
+                                ? "rotate(180deg)"
+                                : "rotate(0deg)",
+                              transition: "transform 0.2s",
+                            }}
+                          />
+                        }
                         sx={{
                           color: isActive ? "primary.main" : "text.primary",
-                          fontWeight: isActive ? 700 : 600,
+                          fontWeight: isActive ? 800 : 600,
                           fontSize: "0.92rem",
-                          px: 1.8,
+                          px: 2,
                           py: 1,
-                          position: "relative",
-                          "&::after": isActive
-                            ? {
-                                content: '""',
-                                position: "absolute",
-                                bottom: 0,
-                                left: 14,
-                                right: 14,
-                                height: 3,
-                                bgcolor: "primary.main",
-                                borderRadius: "2px 2px 0 0",
-                              }
-                            : {},
+                          borderRadius: 2,
                           "&:hover": {
-                            bgcolor: "rgba(0, 40, 135, 0.04)",
+                            bgcolor: "rgba(0, 40, 135, 0.05)",
                             color: "primary.main",
                           },
                         }}
@@ -267,11 +307,12 @@ export default function Header() {
                         PaperProps={{
                           sx: {
                             mt: 1.5,
-                            minWidth: 280,
-                            borderRadius: 3,
-                            boxShadow: "0 12px 36px rgba(0, 40, 135, 0.15)",
-                            p: 1,
+                            minWidth: 320,
+                            borderRadius: 3.5,
+                            boxShadow: "0 16px 45px rgba(0, 27, 92, 0.14)",
+                            p: 1.2,
                             border: "1px solid #E2E8F0",
+                            bgcolor: "#FFFFFF",
                           },
                         }}
                       >
@@ -280,19 +321,22 @@ export default function Header() {
                           href="/initiatives"
                           onClick={handleCloseInitiatives}
                           sx={{
-                            borderRadius: 2,
-                            py: 1.2,
+                            borderRadius: 2.5,
+                            py: 1.4,
                             bgcolor: "rgba(0, 40, 135, 0.04)",
-                            mb: 0.5,
+                            mb: 1,
+                            "&:hover": {
+                              bgcolor: "rgba(0, 40, 135, 0.08)",
+                            },
                           }}
                         >
                           <ListItemText
-                            primary="All Initiatives"
-                            secondary="Explore our 5 core pillars"
+                            primary="All Initiatives Overview"
+                            secondary="Explore our 6 core humanitarian pillars"
                             primaryTypographyProps={{
-                              fontWeight: 700,
+                              fontWeight: 800,
                               color: "primary.main",
-                              fontSize: "0.92rem",
+                              fontSize: "0.94rem",
                             }}
                             secondaryTypographyProps={{ fontSize: "0.78rem" }}
                           />
@@ -305,18 +349,23 @@ export default function Header() {
                             href={sub.href}
                             onClick={handleCloseInitiatives}
                             sx={{
-                              borderRadius: 2,
-                              py: 1,
+                              borderRadius: 2.5,
+                              py: 1.2,
+                              px: 1.8,
+                              display: "flex",
+                              gap: 1.5,
+                              alignItems: "flex-start",
                               "&:hover": {
-                                bgcolor: "rgba(0, 40, 135, 0.06)",
+                                bgcolor: "rgba(0, 40, 135, 0.05)",
                               },
                             }}
                           >
+                            <Box sx={{ mt: 0.3 }}>{getInitiativeIcon(sub.href)}</Box>
                             <ListItemText
                               primary={sub.title}
                               secondary={sub.description}
                               primaryTypographyProps={{
-                                fontWeight: pathname === sub.href ? 700 : 600,
+                                fontWeight: pathname === sub.href ? 800 : 600,
                                 color:
                                   pathname === sub.href
                                     ? "primary.main"
@@ -342,25 +391,26 @@ export default function Header() {
                     href={item.href}
                     sx={{
                       color: isActive ? "primary.main" : "text.primary",
-                      fontWeight: isActive ? 700 : 600,
+                      fontWeight: isActive ? 800 : 600,
                       fontSize: "0.92rem",
-                      px: 1.8,
+                      px: 2,
                       py: 1,
+                      borderRadius: 2,
                       position: "relative",
                       "&::after": isActive
                         ? {
                             content: '""',
                             position: "absolute",
-                            bottom: 0,
-                            left: 14,
-                            right: 14,
-                            height: 3,
+                            bottom: 4,
+                            left: 16,
+                            right: 16,
+                            height: 2.5,
                             bgcolor: "primary.main",
-                            borderRadius: "2px 2px 0 0",
+                            borderRadius: 2,
                           }
                         : {},
                       "&:hover": {
-                        bgcolor: "rgba(0, 40, 135, 0.04)",
+                        bgcolor: "rgba(0, 40, 135, 0.05)",
                         color: "primary.main",
                       },
                     }}
@@ -379,22 +429,28 @@ export default function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 variant="contained"
-                color="secondary"
                 size="medium"
                 startIcon={<WhatsAppIcon sx={{ fontSize: 20 }} />}
                 sx={{
                   display: { xs: "none", sm: "inline-flex" },
-                  fontWeight: 700,
+                  fontWeight: 800,
+                  fontSize: "0.92rem",
                   bgcolor: "secondary.main",
+                  color: "#FFFFFF",
+                  px: 2.8,
+                  py: 1.1,
+                  borderRadius: 9999,
+                  boxShadow: "0 4px 14px rgba(0, 96, 0, 0.22)",
                   "&:hover": {
                     bgcolor: "secondary.dark",
+                    boxShadow: "0 6px 20px rgba(0, 96, 0, 0.35)",
                   },
                 }}
               >
                 Join Mission
               </Button>
 
-              {/* Mobile Menu Button */}
+              {/* Mobile Menu Hamburger */}
               <IconButton
                 color="inherit"
                 aria-label="Open mobile navigation menu"
@@ -403,17 +459,55 @@ export default function Header() {
                 sx={{
                   display: { md: "none" },
                   color: "primary.main",
-                  p: 1,
+                  p: 1.2,
+                  bgcolor: "rgba(0, 40, 135, 0.06)",
+                  borderRadius: 2.5,
+                  "&:hover": {
+                    bgcolor: "rgba(0, 40, 135, 0.12)",
+                  },
                 }}
               >
-                <MenuIcon sx={{ fontSize: 28 }} />
+                <Box
+                  sx={{
+                    width: 22,
+                    height: 16,
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      width: "100%",
+                      height: 2.5,
+                      bgcolor: "currentColor",
+                      borderRadius: 2,
+                    }}
+                  />
+                  <Box
+                    sx={{
+                      width: "70%",
+                      height: 2.5,
+                      bgcolor: "currentColor",
+                      borderRadius: 2,
+                    }}
+                  />
+                  <Box
+                    sx={{
+                      width: "100%",
+                      height: 2.5,
+                      bgcolor: "currentColor",
+                      borderRadius: 2,
+                    }}
+                  />
+                </Box>
               </IconButton>
             </Box>
           </Toolbar>
         </Container>
       </AppBar>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer Navigation */}
       <MobileNavigation
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}

@@ -1,49 +1,83 @@
 "use client";
 
-import React from "react";
-import Button from "@mui/material/Button";
+import React, { useState } from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Tooltip from "@mui/material/Tooltip";
 import { WhatsAppIcon } from "@/components/common/Icons";
 import { getWhatsAppLink } from "@/lib/utils";
+import { motion } from "framer-motion";
 
-interface WhatsAppButtonProps {
-  message?: string;
-  label?: string;
-  variant?: "contained" | "outlined" | "text";
-  size?: "small" | "medium" | "large";
-  fullWidth?: boolean;
-}
-
-export default function WhatsAppButton({
-  message,
-  label = "Connect on WhatsApp",
-  variant = "contained",
-  size = "medium",
-  fullWidth = false,
-}: WhatsAppButtonProps) {
-  const link = getWhatsAppLink(message);
+export default function WhatsAppButton() {
+  const [hovered, setHovered] = useState(false);
 
   return (
-    <Button
-      component="a"
-      href={link}
-      target="_blank"
-      rel="noopener noreferrer"
-      variant={variant}
-      size={size}
-      fullWidth={fullWidth}
-      startIcon={<WhatsAppIcon />}
+    <Box
       sx={{
-        bgcolor: variant === "contained" ? "#006000" : "transparent",
-        color: variant === "contained" ? "#FFFFFF" : "#006000",
-        borderColor: "#006000",
-        fontWeight: 700,
-        "&:hover": {
-          bgcolor: variant === "contained" ? "#004500" : "rgba(0, 96, 0, 0.08)",
-          borderColor: "#004500",
-        },
+        position: "fixed",
+        bottom: { xs: 20, md: 32 },
+        right: { xs: 20, md: 32 },
+        zIndex: 1000,
       }}
     >
-      {label}
-    </Button>
+      <Tooltip
+        title="Chat with Warsia Trust on WhatsApp"
+        placement="left"
+        arrow
+      >
+        <motion.a
+          href={getWhatsAppLink()}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Connect with Warsia Trust on WhatsApp"
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.94 }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "10px",
+            padding: "12px 18px",
+            borderRadius: "9999px",
+            backgroundColor: "#25D366",
+            color: "#FFFFFF",
+            textDecoration: "none",
+            boxShadow: "0 8px 30px rgba(37, 211, 102, 0.4)",
+            cursor: "pointer",
+            position: "relative",
+          }}
+        >
+          {/* Subtle pulse wave */}
+          <Box
+            sx={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              borderRadius: "9999px",
+              bgcolor: "#25D366",
+              opacity: 0.4,
+              animation: "ping 2.5s cubic-bezier(0, 0, 0.2, 1) infinite",
+              zIndex: -1,
+            }}
+          />
+
+          <WhatsAppIcon sx={{ fontSize: 26 }} />
+          <Typography
+            component="span"
+            sx={{
+              fontWeight: 700,
+              fontSize: "0.88rem",
+              display: { xs: "none", sm: "inline" },
+              letterSpacing: "0.01em",
+            }}
+          >
+            Direct Support
+          </Typography>
+        </motion.a>
+      </Tooltip>
+    </Box>
   );
 }

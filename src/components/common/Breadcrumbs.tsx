@@ -5,7 +5,6 @@ import Link from "next/link";
 import MuiBreadcrumbs from "@mui/material/Breadcrumbs";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { ChevronRightIcon } from "@/components/common/Icons";
 
 export interface BreadcrumbItem {
   label: string;
@@ -14,22 +13,41 @@ export interface BreadcrumbItem {
 
 interface BreadcrumbsProps {
   items: BreadcrumbItem[];
+  light?: boolean;
 }
 
-export default function Breadcrumbs({ items }: BreadcrumbsProps) {
+export default function Breadcrumbs({ items, light = true }: BreadcrumbsProps) {
   return (
-    <Box sx={{ py: 2 }}>
+    <Box sx={{ py: 1.5 }}>
       <MuiBreadcrumbs
-        separator={<span style={{ color: "#94A3B8" }}>/</span>}
+        separator={
+          <span
+            style={{
+              color: light ? "rgba(255, 255, 255, 0.45)" : "#94A3B8",
+              fontSize: "0.85rem",
+            }}
+          >
+            /
+          </span>
+        }
         aria-label="breadcrumb"
       >
         <Link
           href="/"
           style={{
-            color: "#667085",
+            color: light ? "rgba(255, 255, 255, 0.75)" : "#52607A",
             textDecoration: "none",
             fontSize: "0.85rem",
-            fontWeight: 500,
+            fontWeight: 600,
+            transition: "color 0.2s",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = "#F27501";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = light
+              ? "rgba(255, 255, 255, 0.75)"
+              : "#52607A";
           }}
         >
           Home
@@ -44,9 +62,10 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
                 key={item.label}
                 variant="caption"
                 sx={{
-                  color: "primary.main",
-                  fontWeight: 700,
+                  color: light ? "#FFFFFF" : "primary.main",
+                  fontWeight: 800,
                   fontSize: "0.85rem",
+                  letterSpacing: "0.01em",
                 }}
               >
                 {item.label}
@@ -59,10 +78,19 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
               key={item.label}
               href={item.href}
               style={{
-                color: "#667085",
+                color: light ? "rgba(255, 255, 255, 0.75)" : "#52607A",
                 textDecoration: "none",
                 fontSize: "0.85rem",
-                fontWeight: 500,
+                fontWeight: 600,
+                transition: "color 0.2s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = "#F27501";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = light
+                  ? "rgba(255, 255, 255, 0.75)"
+                  : "#52607A";
               }}
             >
               {item.label}

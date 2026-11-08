@@ -4,6 +4,8 @@ import "./globals.css";
 import ThemeRegistry from "@/theme/ThemeRegistry";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import ScrollProgress from "@/components/animations/ScrollProgress";
+import WhatsAppButton from "@/components/common/WhatsAppButton";
 import { constructMetadata, generateOrganizationSchema } from "@/lib/seo";
 
 const inter = Inter({
@@ -32,11 +34,13 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeRegistry>
+          <ScrollProgress />
           <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
             <Header />
             <main style={{ flex: "1 0 auto" }}>{children}</main>
             <Footer />
           </div>
+          <WhatsAppButton />
         </ThemeRegistry>
       </body>
     </html>

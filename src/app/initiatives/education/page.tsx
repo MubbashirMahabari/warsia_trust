@@ -1,21 +1,23 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import Chip from "@mui/material/Chip";
 import { constructMetadata } from "@/lib/seo";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
-import AnimatedSection from "@/components/common/AnimatedSection";
 import ContactCard from "@/components/common/ContactCard";
+import Reveal from "@/components/animations/Reveal";
+import TextReveal from "@/components/animations/TextReveal";
+import MagneticButton from "@/components/animations/MagneticButton";
 import {
   SchoolIcon,
   CheckCircleIcon,
   WhatsAppIcon,
+  Diversity3Icon,
 } from "@/components/common/Icons";
 import { getInitiativeWhatsAppLink } from "@/lib/utils";
 
@@ -49,19 +51,23 @@ export default function EducationPage() {
   ];
 
   return (
-    <Box sx={{ pb: { xs: 8, md: 12 }, bgcolor: "#FFFFFF" }}>
-      {/* Banner */}
+    <Box sx={{ pb: { xs: 9, md: 14 }, bgcolor: "#FFFFFF" }}>
+      {/* Editorial Header Banner */}
       <Box
         sx={{
-          bgcolor: "primary.dark",
+          bgcolor: "#001B5C",
           color: "#FFFFFF",
-          pt: { xs: 5, md: 7 },
-          pb: { xs: 6, md: 8 },
+          pt: { xs: 6, md: 9 },
+          pb: { xs: 7, md: 10 },
           position: "relative",
-          backgroundImage: "linear-gradient(135deg, #001B5C 0%, #002887 100%)",
+          backgroundImage: `
+            radial-gradient(circle at 15% 20%, rgba(0, 96, 0, 0.4) 0%, transparent 45%),
+            radial-gradient(circle at 85% 80%, rgba(242, 117, 1, 0.22) 0%, transparent 45%),
+            linear-gradient(180deg, #001B5C 0%, #002887 100%)
+          `,
         }}
       >
-        <Container maxWidth="lg">
+        <Container maxWidth="xl" sx={{ px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
           <Breadcrumbs
             items={[
               { label: "Initiatives", href: "/initiatives" },
@@ -69,61 +75,108 @@ export default function EducationPage() {
             ]}
           />
 
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mt: 2 }}>
-            <Chip
-              label="Foundational Growth"
-              color="primary"
-              sx={{ fontWeight: 700, fontSize: "0.75rem", bgcolor: "primary.light" }}
-            />
-            <Chip
-              label="Vijayapura Student Support"
-              sx={{ bgcolor: "rgba(255,255,255,0.15)", color: "#FFFFFF", fontWeight: 600, fontSize: "0.75rem" }}
-            />
-          </Box>
+          <Reveal direction="down">
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mt: 2.5, mb: 1.5, flexWrap: "wrap" }}>
+              <Chip
+                label="Empowering Youth"
+                sx={{
+                  bgcolor: "#002887",
+                  color: "#FFFFFF",
+                  fontWeight: 800,
+                  fontSize: "0.75rem",
+                }}
+              />
+              <Chip
+                label="Vijayapura Educational Outreach"
+                sx={{
+                  bgcolor: "rgba(255, 255, 255, 0.15)",
+                  color: "#FFFFFF",
+                  fontWeight: 700,
+                  fontSize: "0.75rem",
+                  border: "1px solid rgba(255, 255, 255, 0.25)",
+                }}
+              />
+            </Box>
+          </Reveal>
 
-          <Typography
-            variant="h1"
-            sx={{
-              fontSize: { xs: "2.2rem", sm: "2.8rem", md: "3.4rem" },
+          <TextReveal
+            text="Educational Development"
+            as="h1"
+            delay={0.1}
+            stagger={0.04}
+            highlightWord="Development"
+            highlightColor="#FFB74D"
+            style={{
+              fontSize: "clamp(2.3rem, 4.4vw, 3.6rem)",
               fontWeight: 900,
               color: "#FFFFFF",
-              letterSpacing: "-0.02em",
-              mt: 2,
-              mb: 2,
+              letterSpacing: "-0.025em",
+              lineHeight: 1.15,
+              marginTop: "8px",
+              marginBottom: "16px",
             }}
-          >
-            Education Today. A Better Tomorrow.
-          </Typography>
+          />
 
-          <Typography
-            variant="h6"
-            sx={{
-              color: "rgba(255, 255, 255, 0.88)",
-              maxWidth: 780,
-              fontSize: { xs: "1rem", sm: "1.15rem" },
-              fontWeight: 400,
-              lineHeight: 1.6,
-            }}
-          >
-            Education is one of the strongest foundations for building a better
-            society. We aim to encourage educational development and create opportunities
-            for communities in Vijayapura.
-          </Typography>
+          <Reveal delay={0.3} direction="up">
+            <Typography
+              variant="h6"
+              sx={{
+                color: "rgba(255, 255, 255, 0.88)",
+                maxWidth: 780,
+                fontSize: { xs: "1.05rem", sm: "1.2rem" },
+                fontWeight: 400,
+                lineHeight: 1.7,
+              }}
+            >
+              Empowering students through educational awareness, foundational learning
+              guidance, and mentorship for a self-reliant future.
+            </Typography>
+          </Reveal>
         </Container>
       </Box>
 
       {/* Main Narrative & Sidebar */}
-      <Container maxWidth="lg" sx={{ mt: { xs: 6, md: 8 } }}>
-        <Grid container spacing={{ xs: 5, md: 7 }}>
-          <Grid item xs={12} md={7} lg={8}>
-            <AnimatedSection>
+      <Container maxWidth="xl" sx={{ mt: { xs: 7, md: 10 }, px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: { xs: "1fr", md: "1.3fr 0.7fr" },
+            gap: { xs: 5, md: 6 },
+            alignItems: "flex-start",
+          }}
+        >
+          <Box>
+            <Reveal direction="up">
+              {/* Artwork Banner */}
+              <Box
+                sx={{
+                  position: "relative",
+                  width: "100%",
+                  height: { xs: 240, sm: 340 },
+                  borderRadius: 4.5,
+                  overflow: "hidden",
+                  mb: 4.5,
+                  border: "1px solid #E2E8F0",
+                  boxShadow: "0 14px 40px rgba(0, 40, 135, 0.12)",
+                }}
+              >
+                <Image
+                  src="/images/initiatives/education.svg"
+                  alt="Educational Development in Vijayapura"
+                  fill
+                  style={{ objectFit: "cover" }}
+                  priority
+                />
+              </Box>
+
               <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 3 }}>
                 <Box
                   sx={{
                     width: 60,
                     height: 60,
-                    borderRadius: 3,
+                    borderRadius: 3.5,
                     bgcolor: "rgba(0, 40, 135, 0.08)",
+                    border: "1px solid rgba(0, 40, 135, 0.2)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -132,106 +185,134 @@ export default function EducationPage() {
                   <SchoolIcon sx={{ fontSize: 34, color: "primary.main" }} />
                 </Box>
                 <Box>
-                  <Typography variant="overline" sx={{ color: "primary.main", fontWeight: 800, letterSpacing: "0.05em" }}>
-                    LEARNING &amp; UPLIFTMENT
+                  <Typography
+                    variant="overline"
+                    sx={{ color: "primary.main", fontWeight: 800, letterSpacing: "0.08em" }}
+                  >
+                    FOUNDATION FOR TOMORROW
                   </Typography>
-                  <Typography variant="h4" sx={{ fontWeight: 800, color: "primary.main", fontSize: { xs: "1.35rem", md: "1.7rem" } }}>
-                    Unlocking Opportunities Through Knowledge
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      fontWeight: 900,
+                      color: "primary.main",
+                      fontSize: { xs: "1.5rem", md: "1.85rem" },
+                    }}
+                  >
+                    Building Dignity and Opportunity
                   </Typography>
                 </Box>
               </Box>
 
               <Typography
                 variant="body1"
-                sx={{ color: "text.primary", lineHeight: 1.85, mb: 2.5, fontSize: "1.05rem" }}
+                sx={{ color: "text.primary", lineHeight: 1.85, mb: 2.5, fontSize: "1.06rem" }}
               >
-                At Warsia Educational &amp; Social Development Trust, we believe that
-                education is the single most enduring engine of socio-economic progress.
-                When a child is guided into thoughtful learning, an entire household is
-                uplifted from cycles of generational hardship.
+                At Warsia Educational &amp; Social Development Trust, we view education
+                not simply as textbook instruction, but as the supreme tool for personal
+                upliftment, civic dignity, and peaceful coexistence.
               </Typography>
 
               <Typography
                 variant="body1"
-                sx={{ color: "text.secondary", lineHeight: 1.85, mb: 4, fontSize: "1rem" }}
+                sx={{ color: "text.secondary", lineHeight: 1.8, mb: 2.5, fontSize: "1rem" }}
               >
-                In Vijayapura, our trust actively engages with neighborhood schools,
-                parents, and community elders. We counsel families facing financial
-                pressures, urge regular school attendance, support basic study materials,
-                and connect students with inspiring community role models.
+                Many children in low-income neighborhoods face systemic obstacles:
+                economic constraints, absence of study habits at home, and lack of
+                academic mentoring. Our trust works directly on the ground in Vijayapura,
+                encouraging parents and supporting children to complete their schooling.
               </Typography>
 
-              {/* Pillars Grid */}
               <Typography
-                variant="h5"
-                sx={{ fontWeight: 800, color: "primary.main", mb: 2.5, fontSize: "1.25rem" }}
+                variant="body1"
+                sx={{ color: "text.secondary", lineHeight: 1.8, mb: 4, fontSize: "1rem" }}
               >
-                Areas of Educational Action
+                Through mentoring drives, workshops on girls&apos; education, and ethical
+                guidance, we build an uplifting community environment where every young
+                person feels recognized and encouraged to reach their potential.
               </Typography>
 
-              <Grid container spacing={2.5} sx={{ mb: 4 }}>
-                {pillars.map((item) => (
-                  <Grid item xs={12} sm={6} key={item.title}>
-                    <Card
-                      sx={{
-                        p: 2.5,
-                        height: "100%",
-                        borderRadius: 3,
-                        border: "1px solid #E2E8F0",
-                        bgcolor: "background.paper",
-                      }}
+              {/* 4 Pillars Grid */}
+              <Box
+                sx={{
+                  display: "grid",
+                  gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
+                  gap: 2.5,
+                  mb: 5,
+                }}
+              >
+                {pillars.map((p) => (
+                  <Box
+                    key={p.title}
+                    sx={{
+                      p: 3,
+                      borderRadius: 3.5,
+                      bgcolor: "#F7F8FC",
+                      border: "1px solid #E2E8F0",
+                      height: "100%",
+                    }}
+                  >
+                    <Typography
+                      variant="subtitle2"
+                      sx={{ fontWeight: 800, color: "primary.main", mb: 0.8 }}
                     >
-                      <Box sx={{ display: "flex", alignItems: "center", gap: 1.2, mb: 1 }}>
-                        <CheckCircleIcon sx={{ color: "primary.main", fontSize: 20 }} />
-                        <Typography variant="subtitle2" sx={{ fontWeight: 800, color: "primary.main" }}>
-                          {item.title}
-                        </Typography>
-                      </Box>
-                      <Typography variant="body2" sx={{ color: "text.secondary", lineHeight: 1.6 }}>
-                        {item.desc}
-                      </Typography>
-                    </Card>
-                  </Grid>
+                      {p.title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{ color: "text.secondary", lineHeight: 1.6 }}
+                    >
+                      {p.desc}
+                    </Typography>
+                  </Box>
                 ))}
-              </Grid>
+              </Box>
 
-              {/* Action Buttons */}
+              {/* Action Button */}
               <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap", mb: 4 }}>
-                <Button
-                  component="a"
-                  href={whatsAppLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                  startIcon={<WhatsAppIcon />}
-                  sx={{ fontWeight: 700, px: 3.5 }}
-                >
-                  Connect Regarding Education
-                </Button>
+                <MagneticButton strength={0.25}>
+                  <Button
+                    component="a"
+                    href={whatsAppLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variant="contained"
+                    size="large"
+                    startIcon={<WhatsAppIcon />}
+                    sx={{
+                      bgcolor: "primary.main",
+                      color: "#FFFFFF",
+                      px: 3.8,
+                      py: 1.5,
+                      fontWeight: 800,
+                    }}
+                  >
+                    Support Education Program
+                  </Button>
+                </MagneticButton>
 
                 <Link href="/volunteer" style={{ textDecoration: "none" }}>
                   <Button
                     variant="outlined"
-                    color="primary"
                     size="large"
-                    sx={{ fontWeight: 700 }}
+                    sx={{ px: 3.5, py: 1.5, fontWeight: 700 }}
                   >
-                    Join as Volunteer Mentor
+                    Join as Student Mentor
                   </Button>
                 </Link>
               </Box>
-            </AnimatedSection>
-          </Grid>
+            </Reveal>
+          </Box>
 
-          {/* Right Sidebar */}
-          <Grid item xs={12} md={5} lg={4}>
-            <AnimatedSection delay={0.2}>
-              <ContactCard />
-            </AnimatedSection>
-          </Grid>
-        </Grid>
+          {/* Right Column: Contact & Quick Actions */}
+          <Box>
+            <Reveal delay={0.2} direction="left" scale>
+              <Box sx={{ position: "sticky", top: 100, display: "flex", flexDirection: "column", gap: 3.5 }}>
+                <ContactCard />
+              </Box>
+            </Reveal>
+          </Box>
+        </Box>
       </Container>
     </Box>
   );

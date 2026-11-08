@@ -146,4 +146,31 @@ export const initiativesData: Initiative[] = [
     badge: "Community Care",
     actionText: "Discover Social Initiatives",
   },
+  {
+    id: "community-development",
+    slug: "community-development",
+    title: "Community Development & Harmony",
+    shortDescription:
+      "Fostering civic unity, grassroots neighborhood support, interfaith harmony dialogues, and community development across Vijayapura.",
+    fullDescription: [
+      "Sustainable change flourishes when communities unite in mutual trust, understanding, and shared civic responsibility.",
+      "Warsia Trust facilitates local neighborhood initiatives, social harmony forums, and civic welfare drives that bridge diverse cultural communities in Vijayapura.",
+      "We believe that peaceful coexistence and collaborative human development are essential pillars for a prosperous and enlightened tomorrow.",
+    ],
+    keyHighlights: [
+      "Grassroots community gatherings fostering interfaith friendship and goodwill",
+      "Local neighborhood support systems addressing civic welfare needs",
+      "Promoting mutual respect, cultural celebration, and communal harmony",
+      "Empowering citizens to take active ownership of social wellbeing",
+    ],
+    category: "social-welfare",
+    iconName: "Diversity3",
+    themeColor: "#001B5C",
+    accentColor: "#006000",
+    image: "/images/initiatives/social-welfare.svg",
+    href: "/initiatives/social-development",
+    badge: "Civic Unity",
+    actionText: "Explore Community Work",
+  },
 ];
+

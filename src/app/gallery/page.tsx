@@ -5,6 +5,8 @@ import Typography from "@mui/material/Typography";
 import { constructMetadata } from "@/lib/seo";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
 import GallerySection from "@/components/home/GallerySection";
+import Reveal from "@/components/animations/Reveal";
+import TextReveal from "@/components/animations/TextReveal";
 
 export const metadata: Metadata = constructMetadata({
   title: "Photo Gallery - Service, Unity & Community Fellowship",
@@ -16,65 +18,77 @@ export const metadata: Metadata = constructMetadata({
 export default function GalleryPage() {
   return (
     <Box sx={{ pb: { xs: 8, md: 12 }, bgcolor: "#FFFFFF" }}>
-      {/* Banner */}
+      {/* Editorial Banner */}
       <Box
         sx={{
-          bgcolor: "primary.dark",
+          bgcolor: "#001B5C",
           color: "#FFFFFF",
-          pt: { xs: 5, md: 7 },
-          pb: { xs: 6, md: 8 },
+          pt: { xs: 6, md: 9 },
+          pb: { xs: 7, md: 10 },
           position: "relative",
-          backgroundImage: "linear-gradient(135deg, #001B5C 0%, #002887 100%)",
+          backgroundImage: `
+            radial-gradient(circle at 15% 20%, rgba(0, 96, 0, 0.3) 0%, transparent 45%),
+            radial-gradient(circle at 85% 80%, rgba(242, 117, 1, 0.22) 0%, transparent 45%),
+            linear-gradient(180deg, #001B5C 0%, #002887 100%)
+          `,
         }}
       >
-        <Container maxWidth="lg">
+        <Container maxWidth="xl" sx={{ px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
           <Breadcrumbs items={[{ label: "Gallery" }]} />
 
-          <Typography
-            variant="overline"
-            sx={{
-              color: "warning.main",
-              fontWeight: 800,
-              letterSpacing: "0.08em",
-              fontSize: "0.85rem",
-              display: "block",
-              mt: 2,
-            }}
-          >
-            PHOTOGRAPHIC ARCHIVE
-          </Typography>
+          <Reveal direction="down">
+            <Typography
+              variant="overline"
+              sx={{
+                color: "warning.main",
+                fontWeight: 800,
+                letterSpacing: "0.08em",
+                fontSize: "0.85rem",
+                display: "block",
+                mt: 2.5,
+              }}
+            >
+              PHOTOGRAPHIC ARCHIVE
+            </Typography>
+          </Reveal>
 
-          <Typography
-            variant="h1"
-            sx={{
-              fontSize: { xs: "2.2rem", sm: "2.8rem", md: "3.4rem" },
+          <TextReveal
+            text="Moments of Service & Togetherness"
+            as="h1"
+            delay={0.1}
+            stagger={0.04}
+            highlightWord="Togetherness"
+            highlightColor="#FFB74D"
+            style={{
+              fontSize: "clamp(2.3rem, 4.4vw, 3.6rem)",
               fontWeight: 900,
               color: "#FFFFFF",
-              letterSpacing: "-0.02em",
-              mt: 1,
-              mb: 2,
+              letterSpacing: "-0.025em",
+              lineHeight: 1.15,
+              marginTop: "8px",
+              marginBottom: "16px",
             }}
-          >
-            Moments of Service &amp; Togetherness
-          </Typography>
+          />
 
-          <Typography
-            variant="h6"
-            sx={{
-              color: "rgba(255, 255, 255, 0.88)",
-              maxWidth: 780,
-              fontSize: { xs: "1rem", sm: "1.15rem" },
-              fontWeight: 400,
-              lineHeight: 1.6,
-            }}
-          >
-            Browse genuine moments of community fellowship, cultural celebration,
-            food relief, and accreditation from Warsia Trust in Vijayapura.
-          </Typography>
+          <Reveal delay={0.3} direction="up">
+            <Typography
+              variant="h6"
+              sx={{
+                color: "rgba(255, 255, 255, 0.88)",
+                maxWidth: 720,
+                fontSize: { xs: "1.05rem", sm: "1.2rem" },
+                fontWeight: 400,
+                lineHeight: 1.7,
+              }}
+            >
+              Documentary photographs of our relief work, interfaith festival celebrations,
+              food ration distribution, and official trust compliance in Vijayapura, Karnataka.
+            </Typography>
+          </Reveal>
         </Container>
       </Box>
 
-      {/* Gallery Section */}
+      {/* Main Gallery with Lightbox and Filter Tabs */}
       <GallerySection />
     </Box>
   );

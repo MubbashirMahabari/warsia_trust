@@ -13,9 +13,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
-import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
-import Chip from "@mui/material/Chip";
 import { mainNavigation } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
 import {
@@ -24,8 +22,15 @@ import {
   PhoneIcon,
   WhatsAppIcon,
   LocationOnIcon,
+  VerifiedIcon,
+  MosqueIcon,
+  TempleHinduIcon,
+  BloodtypeIcon,
+  SchoolIcon,
+  VolunteerActivismIcon,
 } from "@/components/common/Icons";
 import { getTelLink, getWhatsAppLink, formatPhone } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface MobileNavigationProps {
   open: boolean;
@@ -39,6 +44,14 @@ export default function MobileNavigation({
   const pathname = usePathname();
   const [initiativesOpen, setInitiativesOpen] = useState(true);
 
+  const getSubIcon = (href: string) => {
+    if (href.includes("masjid")) return <MosqueIcon sx={{ fontSize: 18, color: "#006000" }} />;
+    if (href.includes("temple")) return <TempleHinduIcon sx={{ fontSize: 18, color: "#F27501" }} />;
+    if (href.includes("blood")) return <BloodtypeIcon sx={{ fontSize: 18, color: "#C62828" }} />;
+    if (href.includes("education")) return <SchoolIcon sx={{ fontSize: 18, color: "#002887" }} />;
+    return <VolunteerActivismIcon sx={{ fontSize: 18, color: "#006000" }} />;
+  };
+
   return (
     <Drawer
       anchor="right"
@@ -46,11 +59,12 @@ export default function MobileNavigation({
       onClose={onClose}
       PaperProps={{
         sx: {
-          width: { xs: "85%", sm: 380 },
+          width: { xs: "86%", sm: 400 },
           display: "flex",
           flexDirection: "column",
           bgcolor: "#FFFFFF",
           p: 0,
+          boxShadow: "-10px 0 50px rgba(0, 27, 92, 0.25)",
         },
       }}
     >
@@ -60,51 +74,85 @@ export default function MobileNavigation({
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          p: 2.5,
+          p: 2.8,
           borderBottom: "1px solid #E2E8F0",
+          bgcolor: "#F7F8FC",
         }}
       >
         <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
           <Image
             src="/logo/warsia-logo.png"
             alt={siteConfig.name}
-            width={44}
-            height={44}
+            width={46}
+            height={46}
             style={{ objectFit: "contain" }}
           />
           <Box>
             <Typography
               variant="subtitle2"
               sx={{
-                fontWeight: 800,
+                fontWeight: 900,
                 color: "primary.main",
                 lineHeight: 1.2,
-                fontSize: "0.9rem",
+                fontSize: "0.95rem",
               }}
             >
               WARSIA TRUST
             </Typography>
-            <Typography
-              variant="caption"
-              sx={{ color: "text.secondary", fontSize: "0.72rem" }}
-            >
-              Darphan ID: {siteConfig.darphanId}
-            </Typography>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+              <VerifiedIcon sx={{ fontSize: 14, color: "warning.main" }} />
+              <Typography
+                variant="caption"
+                sx={{ color: "text.secondary", fontSize: "0.74rem", fontWeight: 600 }}
+              >
+                ID: {siteConfig.darphanId}
+              </Typography>
+            </Box>
           </Box>
         </Box>
+
         <IconButton
           onClick={onClose}
           aria-label="Close navigation menu"
-          sx={{ color: "text.primary" }}
+          sx={{
+            color: "text.primary",
+            bgcolor: "#FFFFFF",
+            border: "1px solid #E2E8F0",
+            "&:hover": { bgcolor: "#EEF2F8" },
+          }}
         >
-          <CloseIcon />
+          <CloseIcon sx={{ fontSize: 22 }} />
         </IconButton>
+      </Box>
+
+      {/* Slogan Banner */}
+      <Box
+        sx={{
+          bgcolor: "#001B5C",
+          color: "#FFFFFF",
+          px: 2.5,
+          py: 1.2,
+          textAlign: "center",
+        }}
+      >
+        <Typography
+          variant="caption"
+          sx={{
+            fontStyle: "italic",
+            color: "warning.light",
+            fontWeight: 700,
+            fontSize: "0.8rem",
+            letterSpacing: "0.01em",
+          }}
+        >
+          &ldquo;{siteConfig.slogan}&rdquo;
+        </Typography>
       </Box>
 
       {/* Navigation Links */}
       <Box sx={{ flex: 1, overflowY: "auto", py: 2 }}>
         <List disablePadding>
-          {mainNavigation.map((item) => {
+          {mainNavigation.map((item, idx) => {
             const isActive =
               pathname === item.href ||
               (item.href !== "/" && pathname.startsWith(item.href));
@@ -117,7 +165,7 @@ export default function MobileNavigation({
                       onClick={() => setInitiativesOpen(!initiativesOpen)}
                       sx={{
                         px: 3,
-                        py: 1.5,
+                        py: 1.6,
                         display: "flex",
                         justifyContent: "space-between",
                         bgcolor: isActive ? "rgba(0, 40, 135, 0.05)" : "transparent",
@@ -126,15 +174,15 @@ export default function MobileNavigation({
                       <ListItemText
                         primary={item.title}
                         primaryTypographyProps={{
-                          fontWeight: isActive ? 700 : 600,
+                          fontWeight: isActive ? 800 : 700,
                           color: isActive ? "primary.main" : "text.primary",
-                          fontSize: "1rem",
+                          fontSize: "1.05rem",
                         }}
                       />
                       <KeyboardArrowDownIcon
                         sx={{
                           transform: initiativesOpen ? "rotate(180deg)" : "rotate(0deg)",
-                          transition: "transform 0.2s",
+                          transition: "transform 0.25s ease",
                           color: "text.secondary",
                         }}
                       />
@@ -142,19 +190,19 @@ export default function MobileNavigation({
                   </ListItem>
 
                   <Collapse in={initiativesOpen} timeout="auto" unmountOnExit>
-                    <List disablePadding sx={{ bgcolor: "background.paper", py: 1 }}>
+                    <List disablePadding sx={{ bgcolor: "#F7F8FC", py: 1 }}>
                       <ListItem disablePadding>
                         <ListItemButton
                           component={Link}
                           href="/initiatives"
                           onClick={onClose}
-                          sx={{ pl: 4.5, py: 1 }}
+                          sx={{ pl: 4.5, py: 1.2 }}
                         >
                           <ListItemText
                             primary="All Initiatives Overview"
                             primaryTypographyProps={{
-                              fontSize: "0.9rem",
-                              fontWeight: 600,
+                              fontSize: "0.92rem",
+                              fontWeight: 700,
                               color: "primary.main",
                             }}
                           />
@@ -167,17 +215,32 @@ export default function MobileNavigation({
                             component={Link}
                             href={subItem.href}
                             onClick={onClose}
-                            sx={{ pl: 4.5, py: 1 }}
+                            sx={{
+                              pl: 4.5,
+                              py: 1.2,
+                              display: "flex",
+                              gap: 1.2,
+                              bgcolor:
+                                pathname === subItem.href
+                                  ? "rgba(0, 40, 135, 0.08)"
+                                  : "transparent",
+                            }}
                           >
+                            <Box sx={{ mt: 0.2 }}>{getSubIcon(subItem.href)}</Box>
                             <ListItemText
                               primary={subItem.title}
+                              secondary={subItem.description}
                               primaryTypographyProps={{
-                                fontSize: "0.875rem",
-                                fontWeight: pathname === subItem.href ? 700 : 500,
+                                fontSize: "0.88rem",
+                                fontWeight: pathname === subItem.href ? 800 : 600,
                                 color:
                                   pathname === subItem.href
                                     ? "primary.main"
-                                    : "text.secondary",
+                                    : "text.primary",
+                              }}
+                              secondaryTypographyProps={{
+                                fontSize: "0.74rem",
+                                noWrap: true,
                               }}
                             />
                           </ListItemButton>
@@ -197,17 +260,19 @@ export default function MobileNavigation({
                   onClick={onClose}
                   sx={{
                     px: 3,
-                    py: 1.5,
-                    bgcolor: isActive ? "rgba(0, 40, 135, 0.05)" : "transparent",
-                    borderLeft: isActive ? "4px solid #002887" : "4px solid transparent",
+                    py: 1.6,
+                    bgcolor: isActive ? "rgba(0, 40, 135, 0.06)" : "transparent",
+                    borderLeft: isActive
+                      ? "4px solid #F27501"
+                      : "4px solid transparent",
                   }}
                 >
                   <ListItemText
                     primary={item.title}
                     primaryTypographyProps={{
-                      fontWeight: isActive ? 700 : 600,
+                      fontWeight: isActive ? 800 : 600,
                       color: isActive ? "primary.main" : "text.primary",
-                      fontSize: "1rem",
+                      fontSize: "1.05rem",
                     }}
                   />
                 </ListItemButton>
@@ -217,22 +282,28 @@ export default function MobileNavigation({
         </List>
       </Box>
 
-      {/* Bottom Contact & Quick CTAs */}
-      <Box sx={{ p: 2.5, bgcolor: "background.paper", borderTop: "1px solid #E2E8F0" }}>
-        <Box sx={{ mb: 2 }}>
+      {/* Drawer Footer with Quick Contact Actions */}
+      <Box
+        sx={{
+          p: 3,
+          bgcolor: "#F7F8FC",
+          borderTop: "1px solid #E2E8F0",
+        }}
+      >
+        <Box sx={{ mb: 2.5 }}>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 1 }}>
             <LocationOnIcon sx={{ fontSize: 18, color: "secondary.main" }} />
-            <Typography variant="caption" sx={{ color: "text.secondary", fontWeight: 500 }}>
+            <Typography variant="caption" sx={{ color: "text.secondary", fontWeight: 600 }}>
               Vijayapura, Karnataka – 586101
             </Typography>
           </Box>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <PhoneIcon sx={{ fontSize: 18, color: "primary.main" }} />
+            <PhoneIcon sx={{ fontSize: 18, color: "warning.main" }} />
             <Typography
               component="a"
               href={getTelLink(siteConfig.contact.primaryPhone)}
               variant="caption"
-              sx={{ color: "text.primary", fontWeight: 700, textDecoration: "none" }}
+              sx={{ color: "text.primary", fontWeight: 800, textDecoration: "none" }}
             >
               +91 {formatPhone(siteConfig.contact.primaryPhone)}
             </Typography>
@@ -246,13 +317,14 @@ export default function MobileNavigation({
             target="_blank"
             rel="noopener noreferrer"
             variant="contained"
-            color="secondary"
+            color="warning"
             fullWidth
             startIcon={<WhatsAppIcon />}
-            sx={{ py: 1.2, fontWeight: 700 }}
+            sx={{ py: 1.4, fontWeight: 800, borderRadius: 9999 }}
           >
             Connect on WhatsApp
           </Button>
+
           <Button
             component={Link}
             href="/contact"
@@ -260,9 +332,9 @@ export default function MobileNavigation({
             variant="outlined"
             color="primary"
             fullWidth
-            sx={{ py: 1 }}
+            sx={{ py: 1.2, fontWeight: 700, borderRadius: 9999 }}
           >
-            Contact Our Trust
+            Contact Trust Office
           </Button>
         </Box>
       </Box>

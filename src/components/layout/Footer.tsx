@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
@@ -17,6 +16,7 @@ import {
   WhatsAppIcon,
   LocationOnIcon,
   VerifiedIcon,
+  ArrowForwardIcon,
 } from "@/components/common/Icons";
 import { getTelLink, getWhatsAppLink, formatPhone } from "@/lib/utils";
 
@@ -27,24 +27,61 @@ export default function Footer() {
     <Box
       component="footer"
       sx={{
-        bgcolor: "#001B5C", // Deep Navy Blue Dark
+        bgcolor: "#001B5C", // Official Deep Navy
         color: "#FFFFFF",
-        pt: { xs: 7, md: 9 },
-        pb: 4,
+        pt: { xs: 8, md: 11 },
+        pb: 5,
         borderTop: "4px solid #F27501", // Saffron accent top line
         position: "relative",
+        overflow: "hidden",
       }}
     >
-      <Container maxWidth="lg">
-        <Grid container spacing={{ xs: 4, md: 5 }}>
+      {/* Subtle ambient gradient overlay */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: `
+            radial-gradient(circle at 10% 20%, rgba(0, 96, 0, 0.15) 0%, transparent 45%),
+            radial-gradient(circle at 90% 80%, rgba(242, 117, 1, 0.12) 0%, transparent 45%)
+          `,
+          pointerEvents: "none",
+        }}
+      />
+
+      <Container maxWidth="xl" sx={{ position: "relative", zIndex: 1, px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "repeat(2, 1fr)",
+              md: "1.3fr 1fr 0.8fr 1.2fr",
+            },
+            gap: { xs: 5, md: 6 },
+          }}
+        >
           {/* Column 1: Organization details & Logo with slogan */}
-          <Grid item xs={12} md={4}>
-            <Box sx={{ mb: 2.5, bgcolor: "#FFFFFF", p: 1.5, borderRadius: 2, display: "inline-block", maxWidth: 280 }}>
+          <Box>
+            <Box
+              sx={{
+                mb: 3,
+                bgcolor: "#FFFFFF",
+                p: 2,
+                borderRadius: 3,
+                display: "inline-block",
+                maxWidth: 300,
+                boxShadow: "0 8px 24px rgba(0, 0, 0, 0.2)",
+              }}
+            >
               <Box
                 sx={{
                   position: "relative",
                   width: "100%",
-                  height: 70,
+                  height: 72,
                 }}
               >
                 <Image
@@ -59,17 +96,18 @@ export default function Footer() {
             <Typography
               variant="subtitle1"
               sx={{
-                fontWeight: 800,
+                fontWeight: 900,
                 color: "#FFFFFF",
-                fontSize: "1.05rem",
-                lineHeight: 1.3,
-                mb: 1,
+                fontSize: "1.08rem",
+                lineHeight: 1.35,
+                mb: 1.5,
+                letterSpacing: "-0.01em",
               }}
             >
               {siteConfig.name}
             </Typography>
 
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 1.5 }}>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 1.8 }}>
               <VerifiedIcon sx={{ color: "warning.main", fontSize: 18 }} />
               <Typography
                 variant="body2"
@@ -81,7 +119,7 @@ export default function Footer() {
 
             <Typography
               variant="body2"
-              sx={{ color: "rgba(255, 255, 255, 0.75)", mb: 2, fontSize: "0.88rem" }}
+              sx={{ color: "rgba(255, 255, 255, 0.78)", mb: 2, fontSize: "0.9rem" }}
             >
               <strong>President:</strong> {siteConfig.president}
             </Typography>
@@ -91,26 +129,28 @@ export default function Footer() {
               sx={{
                 fontStyle: "italic",
                 color: "warning.light",
-                fontWeight: 600,
-                fontSize: "0.9rem",
+                fontWeight: 700,
+                fontSize: "0.92rem",
                 borderLeft: "3px solid #F27501",
-                pl: 1.5,
-                my: 2,
+                pl: 1.8,
+                my: 2.5,
+                lineHeight: 1.6,
               }}
             >
               &ldquo;{siteConfig.slogan}&rdquo;
             </Typography>
-          </Grid>
+          </Box>
 
           {/* Column 2: Key Initiatives */}
-          <Grid item xs={12} sm={6} md={3}>
+          <Box>
             <Typography
               variant="h6"
               sx={{
                 color: "#FFFFFF",
-                fontWeight: 700,
-                fontSize: "1rem",
-                mb: 2.5,
+                fontWeight: 800,
+                fontSize: "1.05rem",
+                mb: 3,
+                letterSpacing: "-0.01em",
                 position: "relative",
                 "&::after": {
                   content: '""',
@@ -118,7 +158,7 @@ export default function Footer() {
                   width: 32,
                   height: 3,
                   bgcolor: "secondary.main",
-                  mt: 0.8,
+                  mt: 1,
                   borderRadius: 2,
                 },
               }}
@@ -131,42 +171,46 @@ export default function Footer() {
                 <Box
                   component="li"
                   key={initiative.id}
-                  sx={{ mb: 1.5 }}
+                  sx={{ mb: 1.6 }}
                 >
                   <Link
                     href={initiative.href}
                     style={{
-                      color: "rgba(255, 255, 255, 0.8)",
+                      color: "rgba(255, 255, 255, 0.78)",
                       textDecoration: "none",
-                      fontSize: "0.88rem",
-                      display: "inline-block",
-                      transition: "all 0.2s",
+                      fontSize: "0.9rem",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "6px",
+                      transition: "all 0.25s ease",
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = "#F27501";
-                      e.currentTarget.style.transform = "translateX(4px)";
+                      e.currentTarget.style.transform = "translateX(5px)";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.color = "rgba(255, 255, 255, 0.8)";
+                      e.currentTarget.style.color = "rgba(255, 255, 255, 0.78)";
                       e.currentTarget.style.transform = "translateX(0)";
                     }}
                   >
-                    {initiative.title}
+                    <span>›</span>
+                    <span>{initiative.title}</span>
                   </Link>
                 </Box>
               ))}
             </Box>
-          </Grid>
+          </Box>
 
           {/* Column 3: Quick Navigation */}
-          <Grid item xs={12} sm={6} md={2}>
+          <Box>
             <Typography
               variant="h6"
               sx={{
                 color: "#FFFFFF",
-                fontWeight: 700,
-                fontSize: "1rem",
-                mb: 2.5,
+                fontWeight: 800,
+                fontSize: "1.05rem",
+                mb: 3,
+                letterSpacing: "-0.01em",
                 position: "relative",
                 "&::after": {
                   content: '""',
@@ -174,51 +218,55 @@ export default function Footer() {
                   width: 32,
                   height: 3,
                   bgcolor: "warning.main",
-                  mt: 0.8,
+                  mt: 1,
                   borderRadius: 2,
                 },
               }}
             >
-              Quick Links
+              Navigation
             </Typography>
 
             <Box component="ul" sx={{ listStyle: "none", p: 0, m: 0 }}>
               {footerQuickLinks.map((item) => (
-                <Box component="li" key={item.title} sx={{ mb: 1.5 }}>
+                <Box component="li" key={item.title} sx={{ mb: 1.6 }}>
                   <Link
                     href={item.href}
                     style={{
-                      color: "rgba(255, 255, 255, 0.8)",
+                      color: "rgba(255, 255, 255, 0.78)",
                       textDecoration: "none",
-                      fontSize: "0.88rem",
-                      display: "inline-block",
-                      transition: "all 0.2s",
+                      fontSize: "0.9rem",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "6px",
+                      transition: "all 0.25s ease",
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = "#F27501";
-                      e.currentTarget.style.transform = "translateX(4px)";
+                      e.currentTarget.style.transform = "translateX(5px)";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.color = "rgba(255, 255, 255, 0.8)";
+                      e.currentTarget.style.color = "rgba(255, 255, 255, 0.78)";
                       e.currentTarget.style.transform = "translateX(0)";
                     }}
                   >
-                    {item.title}
+                    <span>›</span>
+                    <span>{item.title}</span>
                   </Link>
                 </Box>
               ))}
             </Box>
-          </Grid>
+          </Box>
 
           {/* Column 4: Contact & Location */}
-          <Grid item xs={12} md={3}>
+          <Box>
             <Typography
               variant="h6"
               sx={{
                 color: "#FFFFFF",
-                fontWeight: 700,
-                fontSize: "1rem",
-                mb: 2.5,
+                fontWeight: 800,
+                fontSize: "1.05rem",
+                mb: 3,
+                letterSpacing: "-0.01em",
                 position: "relative",
                 "&::after": {
                   content: '""',
@@ -226,7 +274,7 @@ export default function Footer() {
                   width: 32,
                   height: 3,
                   bgcolor: "secondary.main",
-                  mt: 0.8,
+                  mt: 1,
                   borderRadius: 2,
                 },
               }}
@@ -235,11 +283,11 @@ export default function Footer() {
             </Typography>
 
             <Box sx={{ mb: 2 }}>
-              <Box sx={{ display: "flex", alignItems: "flex-start", gap: 1.2, mb: 1.5 }}>
-                <LocationOnIcon sx={{ color: "warning.main", fontSize: 20, mt: 0.3 }} />
+              <Box sx={{ display: "flex", alignItems: "flex-start", gap: 1.2, mb: 2 }}>
+                <LocationOnIcon sx={{ color: "warning.main", fontSize: 20, mt: 0.3, flexShrink: 0 }} />
                 <Typography
                   variant="body2"
-                  sx={{ color: "rgba(255, 255, 255, 0.85)", fontSize: "0.85rem", lineHeight: 1.6 }}
+                  sx={{ color: "rgba(255, 255, 255, 0.85)", fontSize: "0.88rem", lineHeight: 1.65 }}
                 >
                   {siteConfig.contact.address.formatted}
                 </Typography>
@@ -248,8 +296,8 @@ export default function Footer() {
               <Box sx={{ display: "flex", flexDirection: "column", gap: 1, my: 2 }}>
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                   <PhoneIcon sx={{ color: "warning.main", fontSize: 18 }} />
-                  <Typography variant="caption" sx={{ color: "rgba(255,255,255,0.7)", fontWeight: 600 }}>
-                    Official Phone Numbers:
+                  <Typography variant="caption" sx={{ color: "rgba(255,255,255,0.7)", fontWeight: 700 }}>
+                    Official Helpline Numbers:
                   </Typography>
                 </Box>
                 {siteConfig.contact.phoneNumbers.map((phone) => (
@@ -260,9 +308,10 @@ export default function Footer() {
                     sx={{
                       color: "#FFFFFF",
                       textDecoration: "none",
-                      fontSize: "0.88rem",
-                      fontWeight: 600,
+                      fontSize: "0.9rem",
+                      fontWeight: 700,
                       pl: 3.2,
+                      transition: "color 0.2s",
                       "&:hover": { color: "warning.main" },
                     }}
                   >
@@ -279,30 +328,32 @@ export default function Footer() {
                 sx={{
                   display: "inline-flex",
                   alignItems: "center",
-                  gap: 1,
-                  px: 2,
-                  py: 1,
-                  borderRadius: 2,
+                  gap: 1.2,
+                  px: 2.4,
+                  py: 1.2,
+                  borderRadius: 9999,
                   bgcolor: "secondary.main",
                   color: "#FFFFFF",
                   textDecoration: "none",
-                  fontWeight: 700,
-                  fontSize: "0.85rem",
-                  mt: 1,
-                  transition: "background-color 0.2s",
+                  fontWeight: 800,
+                  fontSize: "0.88rem",
+                  mt: 1.5,
+                  boxShadow: "0 4px 16px rgba(0, 96, 0, 0.3)",
+                  transition: "all 0.25s ease",
                   "&:hover": {
                     bgcolor: "secondary.dark",
+                    transform: "translateY(-2px)",
                   },
                 }}
               >
-                <WhatsAppIcon sx={{ fontSize: 18 }} />
-                Chat on WhatsApp
+                <WhatsAppIcon sx={{ fontSize: 20 }} />
+                Connect on WhatsApp
               </Box>
             </Box>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
 
-        <Divider sx={{ borderColor: "rgba(255, 255, 255, 0.12)", my: 4 }} />
+        <Divider sx={{ borderColor: "rgba(255, 255, 255, 0.12)", my: 5 }} />
 
         {/* Bottom Bar: Copyright & Legal */}
         <Box
@@ -311,16 +362,15 @@ export default function Footer() {
             flexDirection: { xs: "column", sm: "row" },
             justifyContent: "space-between",
             alignItems: "center",
-            gap: 2,
+            gap: 2.5,
             textAlign: { xs: "center", sm: "left" },
           }}
         >
           <Typography
             variant="caption"
-            sx={{ color: "rgba(255, 255, 255, 0.65)", fontSize: "0.8rem" }}
+            sx={{ color: "rgba(255, 255, 255, 0.65)", fontSize: "0.82rem" }}
           >
-            &copy; {currentYear} {siteConfig.name}. All rights reserved.
-            Registered in Vijayapura, Karnataka. Darphan ID: {siteConfig.darphanId}.
+            &copy; {currentYear} {siteConfig.name}. Registered in Vijayapura, Karnataka. NGO Darphan ID: {siteConfig.darphanId}.
           </Typography>
 
           <Box sx={{ display: "flex", gap: 3 }}>
@@ -331,7 +381,14 @@ export default function Footer() {
                 style={{
                   color: "rgba(255, 255, 255, 0.65)",
                   textDecoration: "none",
-                  fontSize: "0.78rem",
+                  fontSize: "0.82rem",
+                  transition: "color 0.2s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "#F27501";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = "rgba(255, 255, 255, 0.65)";
                 }}
               >
                 {item.title}

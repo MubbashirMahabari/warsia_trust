@@ -2,16 +2,16 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { constructMetadata } from "@/lib/seo";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
 import SectionHeading from "@/components/common/SectionHeading";
 import InitiativeCard from "@/components/common/InitiativeCard";
-import AnimatedSection from "@/components/common/AnimatedSection";
+import Reveal from "@/components/animations/Reveal";
+import TextReveal from "@/components/animations/TextReveal";
 import { initiativesData } from "@/config/initiatives";
-import { WhatsAppIcon, Diversity3Icon } from "@/components/common/Icons";
+import { WhatsAppIcon, Diversity3Icon, ArrowForwardIcon } from "@/components/common/Icons";
 import { getWhatsAppLink } from "@/lib/utils";
 
 export const metadata: Metadata = constructMetadata({
@@ -23,133 +23,138 @@ export const metadata: Metadata = constructMetadata({
 
 export default function InitiativesPage() {
   return (
-    <Box sx={{ pb: { xs: 8, md: 12 }, bgcolor: "#FFFFFF" }}>
-      {/* Header Banner */}
+    <Box sx={{ pb: { xs: 9, md: 14 }, bgcolor: "#FFFFFF" }}>
+      {/* Editorial Header Banner */}
       <Box
         sx={{
-          bgcolor: "primary.dark",
+          bgcolor: "#001B5C",
           color: "#FFFFFF",
-          pt: { xs: 5, md: 7 },
-          pb: { xs: 6, md: 8 },
+          pt: { xs: 6, md: 9 },
+          pb: { xs: 7, md: 10 },
           position: "relative",
-          backgroundImage: "linear-gradient(135deg, #001B5C 0%, #002887 100%)",
+          backgroundImage: `
+            radial-gradient(circle at 15% 20%, rgba(0, 96, 0, 0.3) 0%, transparent 45%),
+            radial-gradient(circle at 85% 80%, rgba(242, 117, 1, 0.22) 0%, transparent 45%),
+            linear-gradient(180deg, #001B5C 0%, #002887 100%)
+          `,
         }}
       >
-        <Container maxWidth="lg">
+        <Container maxWidth="xl" sx={{ px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
           <Breadcrumbs items={[{ label: "Initiatives" }]} />
 
-          <Typography
-            variant="overline"
-            sx={{
-              color: "warning.main",
-              fontWeight: 800,
-              letterSpacing: "0.08em",
-              fontSize: "0.85rem",
-              display: "block",
-              mt: 2,
-            }}
-          >
-            HUMANITARIAN PROGRAMS &amp; SERVICES
-          </Typography>
+          <Reveal direction="down">
+            <Typography
+              variant="overline"
+              sx={{
+                color: "warning.main",
+                fontWeight: 800,
+                letterSpacing: "0.08em",
+                fontSize: "0.85rem",
+                display: "block",
+                mt: 2.5,
+              }}
+            >
+              HUMANITARIAN PROGRAMS &amp; SERVICES
+            </Typography>
+          </Reveal>
 
-          <Typography
-            variant="h1"
-            sx={{
-              fontSize: { xs: "2.2rem", sm: "2.8rem", md: "3.4rem" },
+          <TextReveal
+            text="Our Core Humanitarian Initiatives"
+            as="h1"
+            delay={0.1}
+            stagger={0.04}
+            highlightWord="Initiatives"
+            highlightColor="#FFB74D"
+            style={{
+              fontSize: "clamp(2.3rem, 4.4vw, 3.6rem)",
               fontWeight: 900,
               color: "#FFFFFF",
-              letterSpacing: "-0.02em",
-              mt: 1,
-              mb: 2,
+              letterSpacing: "-0.025em",
+              lineHeight: 1.15,
+              marginTop: "8px",
+              marginBottom: "16px",
             }}
-          >
-            Our Major Initiatives
-          </Typography>
+          />
 
-          <Typography
-            variant="h6"
-            sx={{
-              color: "rgba(255, 255, 255, 0.85)",
-              maxWidth: 760,
-              fontSize: { xs: "1rem", sm: "1.15rem" },
-              fontWeight: 400,
-              lineHeight: 1.6,
-            }}
-          >
-            Empowering communities in Vijayapura through structured financial support
-            for religious leaders, voluntary blood donation networks, student learning,
-            and essential social welfare.
-          </Typography>
+          <Reveal delay={0.3} direction="up">
+            <Typography
+              variant="h6"
+              sx={{
+                color: "rgba(255, 255, 255, 0.88)",
+                maxWidth: 740,
+                fontSize: { xs: "1.05rem", sm: "1.2rem" },
+                fontWeight: 400,
+                lineHeight: 1.7,
+              }}
+            >
+              Guided by the principle &ldquo;Service to Humanity – The Mark of True Faith,&rdquo;
+              explore our dedicated programs serving religious leaders, hospital emergency
+              patients, students, and families across Vijayapura.
+            </Typography>
+          </Reveal>
         </Container>
       </Box>
 
-      {/* Main Initiatives Grid */}
-      <Container maxWidth="lg" sx={{ mt: { xs: 6, md: 8 } }}>
-        <AnimatedSection>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              mb: 6,
-            }}
-          >
-            <Box
-              sx={{
-                p: 2,
-                px: 3.5,
-                bgcolor: "background.paper",
-                borderRadius: 4,
-                border: "1px solid #E2E8F0",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 1.5,
-                textAlign: "center",
-              }}
-            >
-              <Diversity3Icon sx={{ color: "warning.main", fontSize: 24 }} />
-              <Typography variant="body2" sx={{ fontWeight: 700, color: "primary.main" }}>
-                Equal focus &amp; reverence for Masjid Imams and Temple Pandits — Humanity has no boundaries.
-              </Typography>
-            </Box>
-          </Box>
-        </AnimatedSection>
-
-        <Grid container spacing={{ xs: 3, md: 4 }}>
-          {initiativesData.map((initiative, idx) => (
-            <Grid item xs={12} sm={6} md={4} key={initiative.id}>
-              <AnimatedSection delay={idx * 0.1}>
-                <InitiativeCard initiative={initiative} />
-              </AnimatedSection>
-            </Grid>
-          ))}
-        </Grid>
-
-        {/* Contact CTA Strip */}
+      {/* Initiatives Grid */}
+      <Container maxWidth="xl" sx={{ mt: { xs: 7, md: 10 }, px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
         <Box
           sx={{
-            mt: 9,
-            p: { xs: 4, md: 6 },
-            borderRadius: 4,
-            bgcolor: "background.paper",
-            border: "2px solid #E2E8F0",
-            textAlign: "center",
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "repeat(2, 1fr)",
+              md: "repeat(3, 1fr)",
+            },
+            gap: { xs: 3.5, md: 4 },
           }}
         >
-          <AnimatedSection>
+          {initiativesData.map((initiative, idx) => (
+            <Reveal delay={idx * 0.1} direction="up" key={initiative.id} style={{ height: "100%" }}>
+              <InitiativeCard initiative={initiative} index={idx} />
+            </Reveal>
+          ))}
+        </Box>
+
+        {/* Closing Support Banner */}
+        <Reveal delay={0.4}>
+          <Box
+            sx={{
+              mt: { xs: 8, md: 12 },
+              p: { xs: 4, sm: 6 },
+              borderRadius: 5,
+              bgcolor: "#F7F8FC",
+              border: "2px solid #E2E8F0",
+              textAlign: "center",
+              position: "relative",
+              overflow: "hidden",
+            }}
+          >
+            <Diversity3Icon sx={{ fontSize: 44, color: "warning.main", mb: 2 }} />
+
             <Typography
               variant="h4"
-              sx={{ fontWeight: 800, color: "primary.main", mb: 1.5, fontSize: { xs: "1.4rem", md: "1.8rem" } }}
+              sx={{
+                fontWeight: 900,
+                color: "primary.main",
+                fontSize: { xs: "1.6rem", md: "2.1rem" },
+                mb: 1.5,
+              }}
             >
-              Want to Support or Inquire About an Initiative?
+              Have Questions or Wish to Support an Initiative?
             </Typography>
 
             <Typography
               variant="body1"
-              sx={{ color: "text.secondary", maxWidth: 640, mx: "auto", mb: 3.5, lineHeight: 1.7 }}
+              sx={{
+                color: "text.secondary",
+                maxWidth: 620,
+                mx: "auto",
+                mb: 4,
+                lineHeight: 1.7,
+              }}
             >
-              Whether you wish to refer a religious leader in need, register as an
-              emergency blood donor, or collaborate on community education, our trust
-              desk is here for you.
+              Connect directly with Warsia Trust leadership in Vijayapura. We welcome
+              inquiries, volunteer enrollments, and collaborative community efforts.
             </Typography>
 
             <Box sx={{ display: "flex", justifyContent: "center", gap: 2, flexWrap: "wrap" }}>
@@ -159,10 +164,10 @@ export default function InitiativesPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 variant="contained"
-                color="secondary"
+                color="warning"
                 size="large"
                 startIcon={<WhatsAppIcon />}
-                sx={{ fontWeight: 700, px: 3.5 }}
+                sx={{ px: 4, py: 1.5, fontWeight: 800 }}
               >
                 Inquire on WhatsApp
               </Button>
@@ -172,14 +177,14 @@ export default function InitiativesPage() {
                   variant="outlined"
                   color="primary"
                   size="large"
-                  sx={{ fontWeight: 700, px: 3.5 }}
+                  sx={{ px: 3.5, py: 1.5, fontWeight: 700 }}
                 >
                   Contact Trust Office
                 </Button>
               </Link>
             </Box>
-          </AnimatedSection>
-        </Box>
+          </Box>
+        </Reveal>
       </Container>
     </Box>
   );

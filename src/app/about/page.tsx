@@ -3,10 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
@@ -14,7 +12,8 @@ import { siteConfig } from "@/config/site";
 import { constructMetadata } from "@/lib/seo";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
 import SectionHeading from "@/components/common/SectionHeading";
-import AnimatedSection from "@/components/common/AnimatedSection";
+import Reveal from "@/components/animations/Reveal";
+import TextReveal from "@/components/animations/TextReveal";
 import {
   VerifiedIcon,
   CheckCircleIcon,
@@ -22,6 +21,8 @@ import {
   VolunteerActivismIcon,
   PhoneIcon,
   WhatsAppIcon,
+  ArrowForwardIcon,
+  BalanceIcon,
 } from "@/components/common/Icons";
 import { getWhatsAppLink } from "@/lib/utils";
 
@@ -35,97 +36,138 @@ export const metadata: Metadata = constructMetadata({
 const valuesList = [
   {
     title: "Service to Humanity",
-    description: "Believing that human suffering must be alleviated regardless of religious, ethnic, or social origin.",
+    description:
+      "Believing that human suffering must be alleviated regardless of religious, ethnic, or social origin.",
+    icon: <VolunteerActivismIcon sx={{ fontSize: 32, color: "primary.main" }} />,
   },
   {
     title: "Religious Parity & Brotherhood",
-    description: "Giving equal visual, financial, and emotional weight to Masjid Imams and Temple Pandits alike.",
+    description:
+      "Giving equal visual, financial, and emotional weight to Masjid Imams and Temple Pandits alike.",
+    icon: <BalanceIcon sx={{ fontSize: 32, color: "warning.main" }} />,
   },
   {
     title: "Accountability & Transparency",
-    description: "Operating with zero commercial interest and strictly verified humanitarian documentation.",
+    description:
+      "Operating with zero commercial interest and strictly verified humanitarian documentation under NGO Darphan.",
+    icon: <VerifiedIcon sx={{ fontSize: 32, color: "secondary.main" }} />,
   },
   {
     title: "Community Empowerment",
-    description: "Enabling education, health security through blood donation, and dignity for vulnerable families.",
+    description:
+      "Enabling education, health security through blood donation, and dignity for vulnerable families across Vijayapura.",
+    icon: <Diversity3Icon sx={{ fontSize: 32, color: "primary.main" }} />,
   },
 ];
 
 export default function AboutPage() {
   return (
-    <Box sx={{ pb: { xs: 8, md: 12 }, bgcolor: "#FFFFFF" }}>
-      {/* Page Header Banner */}
+    <Box sx={{ pb: { xs: 9, md: 14 }, bgcolor: "#FFFFFF" }}>
+      {/* Editorial Page Header Banner */}
       <Box
         sx={{
-          bgcolor: "primary.dark",
+          bgcolor: "#001B5C",
           color: "#FFFFFF",
-          pt: { xs: 5, md: 7 },
-          pb: { xs: 6, md: 8 },
+          pt: { xs: 6, md: 9 },
+          pb: { xs: 7, md: 10 },
           position: "relative",
-          backgroundImage: "linear-gradient(135deg, #001B5C 0%, #002887 100%)",
+          backgroundImage: `
+            radial-gradient(circle at 15% 20%, rgba(0, 96, 0, 0.3) 0%, transparent 45%),
+            radial-gradient(circle at 85% 80%, rgba(242, 117, 1, 0.22) 0%, transparent 45%),
+            linear-gradient(180deg, #001B5C 0%, #002887 100%)
+          `,
         }}
       >
-        <Container maxWidth="lg">
+        <Container maxWidth="xl" sx={{ px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
           <Breadcrumbs items={[{ label: "About Us" }]} />
 
-          <Typography
-            variant="overline"
-            sx={{
-              color: "warning.main",
-              fontWeight: 800,
-              letterSpacing: "0.08em",
-              fontSize: "0.85rem",
-              display: "block",
-              mt: 2,
-            }}
-          >
-            FOUNDATIONAL ROOTS &amp; MISSION
-          </Typography>
+          <Reveal direction="down">
+            <Box
+              sx={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 1.2,
+                py: 0.6,
+                px: 2,
+                borderRadius: 9999,
+                bgcolor: "rgba(255, 255, 255, 0.12)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
+                mt: 2.5,
+                mb: 2,
+              }}
+            >
+              <VerifiedIcon sx={{ color: "warning.main", fontSize: 18 }} />
+              <Typography
+                variant="overline"
+                sx={{
+                  color: "#FFFFFF",
+                  fontWeight: 800,
+                  letterSpacing: "0.08em",
+                  fontSize: "0.75rem",
+                  lineHeight: 1,
+                }}
+              >
+                GOVERNMENT DARPHAN ID: {siteConfig.darphanId}
+              </Typography>
+            </Box>
+          </Reveal>
 
-          <Typography
-            variant="h1"
-            sx={{
-              fontSize: { xs: "2.2rem", sm: "2.8rem", md: "3.4rem" },
+          <TextReveal
+            text="About Warsia Educational & Social Development Trust"
+            as="h1"
+            delay={0.1}
+            stagger={0.04}
+            highlightWord="Trust"
+            highlightColor="#FFB74D"
+            style={{
+              fontSize: "clamp(2.3rem, 4.4vw, 3.6rem)",
               fontWeight: 900,
               color: "#FFFFFF",
-              letterSpacing: "-0.02em",
-              mt: 1,
-              mb: 2,
+              letterSpacing: "-0.025em",
+              lineHeight: 1.15,
+              marginBottom: "18px",
             }}
-          >
-            About Warsia Educational &amp; Social Development Trust
-          </Typography>
+          />
 
-          <Typography
-            variant="h6"
-            sx={{
-              color: "rgba(255, 255, 255, 0.85)",
-              maxWidth: 760,
-              fontSize: { xs: "1rem", sm: "1.15rem" },
-              fontWeight: 400,
-              lineHeight: 1.6,
-            }}
-          >
-            A dedicated non-governmental humanitarian organization established in
-            Vijayapura (Bijapur), Karnataka, driven by the timeless motto:
-            &ldquo;{siteConfig.slogan}&rdquo;
-          </Typography>
+          <Reveal delay={0.3} direction="up">
+            <Typography
+              variant="h6"
+              sx={{
+                color: "rgba(255, 255, 255, 0.88)",
+                maxWidth: 780,
+                fontSize: { xs: "1.05rem", sm: "1.2rem" },
+                fontWeight: 400,
+                lineHeight: 1.7,
+              }}
+            >
+              A non-governmental humanitarian organization established in Vijayapura
+              (Bijapur), Karnataka, driven by the timeless motto:
+              &ldquo;{siteConfig.slogan}&rdquo;
+            </Typography>
+          </Reveal>
         </Container>
       </Box>
 
       {/* Main Content */}
-      <Container maxWidth="lg" sx={{ mt: { xs: 6, md: 8 } }}>
-        <Grid container spacing={{ xs: 5, md: 7 }} alignItems="center">
-          {/* Official Full Logo Display per strict requirements */}
-          <Grid item xs={12} md={5}>
-            <AnimatedSection>
+      <Container maxWidth="xl" sx={{ mt: { xs: 7, md: 10 }, px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: { xs: "1fr", lg: "0.8fr 1.2fr" },
+            gap: { xs: 5, lg: 8 },
+            alignItems: "flex-start",
+          }}
+        >
+          {/* Left Column: Official Full Logo Card with Slogan */}
+          <Box>
+            <Reveal direction="right" scale>
               <Card
                 sx={{
-                  borderRadius: 4,
+                  borderRadius: 5,
                   border: "2px solid #E2E8F0",
-                  p: { xs: 3, sm: 4 },
+                  p: { xs: 3.5, sm: 4.5 },
                   bgcolor: "#FFFFFF",
-                  boxShadow: "0 12px 35px rgba(0, 40, 135, 0.08)",
+                  boxShadow: "0 18px 45px rgba(0, 40, 135, 0.1)",
                   textAlign: "center",
                 }}
               >
@@ -134,7 +176,7 @@ export default function AboutPage() {
                   sx={{
                     position: "relative",
                     width: "100%",
-                    height: 180,
+                    height: 190,
                     mb: 3,
                   }}
                 >
@@ -149,54 +191,94 @@ export default function AboutPage() {
 
                 <Typography
                   variant="h6"
-                  sx={{ fontWeight: 800, color: "primary.main", mb: 0.5 }}
+                  sx={{
+                    fontWeight: 900,
+                    color: "primary.main",
+                    fontSize: "1.1rem",
+                    mb: 1,
+                    lineHeight: 1.3,
+                  }}
                 >
                   {siteConfig.name}
                 </Typography>
 
-                <Box sx={{ display: "flex", justifyContent: "center", my: 1.5 }}>
+                <Box sx={{ display: "flex", justifyContent: "center", my: 2 }}>
                   <Chip
                     icon={<VerifiedIcon sx={{ fontSize: "16px !important" }} />}
                     label={`Darphan ID: ${siteConfig.darphanId}`}
                     color="primary"
                     variant="outlined"
-                    sx={{ fontWeight: 700 }}
+                    sx={{ fontWeight: 800, py: 2 }}
                   />
                 </Box>
 
-                <Divider sx={{ my: 2 }} />
+                <Divider sx={{ my: 2.5 }} />
 
-                <Box sx={{ textAlign: "left", p: 1.5, bgcolor: "background.paper", borderRadius: 2 }}>
-                  <Typography variant="caption" sx={{ color: "text.secondary", fontWeight: 700, display: "block" }}>
+                <Box
+                  sx={{
+                    textAlign: "left",
+                    p: 2.5,
+                    bgcolor: "#F7F8FC",
+                    borderRadius: 3.5,
+                    border: "1px solid #E2E8F0",
+                  }}
+                >
+                  <Typography
+                    variant="overline"
+                    sx={{
+                      color: "text.secondary",
+                      fontWeight: 800,
+                      display: "block",
+                      letterSpacing: "0.08em",
+                    }}
+                  >
                     TRUST LEADERSHIP
                   </Typography>
-                  <Typography variant="body1" sx={{ fontWeight: 800, color: "primary.main" }}>
+                  <Typography
+                    variant="h6"
+                    sx={{ fontWeight: 900, color: "primary.main", mt: 0.5 }}
+                  >
                     {siteConfig.president}
                   </Typography>
-                  <Typography variant="caption" sx={{ color: "text.secondary" }}>
+                  <Typography
+                    variant="body2"
+                    sx={{ color: "secondary.dark", fontWeight: 700 }}
+                  >
                     President, Warsia Trust
                   </Typography>
 
-                  <Typography variant="caption" sx={{ color: "text.secondary", fontWeight: 700, display: "block", mt: 1.5 }}>
-                    REGISTERED LOCATION
+                  <Typography
+                    variant="overline"
+                    sx={{
+                      color: "text.secondary",
+                      fontWeight: 800,
+                      display: "block",
+                      letterSpacing: "0.08em",
+                      mt: 2,
+                    }}
+                  >
+                    HEADQUARTERS
                   </Typography>
-                  <Typography variant="body2" sx={{ color: "text.primary", fontWeight: 600 }}>
+                  <Typography
+                    variant="body2"
+                    sx={{ color: "text.primary", fontWeight: 600, lineHeight: 1.6 }}
+                  >
                     {siteConfig.contact.address.formatted}
                   </Typography>
                 </Box>
               </Card>
-            </AnimatedSection>
-          </Grid>
+            </Reveal>
+          </Box>
 
-          {/* Narrative Story */}
-          <Grid item xs={12} md={7}>
-            <AnimatedSection delay={0.1}>
+          {/* Right Column: Narrative Story */}
+          <Box>
+            <Reveal delay={0.2} direction="up">
               <Typography
                 variant="h3"
                 sx={{
-                  fontWeight: 800,
-                  color: "primary.main",
-                  fontSize: { xs: "1.6rem", md: "2.1rem" },
+                  fontWeight: 900,
+                  color: "primary.dark",
+                  fontSize: { xs: "1.75rem", sm: "2.2rem" },
                   mb: 2.5,
                   lineHeight: 1.25,
                 }}
@@ -206,10 +288,15 @@ export default function AboutPage() {
 
               <Typography
                 variant="body1"
-                sx={{ color: "text.primary", lineHeight: 1.85, mb: 2, fontSize: "1.05rem" }}
+                sx={{
+                  color: "text.primary",
+                  lineHeight: 1.85,
+                  mb: 2.5,
+                  fontSize: "1.08rem",
+                }}
               >
                 <strong>WARSIA EDUCATIONAL &amp; SOCIAL DEVELOPMENT TRUST</strong> was
-                conceived from a profound realization: genuine progress in a community is
+                conceived from a profound conviction: genuine progress in a community is
                 only possible when we care for one another without boundaries. Situated
                 in the historic city of Vijayapura (Bijapur), Karnataka, the trust serves
                 as a unifying platform for compassionate human service.
@@ -217,19 +304,29 @@ export default function AboutPage() {
 
               <Typography
                 variant="body1"
-                sx={{ color: "text.secondary", lineHeight: 1.8, mb: 2.5, fontSize: "0.98rem" }}
+                sx={{
+                  color: "text.secondary",
+                  lineHeight: 1.8,
+                  mb: 2.5,
+                  fontSize: "1rem",
+                }}
               >
-                Our flagship initiative is the simultaneous monthly financial assistance
+                Our signature commitment is the simultaneous monthly financial assistance
                 extended to <strong>Masjid Imams</strong> and <strong>Temple Pandits</strong>.
                 These religious leaders give their lives to offering solace, prayers, and
                 moral guidance to community members, often while enduring humble personal
-                hardships. By honoring them equally, we send an unequivocal message of
-                harmony, respect, and mutual brotherhood across faiths.
+                hardships. By honoring them with equal dignity, we champion harmony,
+                respect, and mutual brotherhood across faiths.
               </Typography>
 
               <Typography
                 variant="body1"
-                sx={{ color: "text.secondary", lineHeight: 1.8, mb: 4, fontSize: "0.98rem" }}
+                sx={{
+                  color: "text.secondary",
+                  lineHeight: 1.8,
+                  mb: 4,
+                  fontSize: "1rem",
+                }}
               >
                 Alongside religious community support, our active voluntary blood donation
                 campaigns save lives in hospital emergencies, our educational outreach
@@ -244,10 +341,10 @@ export default function AboutPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="contained"
-                  color="secondary"
+                  color="warning"
                   size="large"
                   startIcon={<WhatsAppIcon />}
-                  sx={{ fontWeight: 700 }}
+                  sx={{ fontWeight: 800, px: 3.5, py: 1.5 }}
                 >
                   Connect with Trust President
                 </Button>
@@ -257,142 +354,181 @@ export default function AboutPage() {
                     variant="outlined"
                     color="primary"
                     size="large"
-                    sx={{ fontWeight: 700 }}
+                    endIcon={<ArrowForwardIcon />}
+                    sx={{ fontWeight: 700, px: 3.5, py: 1.5 }}
                   >
                     Explore All Initiatives
                   </Button>
                 </Link>
               </Box>
-            </AnimatedSection>
-          </Grid>
-        </Grid>
+            </Reveal>
+          </Box>
+        </Box>
 
-        {/* Mission, Vision, and Values */}
-        <Box sx={{ mt: { xs: 8, md: 12 } }}>
-          <AnimatedSection>
+        {/* Mission & Vision Section */}
+        <Box sx={{ mt: { xs: 10, md: 14 } }}>
+          <Reveal>
             <SectionHeading
-              badge="Our Foundations"
+              badge="OUR FOUNDATIONS"
               badgeColor="warning"
-              title="Mission, Vision &amp; Guiding Values"
+              title="Mission, Vision & Guiding Values"
               subtitle="The pillars that steer every initiative, decision, and service of Warsia Trust."
             />
-          </AnimatedSection>
+          </Reveal>
 
-          <Grid container spacing={4} sx={{ mb: 6 }}>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
+              gap: 4,
+              mb: 7,
+            }}
+          >
             {/* Mission */}
-            <Grid item xs={12} md={6}>
-              <AnimatedSection delay={0.1}>
-                <Card
-                  sx={{
-                    p: { xs: 3.5, sm: 4.5 },
-                    height: "100%",
-                    borderRadius: 4,
-                    border: "1px solid #E2E8F0",
-                    bgcolor: "background.paper",
-                    borderTop: "6px solid #002887",
-                  }}
-                >
+            <Reveal delay={0.1} direction="up" style={{ height: "100%" }}>
+              <Card
+                sx={{
+                  height: "100%",
+                  borderRadius: 4,
+                  border: "1px solid #E2E8F0",
+                  bgcolor: "#FFFFFF",
+                  boxShadow: "0 8px 30px rgba(0, 40, 135, 0.06)",
+                  overflow: "hidden",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <Box sx={{ height: 6, bgcolor: "#002887", width: "100%" }} />
+                <Box sx={{ p: { xs: 4, sm: 5 }, flexGrow: 1 }}>
                   <Typography
                     variant="overline"
-                    sx={{ color: "primary.main", fontWeight: 800, letterSpacing: "0.06em" }}
+                    sx={{ color: "primary.main", fontWeight: 800, letterSpacing: "0.08em" }}
                   >
                     OUR MISSION
                   </Typography>
                   <Typography
                     variant="h4"
-                    sx={{ fontWeight: 800, color: "primary.main", my: 1, fontSize: "1.5rem" }}
+                    sx={{
+                      fontWeight: 900,
+                      color: "primary.dark",
+                      my: 1.5,
+                      fontSize: "1.65rem",
+                    }}
                   >
                     Unconditional Service &amp; Community Harmony
                   </Typography>
                   <Typography
                     variant="body1"
-                    sx={{ color: "text.secondary", lineHeight: 1.8, fontSize: "1rem" }}
+                    sx={{ color: "text.secondary", lineHeight: 1.8, fontSize: "1.02rem" }}
                   >
                     To serve human society through compassionate monthly support for
                     religious guardians, proactive voluntary blood donation, educational
                     encouragement, and structured welfare relief, fostering a culture of
                     equality, peace, and mutual respect in Vijayapura and beyond.
                   </Typography>
-                </Card>
-              </AnimatedSection>
-            </Grid>
+                </Box>
+              </Card>
+            </Reveal>
 
             {/* Vision */}
-            <Grid item xs={12} md={6}>
-              <AnimatedSection delay={0.2}>
-                <Card
-                  sx={{
-                    p: { xs: 3.5, sm: 4.5 },
-                    height: "100%",
-                    borderRadius: 4,
-                    border: "1px solid #E2E8F0",
-                    bgcolor: "background.paper",
-                    borderTop: "6px solid #006000",
-                  }}
-                >
+            <Reveal delay={0.2} direction="up" style={{ height: "100%" }}>
+              <Card
+                sx={{
+                  height: "100%",
+                  borderRadius: 4,
+                  border: "1px solid #E2E8F0",
+                  bgcolor: "#FFFFFF",
+                  boxShadow: "0 8px 30px rgba(0, 96, 0, 0.06)",
+                  overflow: "hidden",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <Box sx={{ height: 6, bgcolor: "#006000", width: "100%" }} />
+                <Box sx={{ p: { xs: 4, sm: 5 }, flexGrow: 1 }}>
                   <Typography
                     variant="overline"
-                    sx={{ color: "secondary.main", fontWeight: 800, letterSpacing: "0.06em" }}
+                    sx={{ color: "secondary.main", fontWeight: 800, letterSpacing: "0.08em" }}
                   >
                     OUR VISION
                   </Typography>
                   <Typography
                     variant="h4"
-                    sx={{ fontWeight: 800, color: "secondary.dark", my: 1, fontSize: "1.5rem" }}
+                    sx={{
+                      fontWeight: 900,
+                      color: "secondary.dark",
+                      my: 1.5,
+                      fontSize: "1.65rem",
+                    }}
                   >
                     A Society Bound by Humanity &amp; Dignity
                   </Typography>
                   <Typography
                     variant="body1"
-                    sx={{ color: "text.secondary", lineHeight: 1.8, fontSize: "1rem" }}
+                    sx={{ color: "text.secondary", lineHeight: 1.8, fontSize: "1.02rem" }}
                   >
                     To envision a harmonious society where faith unifies rather than divides,
                     where no patient suffers for lack of emergency blood, where underprivileged
                     children have access to educational guidance, and where humanity is
                     celebrated as the highest form of worship.
                   </Typography>
-                </Card>
-              </AnimatedSection>
-            </Grid>
-          </Grid>
+                </Box>
+              </Card>
+            </Reveal>
+          </Box>
 
-          {/* Values Grid */}
-          <Grid container spacing={3}>
+          {/* 4 Guiding Values */}
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: {
+                xs: "1fr",
+                sm: "repeat(2, 1fr)",
+                md: "repeat(4, 1fr)",
+              },
+              gap: 3.5,
+            }}
+          >
             {valuesList.map((val, idx) => (
-              <Grid item xs={12} sm={6} md={3} key={val.title}>
-                <AnimatedSection delay={idx * 0.1}>
-                  <Card
+              <Reveal delay={idx * 0.1} direction="up" key={val.title} style={{ height: "100%" }}>
+                <Card
+                  sx={{
+                    p: 3.5,
+                    height: "100%",
+                    borderRadius: 4,
+                    border: "1px solid #E2E8F0",
+                    bgcolor: "#FFFFFF",
+                    transition: "all 0.35s ease",
+                    "&:hover": {
+                      transform: "translateY(-6px)",
+                      boxShadow: "0 16px 36px rgba(0, 40, 135, 0.1)",
+                      borderColor: "warning.main",
+                    },
+                  }}
+                >
+                  <Box sx={{ mb: 2 }}>{val.icon}</Box>
+                  <Typography
+                    variant="h6"
                     sx={{
-                      p: 3,
-                      height: "100%",
-                      borderRadius: 3,
-                      border: "1px solid #E2E8F0",
-                      bgcolor: "#FFFFFF",
-                      transition: "all 0.3s",
-                      "&:hover": {
-                        transform: "translateY(-4px)",
-                        boxShadow: "0 10px 25px rgba(0, 40, 135, 0.08)",
-                        borderColor: "warning.main",
-                      },
+                      fontWeight: 800,
+                      color: "primary.main",
+                      fontSize: "1.1rem",
+                      mb: 1.2,
+                      lineHeight: 1.3,
                     }}
                   >
-                    <Box sx={{ mb: 1.5 }}>
-                      <CheckCircleIcon sx={{ color: "warning.main", fontSize: 26 }} />
-                    </Box>
-                    <Typography
-                      variant="h6"
-                      sx={{ fontWeight: 800, color: "primary.main", fontSize: "1.05rem", mb: 1 }}
-                    >
-                      {val.title}
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: "text.secondary", lineHeight: 1.6 }}>
-                      {val.description}
-                    </Typography>
-                  </Card>
-                </AnimatedSection>
-              </Grid>
+                    {val.title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{ color: "text.secondary", lineHeight: 1.7 }}
+                  >
+                    {val.description}
+                  </Typography>
+                </Card>
+              </Reveal>
             ))}
-          </Grid>
+          </Box>
         </Box>
       </Container>
     </Box>

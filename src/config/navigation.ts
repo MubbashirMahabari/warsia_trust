@@ -72,3 +72,4 @@ export const legalLinks: NavItem[] = [
   { title: "Privacy Policy", href: "/privacy-policy" },
   { title: "Terms and Conditions", href: "/terms-and-conditions" },
 ];
+

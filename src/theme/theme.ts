@@ -2,46 +2,48 @@
 
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
-// Official brand colors extracted from the official logo
+// Exact brand colors from the supplied Warsia Trust logo
 export const brandColors = {
-  navyBlue: "#002887",
-  navyBlueDark: "#001B5C",
-  navyBlueLight: "#1E4DB7",
-  saffronOrange: "#F27501",
-  saffronOrangeDark: "#C75F00",
-  saffronOrangeLight: "#FFA040",
+  primaryNavy: "#002887",
+  deepNavy: "#001B5C",
+  navyLight: "#1845B2",
   trustGreen: "#006000",
-  trustGreenDark: "#004500",
-  trustGreenLight: "#0A8A0A",
+  deepGreen: "#004500",
+  greenLight: "#0A8A0A",
+  saffronOrange: "#F27501",
+  saffronDark: "#C75F00",
+  saffronLight: "#FFA040",
   bloodRed: "#C62828",
   bloodRedLight: "#E53935",
-  background: "#FFFFFF",
-  paperBackground: "#F7F8FC",
+  white: "#FFFFFF",
+  lightBackground: "#F7F8FC",
   paperAlt: "#EEF2F8",
   darkText: "#172033",
-  mutedText: "#667085",
+  mutedText: "#52607A",
   borderColor: "#E2E8F0",
+  borderLight: "rgba(226, 232, 240, 0.8)",
+  navyOverlay: "rgba(0, 27, 92, 0.85)",
 };
 
 let baseTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: brandColors.navyBlue,
-      dark: brandColors.navyBlueDark,
-      light: brandColors.navyBlueLight,
+      main: brandColors.primaryNavy,
+      dark: brandColors.deepNavy,
+      light: brandColors.navyLight,
       contrastText: "#FFFFFF",
     },
     secondary: {
       main: brandColors.trustGreen,
-      dark: brandColors.trustGreenDark,
-      light: brandColors.trustGreenLight,
+      dark: brandColors.deepGreen,
+      light: brandColors.greenLight,
       contrastText: "#FFFFFF",
     },
     warning: {
       main: brandColors.saffronOrange,
-      dark: brandColors.saffronOrangeDark,
-      light: brandColors.saffronOrangeLight,
+      dark: brandColors.saffronDark,
+      light: brandColors.saffronLight,
       contrastText: "#FFFFFF",
     },
     error: {
@@ -50,8 +52,8 @@ let baseTheme = createTheme({
       contrastText: "#FFFFFF",
     },
     background: {
-      default: brandColors.background,
-      paper: brandColors.paperBackground,
+      default: brandColors.white,
+      paper: brandColors.lightBackground,
     },
     text: {
       primary: brandColors.darkText,
@@ -61,112 +63,134 @@ let baseTheme = createTheme({
   },
   typography: {
     fontFamily: [
+      "var(--font-inter)",
       "Inter",
       "-apple-system",
       "BlinkMacSystemFont",
       '"Segoe UI"',
       "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
       "sans-serif",
     ].join(","),
     h1: {
-      fontWeight: 800,
-      lineHeight: 1.15,
-      letterSpacing: "-0.02em",
-      color: brandColors.navyBlue,
+      fontWeight: 900,
+      lineHeight: 1.08,
+      letterSpacing: "-0.03em",
+      color: brandColors.deepNavy,
     },
     h2: {
-      fontWeight: 700,
-      lineHeight: 1.2,
-      letterSpacing: "-0.015em",
-      color: brandColors.navyBlue,
+      fontWeight: 800,
+      lineHeight: 1.15,
+      letterSpacing: "-0.025em",
+      color: brandColors.deepNavy,
     },
     h3: {
-      fontWeight: 700,
-      lineHeight: 1.25,
-      letterSpacing: "-0.01em",
-      color: brandColors.navyBlue,
+      fontWeight: 800,
+      lineHeight: 1.2,
+      letterSpacing: "-0.02em",
+      color: brandColors.deepNavy,
     },
     h4: {
-      fontWeight: 600,
-      lineHeight: 1.3,
-      color: brandColors.darkText,
+      fontWeight: 700,
+      lineHeight: 1.25,
+      letterSpacing: "-0.015em",
+      color: brandColors.deepNavy,
     },
     h5: {
-      fontWeight: 600,
-      lineHeight: 1.35,
+      fontWeight: 700,
+      lineHeight: 1.3,
+      letterSpacing: "-0.01em",
       color: brandColors.darkText,
     },
     h6: {
       fontWeight: 600,
-      lineHeight: 1.4,
+      lineHeight: 1.35,
       color: brandColors.darkText,
     },
     subtitle1: {
       fontSize: "1.125rem",
       lineHeight: 1.6,
+      letterSpacing: "-0.005em",
       color: brandColors.mutedText,
     },
     subtitle2: {
-      fontSize: "0.9375rem",
-      fontWeight: 500,
+      fontSize: "0.95rem",
+      fontWeight: 600,
       lineHeight: 1.5,
       color: brandColors.mutedText,
     },
     body1: {
-      fontSize: "1rem",
-      lineHeight: 1.7,
+      fontSize: "1.05rem",
+      lineHeight: 1.75,
       color: brandColors.darkText,
     },
     body2: {
-      fontSize: "0.875rem",
-      lineHeight: 1.6,
+      fontSize: "0.925rem",
+      lineHeight: 1.65,
       color: brandColors.mutedText,
     },
     button: {
       textTransform: "none",
-      fontWeight: 600,
+      fontWeight: 700,
       letterSpacing: "0.01em",
+    },
+    overline: {
+      fontWeight: 800,
+      letterSpacing: "0.08em",
+      textTransform: "uppercase",
+      fontSize: "0.75rem",
     },
   },
   shape: {
-    borderRadius: 12,
+    borderRadius: 14,
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 10,
-          padding: "10px 24px",
+          borderRadius: 9999, // Pill shape for modern agency feel
+          padding: "12px 28px",
           fontSize: "0.95rem",
+          fontWeight: 700,
           boxShadow: "none",
-          transition: "all 0.25s cubic-bezier(0.4, 0, 0.2, 1)",
+          transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
           "&:hover": {
-            boxShadow: "0 6px 20px rgba(0, 40, 135, 0.18)",
-            transform: "translateY(-1px)",
+            transform: "translateY(-2px)",
           },
         },
         containedPrimary: {
-          backgroundColor: brandColors.navyBlue,
+          backgroundColor: brandColors.primaryNavy,
           color: "#FFFFFF",
+          boxShadow: "0 4px 16px rgba(0, 40, 135, 0.2)",
           "&:hover": {
-            backgroundColor: brandColors.navyBlueDark,
+            backgroundColor: brandColors.deepNavy,
+            boxShadow: "0 8px 24px rgba(0, 40, 135, 0.32)",
           },
         },
         containedSecondary: {
           backgroundColor: brandColors.trustGreen,
           color: "#FFFFFF",
+          boxShadow: "0 4px 16px rgba(0, 96, 0, 0.2)",
           "&:hover": {
-            backgroundColor: brandColors.trustGreenDark,
+            backgroundColor: brandColors.deepGreen,
+            boxShadow: "0 8px 24px rgba(0, 96, 0, 0.32)",
+          },
+        },
+        containedWarning: {
+          backgroundColor: brandColors.saffronOrange,
+          color: "#FFFFFF",
+          boxShadow: "0 4px 16px rgba(242, 117, 1, 0.28)",
+          "&:hover": {
+            backgroundColor: brandColors.saffronDark,
+            boxShadow: "0 8px 24px rgba(242, 117, 1, 0.4)",
           },
         },
         outlinedPrimary: {
-          borderColor: brandColors.navyBlue,
+          borderColor: "rgba(0, 40, 135, 0.3)",
           borderWidth: 1.5,
-          color: brandColors.navyBlue,
+          color: brandColors.primaryNavy,
           "&:hover": {
             borderWidth: 1.5,
+            borderColor: brandColors.primaryNavy,
             backgroundColor: "rgba(0, 40, 135, 0.05)",
           },
         },
@@ -175,29 +199,43 @@ let baseTheme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 16,
-          boxShadow: "0 4px 20px rgba(23, 32, 51, 0.06)",
+          borderRadius: 20,
+          boxShadow: "0 4px 24px rgba(23, 32, 51, 0.04)",
           border: `1px solid ${brandColors.borderColor}`,
-          transition: "all 0.3s ease",
-          "&:hover": {
-            boxShadow: "0 12px 32px rgba(0, 40, 135, 0.12)",
-            borderColor: "rgba(0, 40, 135, 0.25)",
-          },
-        },
-      },
-    },
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          backgroundImage: "none",
+          transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
         },
       },
     },
     MuiChip: {
       styleOverrides: {
         root: {
-          fontWeight: 600,
-          borderRadius: 8,
+          fontWeight: 700,
+          borderRadius: 9999,
+          fontSize: "0.78rem",
+          letterSpacing: "0.02em",
+        },
+      },
+    },
+    MuiContainer: {
+      defaultProps: {
+        maxWidth: "xl",
+      },
+      styleOverrides: {
+        root: {
+          paddingLeft: "20px",
+          paddingRight: "20px",
+          "@media (min-width: 600px)": {
+            paddingLeft: "32px",
+            paddingRight: "32px",
+          },
+          "@media (min-width: 900px)": {
+            paddingLeft: "48px",
+            paddingRight: "48px",
+          },
+          "@media (min-width: 1200px)": {
+            paddingLeft: "64px",
+            paddingRight: "64px",
+          },
         },
       },
     },

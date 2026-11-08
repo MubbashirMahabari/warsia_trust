@@ -2,10 +2,12 @@
 
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { easeOutExpo } from "@/lib/animations";
 
 interface AnimatedSectionProps {
   children: React.ReactNode;
   delay?: number;
+  duration?: number;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -13,6 +15,7 @@ interface AnimatedSectionProps {
 export default function AnimatedSection({
   children,
   delay = 0,
+  duration = 0.75,
   className,
   style,
 }: AnimatedSectionProps) {
@@ -28,13 +31,13 @@ export default function AnimatedSection({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: "-40px" }}
       transition={{
-        duration: 0.6,
+        duration,
         delay,
-        ease: [0.22, 1, 0.36, 1],
+        ease: easeOutExpo,
       }}
       className={className}
       style={style}

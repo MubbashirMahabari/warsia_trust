@@ -1,13 +1,13 @@
 import { Metadata } from "next";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { constructMetadata } from "@/lib/seo";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
-import AnimatedSection from "@/components/common/AnimatedSection";
 import ContactCard from "@/components/common/ContactCard";
 import ContactForm from "@/components/contact/ContactForm";
+import Reveal from "@/components/animations/Reveal";
+import TextReveal from "@/components/animations/TextReveal";
 
 export const metadata: Metadata = constructMetadata({
   title: "Contact Us - Office Address & Direct Numbers",
@@ -18,82 +18,99 @@ export const metadata: Metadata = constructMetadata({
 
 export default function ContactPage() {
   return (
-    <Box sx={{ pb: { xs: 8, md: 12 }, bgcolor: "#FFFFFF" }}>
-      {/* Banner */}
+    <Box sx={{ pb: { xs: 9, md: 14 }, bgcolor: "#FFFFFF" }}>
+      {/* Editorial Banner */}
       <Box
         sx={{
-          bgcolor: "primary.dark",
+          bgcolor: "#001B5C",
           color: "#FFFFFF",
-          pt: { xs: 5, md: 7 },
-          pb: { xs: 6, md: 8 },
+          pt: { xs: 6, md: 9 },
+          pb: { xs: 7, md: 10 },
           position: "relative",
-          backgroundImage: "linear-gradient(135deg, #001B5C 0%, #002887 100%)",
+          backgroundImage: `
+            radial-gradient(circle at 15% 20%, rgba(0, 96, 0, 0.3) 0%, transparent 45%),
+            radial-gradient(circle at 85% 80%, rgba(242, 117, 1, 0.22) 0%, transparent 45%),
+            linear-gradient(180deg, #001B5C 0%, #002887 100%)
+          `,
         }}
       >
-        <Container maxWidth="lg">
+        <Container maxWidth="xl" sx={{ px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
           <Breadcrumbs items={[{ label: "Contact Us" }]} />
 
-          <Typography
-            variant="overline"
-            sx={{
-              color: "warning.main",
-              fontWeight: 800,
-              letterSpacing: "0.08em",
-              fontSize: "0.85rem",
-              display: "block",
-              mt: 2,
-            }}
-          >
-            OFFICIAL CORRESPONDENCE &amp; HELPLINE
-          </Typography>
+          <Reveal direction="down">
+            <Typography
+              variant="overline"
+              sx={{
+                color: "warning.main",
+                fontWeight: 800,
+                letterSpacing: "0.08em",
+                fontSize: "0.85rem",
+                display: "block",
+                mt: 2.5,
+              }}
+            >
+              OFFICIAL CORRESPONDENCE &amp; HELPLINE
+            </Typography>
+          </Reveal>
 
-          <Typography
-            variant="h1"
-            sx={{
-              fontSize: { xs: "2.2rem", sm: "2.8rem", md: "3.4rem" },
+          <TextReveal
+            text="Get in Touch with Warsia Trust"
+            as="h1"
+            delay={0.1}
+            stagger={0.04}
+            highlightWord="Warsia"
+            highlightColor="#FFB74D"
+            style={{
+              fontSize: "clamp(2.3rem, 4.4vw, 3.6rem)",
               fontWeight: 900,
               color: "#FFFFFF",
-              letterSpacing: "-0.02em",
-              mt: 1,
-              mb: 2,
+              letterSpacing: "-0.025em",
+              lineHeight: 1.15,
+              marginTop: "8px",
+              marginBottom: "16px",
             }}
-          >
-            Contact Warsia Trust
-          </Typography>
+          />
 
-          <Typography
-            variant="h6"
-            sx={{
-              color: "rgba(255, 255, 255, 0.88)",
-              maxWidth: 780,
-              fontSize: { xs: "1rem", sm: "1.15rem" },
-              fontWeight: 400,
-              lineHeight: 1.6,
-            }}
-          >
-            We are always here to assist our community in Vijayapura. Reach out
-            directly via phone, WhatsApp, or submit an inquiry below.
-          </Typography>
+          <Reveal delay={0.3} direction="up">
+            <Typography
+              variant="h6"
+              sx={{
+                color: "rgba(255, 255, 255, 0.88)",
+                maxWidth: 720,
+                fontSize: { xs: "1.05rem", sm: "1.2rem" },
+                fontWeight: 400,
+                lineHeight: 1.7,
+              }}
+            >
+              Our office in Vijayapura is at your service. For program inquiries,
+              blood assistance, or general support, connect directly with our coordinators.
+            </Typography>
+          </Reveal>
         </Container>
       </Box>
 
-      {/* Main Grid: Form + Verified Contact Card */}
-      <Container maxWidth="lg" sx={{ mt: { xs: 6, md: 8 } }}>
-        <Grid container spacing={{ xs: 5, md: 7 }}>
-          {/* Interactive Form with Validation */}
-          <Grid item xs={12} md={7}>
-            <AnimatedSection>
-              <ContactForm />
-            </AnimatedSection>
-          </Grid>
-
-          {/* Official Contact Info Card */}
-          <Grid item xs={12} md={5}>
-            <AnimatedSection delay={0.2}>
+      {/* Main Content */}
+      <Container maxWidth="xl" sx={{ mt: { xs: 7, md: 10 }, px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: { xs: "1fr", lg: "0.8fr 1.2fr" },
+            gap: { xs: 5, lg: 8 },
+            alignItems: "flex-start",
+          }}
+        >
+          <Box>
+            <Reveal direction="right" scale>
               <ContactCard />
-            </AnimatedSection>
-          </Grid>
-        </Grid>
+            </Reveal>
+          </Box>
+
+          <Box>
+            <Reveal delay={0.2} direction="up">
+              <ContactForm />
+            </Reveal>
+          </Box>
+        </Box>
       </Container>
     </Box>
   );

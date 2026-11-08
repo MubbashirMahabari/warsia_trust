@@ -1,21 +1,23 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import Chip from "@mui/material/Chip";
 import { constructMetadata } from "@/lib/seo";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
-import AnimatedSection from "@/components/common/AnimatedSection";
 import ContactCard from "@/components/common/ContactCard";
+import Reveal from "@/components/animations/Reveal";
+import TextReveal from "@/components/animations/TextReveal";
+import MagneticButton from "@/components/animations/MagneticButton";
 import {
   VolunteerActivismIcon,
   CheckCircleIcon,
   WhatsAppIcon,
+  Diversity3Icon,
 } from "@/components/common/Icons";
 import { getInitiativeWhatsAppLink } from "@/lib/utils";
 
@@ -49,189 +51,268 @@ export default function SocialDevelopmentPage() {
   ];
 
   return (
-    <Box sx={{ pb: { xs: 8, md: 12 }, bgcolor: "#FFFFFF" }}>
-      {/* Banner */}
+    <Box sx={{ pb: { xs: 9, md: 14 }, bgcolor: "#FFFFFF" }}>
+      {/* Editorial Header Banner */}
       <Box
         sx={{
-          bgcolor: "primary.dark",
+          bgcolor: "#001B5C",
           color: "#FFFFFF",
-          pt: { xs: 5, md: 7 },
-          pb: { xs: 6, md: 8 },
+          pt: { xs: 6, md: 9 },
+          pb: { xs: 7, md: 10 },
           position: "relative",
-          backgroundImage: "linear-gradient(135deg, #001B5C 0%, #004500 100%)",
+          backgroundImage: `
+            radial-gradient(circle at 15% 20%, rgba(242, 117, 1, 0.4) 0%, transparent 45%),
+            radial-gradient(circle at 85% 80%, rgba(0, 96, 0, 0.25) 0%, transparent 45%),
+            linear-gradient(180deg, #001B5C 0%, #002887 100%)
+          `,
         }}
       >
-        <Container maxWidth="lg">
+        <Container maxWidth="xl" sx={{ px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
           <Breadcrumbs
             items={[
               { label: "Initiatives", href: "/initiatives" },
-              { label: "Social Welfare" },
+              { label: "Social Welfare & Aid" },
             ]}
           />
 
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mt: 2 }}>
-            <Chip
-              label="Community Care"
-              color="secondary"
-              sx={{ fontWeight: 700, fontSize: "0.75rem" }}
-            />
-            <Chip
-              label="Vijayapura Grassroots Aid"
-              sx={{ bgcolor: "rgba(255,255,255,0.15)", color: "#FFFFFF", fontWeight: 600, fontSize: "0.75rem" }}
-            />
-          </Box>
+          <Reveal direction="down">
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mt: 2.5, mb: 1.5, flexWrap: "wrap" }}>
+              <Chip
+                label="Community Care"
+                sx={{
+                  bgcolor: "#F27501",
+                  color: "#FFFFFF",
+                  fontWeight: 800,
+                  fontSize: "0.75rem",
+                }}
+              />
+              <Chip
+                label="Humanitarian Outreach"
+                sx={{
+                  bgcolor: "rgba(255, 255, 255, 0.15)",
+                  color: "#FFFFFF",
+                  fontWeight: 700,
+                  fontSize: "0.75rem",
+                  border: "1px solid rgba(255, 255, 255, 0.25)",
+                }}
+              />
+            </Box>
+          </Reveal>
 
-          <Typography
-            variant="h1"
-            sx={{
-              fontSize: { xs: "2.2rem", sm: "2.8rem", md: "3.4rem" },
+          <TextReveal
+            text="Social Welfare & Humanitarian Aid"
+            as="h1"
+            delay={0.1}
+            stagger={0.04}
+            highlightWord="Aid"
+            highlightColor="#FFB74D"
+            style={{
+              fontSize: "clamp(2.3rem, 4.4vw, 3.6rem)",
               fontWeight: 900,
               color: "#FFFFFF",
-              letterSpacing: "-0.02em",
-              mt: 2,
-              mb: 2,
+              letterSpacing: "-0.025em",
+              lineHeight: 1.15,
+              marginTop: "8px",
+              marginBottom: "16px",
             }}
-          >
-            Small Acts of Kindness. Meaningful Change.
-          </Typography>
+          />
 
-          <Typography
-            variant="h6"
-            sx={{
-              color: "rgba(255, 255, 255, 0.88)",
-              maxWidth: 780,
-              fontSize: { xs: "1rem", sm: "1.15rem" },
-              fontWeight: 400,
-              lineHeight: 1.6,
-            }}
-          >
-            Social welfare begins with recognizing our shared humanity. Warsia Trust
-            works on the ground to provide timely food kits, emergency relief, and
-            respect to those in need.
-          </Typography>
+          <Reveal delay={0.3} direction="up">
+            <Typography
+              variant="h6"
+              sx={{
+                color: "rgba(255, 255, 255, 0.88)",
+                maxWidth: 780,
+                fontSize: { xs: "1.05rem", sm: "1.2rem" },
+                fontWeight: 400,
+                lineHeight: 1.7,
+              }}
+            >
+              Extending compassionate relief, emergency food kits, winter essentials,
+              and community assistance to families in need in Vijayapura.
+            </Typography>
+          </Reveal>
         </Container>
       </Box>
 
       {/* Main Narrative & Sidebar */}
-      <Container maxWidth="lg" sx={{ mt: { xs: 6, md: 8 } }}>
-        <Grid container spacing={{ xs: 5, md: 7 }}>
-          <Grid item xs={12} md={7} lg={8}>
-            <AnimatedSection>
+      <Container maxWidth="xl" sx={{ mt: { xs: 7, md: 10 }, px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: { xs: "1fr", md: "1.3fr 0.7fr" },
+            gap: { xs: 5, md: 6 },
+            alignItems: "flex-start",
+          }}
+        >
+          <Box>
+            <Reveal direction="up">
+              {/* Artwork Banner */}
+              <Box
+                sx={{
+                  position: "relative",
+                  width: "100%",
+                  height: { xs: 240, sm: 340 },
+                  borderRadius: 4.5,
+                  overflow: "hidden",
+                  mb: 4.5,
+                  border: "1px solid #E2E8F0",
+                  boxShadow: "0 14px 40px rgba(242, 117, 1, 0.12)",
+                }}
+              >
+                <Image
+                  src="/images/initiatives/social-welfare.svg"
+                  alt="Social Welfare & Humanitarian Aid in Vijayapura"
+                  fill
+                  style={{ objectFit: "cover" }}
+                  priority
+                />
+              </Box>
+
               <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 3 }}>
                 <Box
                   sx={{
                     width: 60,
                     height: 60,
-                    borderRadius: 3,
-                    bgcolor: "rgba(0, 96, 0, 0.08)",
+                    borderRadius: 3.5,
+                    bgcolor: "rgba(242, 117, 1, 0.08)",
+                    border: "1px solid rgba(242, 117, 1, 0.25)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                   }}
                 >
-                  <VolunteerActivismIcon sx={{ fontSize: 34, color: "secondary.main" }} />
+                  <VolunteerActivismIcon sx={{ fontSize: 34, color: "#F27501" }} />
                 </Box>
                 <Box>
-                  <Typography variant="overline" sx={{ color: "secondary.main", fontWeight: 800, letterSpacing: "0.05em" }}>
-                    HUMANITARIAN RELIEF
+                  <Typography
+                    variant="overline"
+                    sx={{ color: "#C75F00", fontWeight: 800, letterSpacing: "0.08em" }}
+                  >
+                    COMPASSIONATE COMMUNITY SERVICE
                   </Typography>
-                  <Typography variant="h4" sx={{ fontWeight: 800, color: "primary.main", fontSize: { xs: "1.35rem", md: "1.7rem" } }}>
-                    Serving Those Who Need It Most
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      fontWeight: 900,
+                      color: "primary.main",
+                      fontSize: { xs: "1.5rem", md: "1.85rem" },
+                    }}
+                  >
+                    Standing Beside Those in Need
                   </Typography>
                 </Box>
               </Box>
 
               <Typography
                 variant="body1"
-                sx={{ color: "text.primary", lineHeight: 1.85, mb: 2.5, fontSize: "1.05rem" }}
+                sx={{ color: "text.primary", lineHeight: 1.85, mb: 2.5, fontSize: "1.06rem" }}
               >
-                In every neighborhood, there are families who suffer quietly in the face
-                of job loss, chronic illness, or sudden bereavement. Warsia Educational
-                &amp; Social Development Trust is built to be a reliable, dignified
-                hand of assistance.
+                True humanitarian service is felt when those enduring poverty, illness,
+                or hardship realize they are not forgotten. Warsia Trust stands on the
+                frontlines of compassionate care in Vijayapura.
               </Typography>
 
               <Typography
                 variant="body1"
-                sx={{ color: "text.secondary", lineHeight: 1.85, mb: 4, fontSize: "1rem" }}
+                sx={{ color: "text.secondary", lineHeight: 1.8, mb: 2.5, fontSize: "1rem" }}
               >
-                During festivals such as Ramzan, Diwali, and Ugadi, we organize food
-                kit drives and shared celebration initiatives to ensure no family feels
-                isolated. Our welfare volunteers operate with deep respect, ensuring
-                every beneficiary receives assistance with dignity and warmth.
+                From distribution of essential grocery and food kits during festivals like
+                Ramzan, Diwali, and Ugadi to emergency welfare aid for elderly citizens and
+                widows, our outreach touches real human lives with honor and respect.
               </Typography>
 
-              {/* Welfare Areas Grid */}
               <Typography
-                variant="h5"
-                sx={{ fontWeight: 800, color: "primary.main", mb: 2.5, fontSize: "1.25rem" }}
+                variant="body1"
+                sx={{ color: "text.secondary", lineHeight: 1.8, mb: 4, fontSize: "1rem" }}
               >
-                Core Welfare Focus Areas
+                We collaborate with dedicated citizens and local volunteers to turn
+                compassion into structured, accountable, and transparent action on the ground.
               </Typography>
 
-              <Grid container spacing={2.5} sx={{ mb: 4 }}>
-                {welfareAreas.map((item) => (
-                  <Grid item xs={12} sm={6} key={item.title}>
-                    <Card
-                      sx={{
-                        p: 2.5,
-                        height: "100%",
-                        borderRadius: 3,
-                        border: "1px solid #E2E8F0",
-                        bgcolor: "background.paper",
-                      }}
+              {/* 4 Welfare Areas Grid */}
+              <Box
+                sx={{
+                  display: "grid",
+                  gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
+                  gap: 2.5,
+                  mb: 5,
+                }}
+              >
+                {welfareAreas.map((w) => (
+                  <Box
+                    key={w.title}
+                    sx={{
+                      p: 3,
+                      borderRadius: 3.5,
+                      bgcolor: "#F7F8FC",
+                      border: "1px solid #E2E8F0",
+                      height: "100%",
+                    }}
+                  >
+                    <Typography
+                      variant="subtitle2"
+                      sx={{ fontWeight: 800, color: "primary.main", mb: 0.8 }}
                     >
-                      <Box sx={{ display: "flex", alignItems: "center", gap: 1.2, mb: 1 }}>
-                        <CheckCircleIcon sx={{ color: "secondary.main", fontSize: 20 }} />
-                        <Typography variant="subtitle2" sx={{ fontWeight: 800, color: "primary.main" }}>
-                          {item.title}
-                        </Typography>
-                      </Box>
-                      <Typography variant="body2" sx={{ color: "text.secondary", lineHeight: 1.6 }}>
-                        {item.desc}
-                      </Typography>
-                    </Card>
-                  </Grid>
+                      {w.title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{ color: "text.secondary", lineHeight: 1.6 }}
+                    >
+                      {w.desc}
+                    </Typography>
+                  </Box>
                 ))}
-              </Grid>
+              </Box>
 
-              {/* Action Buttons */}
+              {/* Action Button */}
               <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap", mb: 4 }}>
-                <Button
-                  component="a"
-                  href={whatsAppLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="contained"
-                  color="secondary"
-                  size="large"
-                  startIcon={<WhatsAppIcon />}
-                  sx={{ fontWeight: 700, px: 3.5 }}
-                >
-                  Support Welfare Initiatives
-                </Button>
+                <MagneticButton strength={0.25}>
+                  <Button
+                    component="a"
+                    href={whatsAppLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variant="contained"
+                    size="large"
+                    startIcon={<WhatsAppIcon />}
+                    sx={{
+                      bgcolor: "warning.main",
+                      color: "#FFFFFF",
+                      px: 3.8,
+                      py: 1.5,
+                      fontWeight: 800,
+                      "&:hover": { bgcolor: "warning.dark" },
+                    }}
+                  >
+                    Support Social Relief
+                  </Button>
+                </MagneticButton>
 
                 <Link href="/volunteer" style={{ textDecoration: "none" }}>
                   <Button
                     variant="outlined"
                     color="primary"
                     size="large"
-                    sx={{ fontWeight: 700 }}
+                    sx={{ px: 3.5, py: 1.5, fontWeight: 700 }}
                   >
-                    Volunteer for Distribution
+                    Join Relief Volunteer Desk
                   </Button>
                 </Link>
               </Box>
-            </AnimatedSection>
-          </Grid>
+            </Reveal>
+          </Box>
 
-          {/* Right Sidebar */}
-          <Grid item xs={12} md={5} lg={4}>
-            <AnimatedSection delay={0.2}>
-              <ContactCard />
-            </AnimatedSection>
-          </Grid>
-        </Grid>
+          {/* Right Column: Contact & Quick Actions */}
+          <Box>
+            <Reveal delay={0.2} direction="left" scale>
+              <Box sx={{ position: "sticky", top: 100, display: "flex", flexDirection: "column", gap: 3.5 }}>
+                <ContactCard />
+              </Box>
+            </Reveal>
+          </Box>
+        </Box>
       </Container>
     </Box>
   );

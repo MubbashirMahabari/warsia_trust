@@ -2,49 +2,81 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { siteConfig } from "@/config/site";
-import AnimatedSection from "@/components/common/AnimatedSection";
+import Reveal from "@/components/animations/Reveal";
+import TextReveal from "@/components/animations/TextReveal";
+import MagneticButton from "@/components/animations/MagneticButton";
 import {
-  WhatsAppIcon,
   PhoneIcon,
   Diversity3Icon,
+  VolunteerActivismIcon,
+  ArrowForwardIcon,
 } from "@/components/common/Icons";
-import { getWhatsAppLink } from "@/lib/utils";
 
 export default function FinalCTA() {
   return (
     <Box
       sx={{
-        py: { xs: 9, md: 13 },
-        bgcolor: "#002887",
+        py: { xs: 10, md: 15 },
+        bgcolor: "#001B5C", // Deep Navy
         color: "#FFFFFF",
         position: "relative",
         overflow: "hidden",
         textAlign: "center",
-        backgroundImage: `
-          radial-gradient(circle at 10% 20%, rgba(242, 117, 1, 0.25) 0%, transparent 40%),
-          radial-gradient(circle at 90% 80%, rgba(0, 96, 0, 0.3) 0%, transparent 40%),
-          linear-gradient(180deg, #001B5C 0%, #002887 100%)
-        `,
       }}
     >
+      {/* Cinematic ambient background glow and patterns */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: `
+            radial-gradient(circle at 15% 25%, rgba(0, 96, 0, 0.35) 0%, transparent 48%),
+            radial-gradient(circle at 85% 75%, rgba(242, 117, 1, 0.28) 0%, transparent 48%),
+            linear-gradient(180deg, #001B5C 0%, #002887 100%)
+          `,
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* Subtle geometric dot grid overlay */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          opacity: 0.04,
+          backgroundImage: `radial-gradient(#FFFFFF 1.2px, transparent 1.2px)`,
+          backgroundSize: "28px 28px",
+          pointerEvents: "none",
+        }}
+      />
+
       <Container maxWidth="md" sx={{ position: "relative", zIndex: 1 }}>
-        <AnimatedSection>
+        <Reveal>
+          {/* Slogan Pill */}
           <Box
             sx={{
               display: "inline-flex",
               alignItems: "center",
-              gap: 1,
-              bgcolor: "rgba(255, 255, 255, 0.12)",
-              backdropFilter: "blur(8px)",
-              borderRadius: 50,
+              gap: 1.2,
+              bgcolor: "rgba(255, 255, 255, 0.1)",
+              backdropFilter: "blur(10px)",
+              borderRadius: 9999,
               py: 0.8,
               px: 2.5,
-              mb: 3,
+              mb: 3.5,
+              border: "1px solid rgba(255, 255, 255, 0.18)",
             }}
           >
             <Diversity3Icon sx={{ color: "warning.main", fontSize: 20 }} />
@@ -52,66 +84,73 @@ export default function FinalCTA() {
               variant="caption"
               sx={{
                 color: "#FFFFFF",
-                fontWeight: 700,
-                letterSpacing: "0.06em",
+                fontWeight: 800,
+                letterSpacing: "0.08em",
                 textTransform: "uppercase",
+                fontSize: "0.76rem",
               }}
             >
-              JOIN HANDS FOR VIJAYAPURA
+              JOIN HANDS FOR HUMANITY
             </Typography>
           </Box>
 
-          <Typography
-            variant="h2"
-            sx={{
-              fontWeight: 900,
-              color: "#FFFFFF",
-              fontSize: { xs: "2rem", sm: "2.8rem", md: "3.2rem" },
-              lineHeight: 1.15,
-              mb: 2.5,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Together, Let&apos;s Make Humanity Stronger.
-          </Typography>
+          {/* Heading per prompt */}
+          <Box sx={{ mb: 2 }}>
+            <TextReveal
+              text="Be Part of Something Meaningful."
+              as="h2"
+              delay={0.1}
+              stagger={0.06}
+              highlightWord="Meaningful."
+              highlightColor="#FFB74D"
+              style={{
+                fontSize: "clamp(2.4rem, 4.8vw, 3.8rem)",
+                fontWeight: 900,
+                color: "#FFFFFF",
+                letterSpacing: "-0.03em",
+                lineHeight: 1.15,
+                justifyContent: "center",
+              }}
+            />
+          </Box>
 
+          {/* Description per prompt */}
           <Typography
             variant="h6"
             component="p"
             sx={{
-              color: "rgba(255, 255, 255, 0.88)",
-              fontSize: { xs: "1.05rem", md: "1.2rem" },
+              color: "rgba(255, 255, 255, 0.85)",
+              fontSize: { xs: "1.1rem", md: "1.25rem" },
               fontWeight: 400,
-              lineHeight: 1.6,
-              mb: 3.5,
-              maxWidth: 620,
+              lineHeight: 1.7,
+              mb: 4,
+              maxWidth: 680,
               mx: "auto",
             }}
           >
-            Every effort matters. Every helping hand creates hope. Join us in
-            serving religious leaders, emergency patients, and families across
-            our community.
+            Your time, compassion, and support can help create a better tomorrow.
           </Typography>
 
-          {/* Prominent Official Slogan */}
+          {/* Official Slogan Display */}
           <Box
             sx={{
               display: "inline-block",
               p: 2,
-              px: { xs: 2.5, sm: 4 },
-              borderRadius: 3,
+              px: { xs: 3, sm: 4.5 },
+              borderRadius: 4,
               bgcolor: "rgba(255, 255, 255, 0.08)",
               border: "1px solid rgba(255, 255, 255, 0.18)",
-              mb: 5,
+              backdropFilter: "blur(12px)",
+              mb: 5.5,
             }}
           >
             <Typography
               variant="h6"
               sx={{
                 fontStyle: "italic",
-                fontWeight: 700,
+                fontWeight: 800,
                 color: "warning.main",
-                fontSize: { xs: "1rem", sm: "1.2rem" },
+                fontSize: { xs: "1.05rem", sm: "1.25rem" },
                 letterSpacing: "0.01em",
               }}
             >
@@ -119,6 +158,7 @@ export default function FinalCTA() {
             </Typography>
           </Box>
 
+          {/* Buttons per prompt: "Become a Volunteer" & "Contact Our Trust" */}
           <Box
             sx={{
               display: "flex",
@@ -127,50 +167,58 @@ export default function FinalCTA() {
               gap: 2.5,
             }}
           >
+            <MagneticButton strength={0.25}>
+              <Button
+                component={Link}
+                href="/volunteer"
+                variant="contained"
+                size="large"
+                color="warning"
+                endIcon={<ArrowForwardIcon />}
+                sx={{
+                  px: 4.2,
+                  py: 1.7,
+                  fontWeight: 800,
+                  fontSize: "1.05rem",
+                  bgcolor: "warning.main",
+                  color: "#FFFFFF",
+                  borderRadius: 9999,
+                  boxShadow: "0 10px 30px rgba(242, 117, 1, 0.4)",
+                  "&:hover": {
+                    bgcolor: "warning.dark",
+                  },
+                }}
+              >
+                Become a Volunteer
+              </Button>
+            </MagneticButton>
+
             <Button
               component={Link}
               href="/contact"
-              variant="contained"
+              variant="outlined"
               size="large"
-              color="warning"
               startIcon={<PhoneIcon />}
               sx={{
                 px: 4,
-                py: 1.5,
-                fontWeight: 800,
-                fontSize: "1rem",
-                boxShadow: "0 8px 25px rgba(242, 117, 1, 0.35)",
+                py: 1.6,
+                fontWeight: 700,
+                fontSize: "1.05rem",
+                color: "#FFFFFF",
+                borderColor: "rgba(255, 255, 255, 0.5)",
+                borderRadius: 9999,
+                backdropFilter: "blur(8px)",
+                bgcolor: "rgba(255, 255, 255, 0.05)",
+                "&:hover": {
+                  borderColor: "#FFFFFF",
+                  bgcolor: "rgba(255, 255, 255, 0.15)",
+                },
               }}
             >
               Contact Our Trust
             </Button>
-
-            <Button
-              component="a"
-              href={getWhatsAppLink()}
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="outlined"
-              size="large"
-              startIcon={<WhatsAppIcon sx={{ fontSize: 22 }} />}
-              sx={{
-                px: 3.5,
-                py: 1.4,
-                fontWeight: 700,
-                fontSize: "1rem",
-                color: "#FFFFFF",
-                borderColor: "rgba(255, 255, 255, 0.5)",
-                backdropFilter: "blur(6px)",
-                "&:hover": {
-                  borderColor: "#FFFFFF",
-                  bgcolor: "rgba(255, 255, 255, 0.1)",
-                },
-              }}
-            >
-              Support Our Mission
-            </Button>
           </Box>
-        </AnimatedSection>
+        </Reveal>
       </Container>
     </Box>
   );

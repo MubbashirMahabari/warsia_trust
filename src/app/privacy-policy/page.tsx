@@ -18,16 +18,20 @@ export const metadata: Metadata = constructMetadata({
 
 export default function PrivacyPolicyPage() {
   return (
-    <Box sx={{ pb: { xs: 8, md: 12 }, bgcolor: "#FFFFFF" }}>
-      {/* Banner */}
+    <Box sx={{ pb: { xs: 9, md: 14 }, bgcolor: "#FFFFFF" }}>
+      {/* Editorial Banner */}
       <Box
         sx={{
-          bgcolor: "primary.dark",
+          bgcolor: "#001B5C",
           color: "#FFFFFF",
-          pt: { xs: 5, md: 7 },
-          pb: { xs: 6, md: 8 },
+          pt: { xs: 6, md: 9 },
+          pb: { xs: 7, md: 10 },
           position: "relative",
-          backgroundImage: "linear-gradient(135deg, #001B5C 0%, #002887 100%)",
+          backgroundImage: `
+            radial-gradient(circle at 15% 20%, rgba(0, 96, 0, 0.3) 0%, transparent 45%),
+            radial-gradient(circle at 85% 80%, rgba(242, 117, 1, 0.22) 0%, transparent 45%),
+            linear-gradient(180deg, #001B5C 0%, #002887 100%)
+          `,
         }}
       >
         <Container maxWidth="lg">
@@ -36,11 +40,11 @@ export default function PrivacyPolicyPage() {
           <Typography
             variant="h1"
             sx={{
-              fontSize: { xs: "2rem", sm: "2.6rem", md: "3rem" },
+              fontSize: { xs: "2.2rem", sm: "2.8rem", md: "3.2rem" },
               fontWeight: 900,
               color: "#FFFFFF",
-              letterSpacing: "-0.02em",
-              mt: 2,
+              letterSpacing: "-0.025em",
+              mt: 2.5,
               mb: 1.5,
             }}
           >
@@ -56,18 +60,19 @@ export default function PrivacyPolicyPage() {
         </Container>
       </Box>
 
-      <Container maxWidth="md" sx={{ mt: { xs: 6, md: 8 } }}>
-        <Card sx={{ p: { xs: 3.5, sm: 5 }, borderRadius: 4, border: "1px solid #E2E8F0" }}>
+      <Container maxWidth="md" sx={{ mt: { xs: 7, md: 10 } }}>
+        <Card sx={{ p: { xs: 3.5, sm: 5 }, borderRadius: 4.5, border: "1px solid #E2E8F0", boxShadow: "0 10px 30px rgba(0, 0, 0, 0.04)" }}>
           <CardContent sx={{ p: 0 }}>
             <Typography variant="h5" sx={{ fontWeight: 800, color: "primary.main", mb: 2 }}>
-              1. Our Commitment to Your Privacy
+              1. Introduction
             </Typography>
-            <Typography variant="body1" sx={{ color: "text.secondary", lineHeight: 1.8, mb: 3 }}>
-              <strong>{siteConfig.name}</strong> (&ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;the Trust&rdquo;),
-              registered under NGO Darphan ID {siteConfig.darphanId}, operates this public
-              website to provide authentic information about our humanitarian activities,
-              religious community support, blood donation network, and educational programs.
-              We are committed to protecting the privacy of visitors, donors, and volunteers.
+            <Typography variant="body1" sx={{ color: "text.primary", lineHeight: 1.8, mb: 3 }}>
+              Warsia Educational &amp; Social Development Trust (hereafter referred to
+              as &ldquo;the Trust,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or
+              &ldquo;our&rdquo;) operates this official website to communicate our
+              humanitarian activities, foster interfaith communal harmony, and share
+              community initiatives in Vijayapura (Bijapur), Karnataka. We value the
+              privacy of our visitors, donors, and volunteers.
             </Typography>
 
             <Divider sx={{ my: 3 }} />
@@ -75,54 +80,65 @@ export default function PrivacyPolicyPage() {
             <Typography variant="h5" sx={{ fontWeight: 800, color: "primary.main", mb: 2 }}>
               2. Information We Collect
             </Typography>
-            <Typography variant="body1" sx={{ color: "text.secondary", lineHeight: 1.8, mb: 2 }}>
-              Our website is structured as a static, privacy-conscious informational portal.
-              We do not utilize tracking cookies, invasive third-party telemetry, or hidden
-              surveillance software.
+            <Typography variant="body1" sx={{ color: "text.primary", lineHeight: 1.8, mb: 2 }}>
+              We only collect personal information that you voluntarily choose to provide
+              when contacting us, registering as a voluntary blood donor, or expressing
+              interest in volunteer service. This may include:
             </Typography>
-            <Typography variant="body1" sx={{ color: "text.secondary", lineHeight: 1.8, mb: 3 }}>
-              When you voluntarily reach out to us via our contact forms or direct WhatsApp links,
-              you may provide basic contact details such as your name, telephone number, city,
-              and inquiry details. This information is utilized solely to converse with you
-              regarding your specific question or voluntary contribution.
+            <Box component="ul" sx={{ pl: 3, mb: 3, "& li": { mb: 1, color: "text.secondary", lineHeight: 1.7 } }}>
+              <li>Your name and contact phone number.</li>
+              <li>Location (city / locality).</li>
+              <li>Areas of volunteer interest or blood group information (voluntary).</li>
+              <li>Inquiry details submitted via contact forms or WhatsApp.</li>
+            </Box>
+
+            <Divider sx={{ my: 3 }} />
+
+            <Typography variant="h5" sx={{ fontWeight: 800, color: "primary.main", mb: 2 }}>
+              3. How We Use Your Information
+            </Typography>
+            <Typography variant="body1" sx={{ color: "text.primary", lineHeight: 1.8, mb: 2 }}>
+              The information you provide is used exclusively for legitimate humanitarian
+              and administrative purposes:
+            </Typography>
+            <Box component="ul" sx={{ pl: 3, mb: 3, "& li": { mb: 1, color: "text.secondary", lineHeight: 1.7 } }}>
+              <li>Responding to your inquiries and requests for community assistance.</li>
+              <li>Coordinating voluntary blood donor responses during emergency medical hospital needs.</li>
+              <li>Enrolling volunteers in community relief or educational mentorship drives.</li>
+              <li>Maintaining administrative compliance under government NGO regulations.</li>
+            </Box>
+
+            <Divider sx={{ my: 3 }} />
+
+            <Typography variant="h5" sx={{ fontWeight: 800, color: "primary.main", mb: 2 }}>
+              4. Zero Commercialization &amp; Data Security
+            </Typography>
+            <Typography variant="body1" sx={{ color: "text.primary", lineHeight: 1.8, mb: 3 }}>
+              We do not sell, rent, lease, or trade your personal information to third
+              parties or commercial marketing entities. We implement responsible technical
+              measures to safeguard your contact details from unauthorized access.
             </Typography>
 
             <Divider sx={{ my: 3 }} />
 
             <Typography variant="h5" sx={{ fontWeight: 800, color: "primary.main", mb: 2 }}>
-              3. Non-Disclosure &amp; Information Security
+              5. Official Contact for Privacy Concerns
             </Typography>
-            <Typography variant="body1" sx={{ color: "text.secondary", lineHeight: 1.8, mb: 3 }}>
-              We will never sell, rent, lease, trade, or distribute your personal details to
-              any third-party marketing companies, advertisers, or commercial entities. Any
-              voluntary blood donor information is maintained under strict confidentiality
-              and used solely for life-saving emergency medical coordination in Vijayapura.
+            <Typography variant="body1" sx={{ color: "text.primary", lineHeight: 1.8 }}>
+              For any questions regarding this Privacy Policy or your personal information,
+              please contact:
             </Typography>
-
-            <Divider sx={{ my: 3 }} />
-
-            <Typography variant="h5" sx={{ fontWeight: 800, color: "primary.main", mb: 2 }}>
-              4. External Links &amp; Third-Party Services
-            </Typography>
-            <Typography variant="body1" sx={{ color: "text.secondary", lineHeight: 1.8, mb: 3 }}>
-              Our website provides links to external services such as WhatsApp (for messaging)
-              and Google Maps (for directions to our Vijayapura address). These services operate
-              under their own respective privacy policies.
-            </Typography>
-
-            <Divider sx={{ my: 3 }} />
-
-            <Typography variant="h5" sx={{ fontWeight: 800, color: "primary.main", mb: 2 }}>
-              5. Official Inquiries Regarding Privacy
-            </Typography>
-            <Typography variant="body1" sx={{ color: "text.secondary", lineHeight: 1.8 }}>
-              For any questions regarding our trust’s practices or this Privacy Policy, please
-              contact the trust headquarters at:
-              <br /><br />
-              <strong>{siteConfig.name}</strong><br />
-              {siteConfig.contact.address.formatted}<br />
-              Telephone: +91 {siteConfig.contact.primaryPhone}
-            </Typography>
+            <Box sx={{ mt: 2, p: 2.5, bgcolor: "background.paper", borderRadius: 3, border: "1px solid #E2E8F0" }}>
+              <Typography variant="subtitle2" sx={{ fontWeight: 800, color: "primary.main" }}>
+                {siteConfig.name}
+              </Typography>
+              <Typography variant="body2" sx={{ color: "text.secondary", mt: 0.5 }}>
+                {siteConfig.contact.address.formatted}
+              </Typography>
+              <Typography variant="body2" sx={{ color: "text.primary", fontWeight: 700, mt: 1 }}>
+                Helpline: +91 {siteConfig.contact.primaryPhone}
+              </Typography>
+            </Box>
           </CardContent>
         </Card>
       </Container>
