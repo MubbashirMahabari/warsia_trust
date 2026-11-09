@@ -107,7 +107,7 @@ export default function GallerySection({ limit }: { limit?: number }) {
         position: "relative",
       }}
     >
-      <Container maxWidth="xl" sx={{ px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
+      <Container maxWidth="xl">
         {/* Section Heading */}
         <Reveal>
           <Box sx={{ textAlign: "center", maxWidth: 840, mx: "auto", mb: { xs: 5, md: 7 } }}>

@@ -147,7 +147,7 @@ let baseTheme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 9999, // Pill shape for modern agency feel
+          borderRadius: 9999,
           padding: "12px 28px",
           fontSize: "0.95rem",
           fontWeight: 700,
@@ -216,12 +216,72 @@ let baseTheme = createTheme({
         },
       },
     },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          borderRadius: 9999,
+          backgroundColor: brandColors.white,
+          transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: brandColors.borderColor,
+            borderWidth: "1.5px",
+            transition: "all 0.25s ease",
+          },
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: brandColors.primaryNavy,
+          },
+          "&.Mui-focused": {
+            boxShadow: "0 0 0 4px rgba(0, 40, 135, 0.15)",
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: `${brandColors.primaryNavy} !important`,
+              borderWidth: "2px !important",
+            },
+          },
+        },
+        input: {
+          padding: "15px 22px",
+          fontSize: "0.98rem",
+          fontWeight: 500,
+          color: brandColors.darkText,
+          "&::placeholder": {
+            color: "#64748B",
+            opacity: 1,
+            fontWeight: 400,
+          },
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          fontSize: "0.92rem",
+          fontWeight: 600,
+          color: brandColors.mutedText,
+          transform: "translate(22px, 16px) scale(1)",
+          "&.Mui-focused": {
+            color: brandColors.primaryNavy,
+            fontWeight: 700,
+          },
+          "&.MuiInputLabel-shrink": {
+            transform: "translate(18px, -9px) scale(0.78)",
+            fontWeight: 800,
+            backgroundColor: brandColors.white,
+            padding: "0 6px",
+          },
+        },
+      },
+    },
+    // Professional responsive container system (1240px - 1320px max content width)
     MuiContainer: {
       defaultProps: {
         maxWidth: "xl",
       },
       styleOverrides: {
         root: {
+          width: "100%",
+          maxWidth: "1320px",
+          marginLeft: "auto !important",
+          marginRight: "auto !important",
           paddingLeft: "20px",
           paddingRight: "20px",
           "@media (min-width: 600px)": {
@@ -229,12 +289,13 @@ let baseTheme = createTheme({
             paddingRight: "32px",
           },
           "@media (min-width: 900px)": {
-            paddingLeft: "48px",
-            paddingRight: "48px",
+            paddingLeft: "40px",
+            paddingRight: "40px",
           },
           "@media (min-width: 1200px)": {
-            paddingLeft: "64px",
-            paddingRight: "64px",
+            paddingLeft: "48px",
+            paddingRight: "48px",
+            maxWidth: "1320px !important",
           },
         },
       },
@@ -242,5 +303,8 @@ let baseTheme = createTheme({
   },
 });
 
-export const theme = responsiveFontSizes(baseTheme);
+export const theme = responsiveFontSizes(baseTheme, {
+  variants: ["h1", "h2", "h3", "h4", "h5", "h6"],
+  factor: 2,
+});
 export default theme;

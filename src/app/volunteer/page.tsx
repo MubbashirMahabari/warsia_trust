@@ -33,7 +33,7 @@ export default function VolunteerPage() {
           `,
         }}
       >
-        <Container maxWidth="xl" sx={{ px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
+        <Container maxWidth="xl">
           <Breadcrumbs items={[{ label: "Become a Volunteer" }]} />
 
           <Reveal direction="down">

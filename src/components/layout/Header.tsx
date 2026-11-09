@@ -87,7 +87,6 @@ export default function Header() {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            px: { xs: 2.5, sm: 4, md: 6, lg: 8 },
           }}
         >
           <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
@@ -172,91 +171,99 @@ export default function Header() {
           transition: "all 0.3s ease",
         }}
       >
-        <Container maxWidth="xl" sx={{ px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
+        <Container maxWidth="xl">
           <Toolbar
             disableGutters
             sx={{
               minHeight: { xs: 68, md: 78 },
               justifyContent: "space-between",
+              alignItems: "center",
+              width: "100%",
             }}
           >
             {/* Logo and Brand Title */}
-            <Link
-              href="/"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 14,
-                textDecoration: "none",
-              }}
-            >
-              <Box
-                sx={{
-                  position: "relative",
-                  width: { xs: 46, md: 54 },
-                  height: { xs: 46, md: 54 },
-                  flexShrink: 0,
-                  transition: "transform 0.25s ease",
-                  "&:hover": {
-                    transform: "scale(1.03)",
-                  },
+            <Box sx={{ display: "flex", alignItems: "center", minWidth: 0, flexShrink: 1 }}>
+              <Link
+                href="/"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 12,
+                  textDecoration: "none",
+                  minWidth: 0,
                 }}
               >
-                <Image
-                  src="/logo/warsia-logo.png"
-                  alt={`${siteConfig.name} official emblem`}
-                  fill
-                  sizes="(max-width: 768px) 46px, 54px"
-                  style={{ objectFit: "contain" }}
-                  priority
-                />
-              </Box>
+                <Box
+                  sx={{
+                    position: "relative",
+                    width: { xs: 42, sm: 48, md: 54 },
+                    height: { xs: 42, sm: 48, md: 54 },
+                    flexShrink: 0,
+                    transition: "transform 0.25s ease",
+                    "&:hover": {
+                      transform: "scale(1.03)",
+                    },
+                  }}
+                >
+                  <Image
+                    src="/logo/warsia-logo.png"
+                    alt={`${siteConfig.name} official emblem`}
+                    fill
+                    sizes="(max-width: 768px) 44px, 54px"
+                    style={{ objectFit: "contain" }}
+                    priority
+                  />
+                </Box>
 
-              <Box>
-                <Typography
-                  component="span"
-                  sx={{
-                    display: "block",
-                    fontWeight: 900,
-                    fontSize: { xs: "1.05rem", sm: "1.2rem", md: "1.28rem" },
-                    color: "primary.main",
-                    letterSpacing: "-0.02em",
-                    lineHeight: 1.15,
-                  }}
-                >
-                  WARSIA TRUST
-                </Typography>
-                <Typography
-                  component="span"
-                  sx={{
-                    display: { xs: "none", sm: "block" },
-                    fontSize: { xs: "0.68rem", md: "0.72rem" },
-                    fontWeight: 700,
-                    color: "text.secondary",
-                    letterSpacing: "0.04em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Educational &amp; Social Development Trust
-                </Typography>
-                <Typography
-                  component="span"
-                  sx={{
-                    display: { xs: "block", sm: "none" },
-                    fontSize: "0.68rem",
-                    fontWeight: 700,
-                    color: "secondary.main",
-                  }}
-                >
-                  Vijayapura, Karnataka
-                </Typography>
-              </Box>
-            </Link>
+                <Box sx={{ minWidth: 0 }}>
+                  <Typography
+                    component="span"
+                    sx={{
+                      display: "block",
+                      fontWeight: 900,
+                      fontSize: { xs: "1.02rem", sm: "1.18rem", md: "1.28rem" },
+                      color: "primary.main",
+                      letterSpacing: "-0.02em",
+                      lineHeight: 1.15,
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    WARSIA TRUST
+                  </Typography>
+                  <Typography
+                    component="span"
+                    sx={{
+                      display: { xs: "none", lg: "block" },
+                      fontSize: { xs: "0.68rem", md: "0.72rem" },
+                      fontWeight: 700,
+                      color: "text.secondary",
+                      letterSpacing: "0.04em",
+                      textTransform: "uppercase",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    Educational &amp; Social Development Trust
+                  </Typography>
+                  <Typography
+                    component="span"
+                    sx={{
+                      display: { xs: "block", lg: "none" },
+                      fontSize: "0.68rem",
+                      fontWeight: 700,
+                      color: "secondary.main",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    Vijayapura, Karnataka
+                  </Typography>
+                </Box>
+              </Link>
+            </Box>
 
             {/* Desktop Navigation Links */}
             <Box
               sx={{
-                display: { xs: "none", md: "flex" },
+                display: { xs: "none", lg: "flex" },
                 alignItems: "center",
                 gap: 0.5,
               }}
@@ -422,7 +429,7 @@ export default function Header() {
             </Box>
 
             {/* Header Right Action CTA */}
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, flexShrink: 0 }}>
               <Button
                 component="a"
                 href={getWhatsAppLink()}
@@ -437,7 +444,7 @@ export default function Header() {
                   fontSize: "0.92rem",
                   bgcolor: "secondary.main",
                   color: "#FFFFFF",
-                  px: 2.8,
+                  px: { sm: 2.2, md: 2.8 },
                   py: 1.1,
                   borderRadius: 9999,
                   boxShadow: "0 4px 14px rgba(0, 96, 0, 0.22)",
@@ -454,14 +461,15 @@ export default function Header() {
               <IconButton
                 color="inherit"
                 aria-label="Open mobile navigation menu"
-                edge="end"
                 onClick={() => setMobileOpen(true)}
                 sx={{
-                  display: { md: "none" },
+                  display: { lg: "none" },
                   color: "primary.main",
                   p: 1.2,
                   bgcolor: "rgba(0, 40, 135, 0.06)",
                   borderRadius: 2.5,
+                  border: "1px solid rgba(0, 40, 135, 0.12)",
+                  transition: "all 0.2s ease",
                   "&:hover": {
                     bgcolor: "rgba(0, 40, 135, 0.12)",
                   },

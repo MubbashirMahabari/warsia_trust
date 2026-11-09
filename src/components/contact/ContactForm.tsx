@@ -102,52 +102,259 @@ export default function ContactForm() {
 
         <Box component="form" onSubmit={handleSubmit} noValidate>
           <Box sx={{ display: "flex", flexDirection: "column", gap: 2.5 }}>
-            <TextField
-              fullWidth
-              required
-              label="Your Full Name"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              placeholder="e.g. Mohammed / Ramesh"
-              sx={{ "& .MuiOutlinedInput-root": { borderRadius: 3 } }}
-            />
+            <Box>
+              <Typography
+                component="label"
+                htmlFor="contact-name"
+                sx={{
+                  display: "block",
+                  fontSize: "0.86rem",
+                  fontWeight: 700,
+                  color: "#001B5C",
+                  mb: 0.8,
+                  ml: 1.2,
+                }}
+              >
+                Your Full Name <Box component="span" sx={{ color: "#C62828" }}>*</Box>
+              </Typography>
+              <TextField
+                id="contact-name"
+                fullWidth
+                required
+                variant="outlined"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                placeholder="e.g. Mohammed / Ramesh"
+                sx={{
+                  bgcolor: "#FFFFFF",
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: 9999,
+                    height: 52,
+                    transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#CBD5E1",
+                      borderWidth: "1.5px",
+                      transition: "all 0.25s ease",
+                    },
+                    "&:hover .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#002887",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0 0 0 4px rgba(0, 40, 135, 0.15)",
+                      "& .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#002887 !important",
+                        borderWidth: "2px !important",
+                      },
+                    },
+                  },
+                  "& .MuiOutlinedInput-input": {
+                    px: 2.8,
+                    py: 0,
+                    height: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    fontSize: "0.95rem",
+                    fontWeight: 500,
+                    color: "#172033",
+                    boxSizing: "border-box",
+                    "&::placeholder": {
+                      color: "#64748B",
+                      opacity: 1,
+                      fontWeight: 400,
+                    },
+                  },
+                }}
+              />
+            </Box>
 
-            <TextField
-              fullWidth
-              required
-              label="Contact Phone Number"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="10-digit mobile number"
-              sx={{ "& .MuiOutlinedInput-root": { borderRadius: 3 } }}
-            />
+            <Box>
+              <Typography
+                component="label"
+                htmlFor="contact-phone"
+                sx={{
+                  display: "block",
+                  fontSize: "0.86rem",
+                  fontWeight: 700,
+                  color: "#001B5C",
+                  mb: 0.8,
+                  ml: 1.2,
+                }}
+              >
+                Contact Phone Number <Box component="span" sx={{ color: "#C62828" }}>*</Box>
+              </Typography>
+              <TextField
+                id="contact-phone"
+                fullWidth
+                required
+                variant="outlined"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="10-digit mobile number"
+                sx={{
+                  bgcolor: "#FFFFFF",
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: 9999,
+                    height: 52,
+                    transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#CBD5E1",
+                      borderWidth: "1.5px",
+                      transition: "all 0.25s ease",
+                    },
+                    "&:hover .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#002887",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0 0 0 4px rgba(0, 40, 135, 0.15)",
+                      "& .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#002887 !important",
+                        borderWidth: "2px !important",
+                      },
+                    },
+                  },
+                  "& .MuiOutlinedInput-input": {
+                    px: 2.8,
+                    py: 0,
+                    height: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    fontSize: "0.95rem",
+                    fontWeight: 500,
+                    color: "#172033",
+                    boxSizing: "border-box",
+                    "&::placeholder": {
+                      color: "#64748B",
+                      opacity: 1,
+                      fontWeight: 400,
+                    },
+                  },
+                }}
+              />
+            </Box>
 
-            <TextField
-              fullWidth
-              select
-              label="Subject of Inquiry"
-              value={inquiryType}
-              onChange={(e) => setInquiryType(e.target.value)}
-              sx={{ "& .MuiOutlinedInput-root": { borderRadius: 3 } }}
-            >
-              {inquiryTypes.map((type) => (
-                <MenuItem key={type} value={type}>
-                  {type}
-                </MenuItem>
-              ))}
-            </TextField>
+            <Box>
+              <Typography
+                component="label"
+                htmlFor="contact-inquiry"
+                sx={{
+                  display: "block",
+                  fontSize: "0.86rem",
+                  fontWeight: 700,
+                  color: "#001B5C",
+                  mb: 0.8,
+                  ml: 1.2,
+                }}
+              >
+                Subject of Inquiry <Box component="span" sx={{ color: "#C62828" }}>*</Box>
+              </Typography>
+              <TextField
+                id="contact-inquiry"
+                fullWidth
+                select
+                value={inquiryType}
+                onChange={(e) => setInquiryType(e.target.value)}
+                sx={{
+                  bgcolor: "#FFFFFF",
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: 9999,
+                    height: 52,
+                    transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#CBD5E1",
+                      borderWidth: "1.5px",
+                      transition: "all 0.25s ease",
+                    },
+                    "&:hover .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#002887",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0 0 0 4px rgba(0, 40, 135, 0.15)",
+                      "& .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#002887 !important",
+                        borderWidth: "2px !important",
+                      },
+                    },
+                  },
+                  "& .MuiSelect-select": {
+                    px: 2.8,
+                    py: 0,
+                    height: "52px !important",
+                    display: "flex",
+                    alignItems: "center",
+                    fontSize: "0.95rem",
+                    fontWeight: 600,
+                    color: "#172033",
+                    boxSizing: "border-box",
+                  },
+                }}
+              >
+                {inquiryTypes.map((type) => (
+                  <MenuItem key={type} value={type}>
+                    {type}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Box>
 
-            <TextField
-              fullWidth
-              required
-              multiline
-              rows={4}
-              label="Your Message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder="Please describe how we can assist you or how you would like to collaborate..."
-              sx={{ "& .MuiOutlinedInput-root": { borderRadius: 3 } }}
-            />
+            <Box>
+              <Typography
+                component="label"
+                htmlFor="contact-message"
+                sx={{
+                  display: "block",
+                  fontSize: "0.86rem",
+                  fontWeight: 700,
+                  color: "#001B5C",
+                  mb: 0.8,
+                  ml: 1.2,
+                }}
+              >
+                Your Message <Box component="span" sx={{ color: "#C62828" }}>*</Box>
+              </Typography>
+              <TextField
+                id="contact-message"
+                fullWidth
+                required
+                multiline
+                rows={4}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Please describe how we can assist you or how you would like to collaborate..."
+                sx={{
+                  bgcolor: "#FFFFFF",
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: 4,
+                    transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#CBD5E1",
+                      borderWidth: "1.5px",
+                      transition: "all 0.25s ease",
+                    },
+                    "&:hover .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#002887",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0 0 0 4px rgba(0, 40, 135, 0.15)",
+                      "& .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#002887 !important",
+                        borderWidth: "2px !important",
+                      },
+                    },
+                  },
+                  "& .MuiOutlinedInput-input": {
+                    p: 2,
+                    fontSize: "0.95rem",
+                    fontWeight: 500,
+                    color: "#172033",
+                    "&::placeholder": {
+                      color: "#64748B",
+                      opacity: 1,
+                      fontWeight: 400,
+                    },
+                  },
+                }}
+              />
+            </Box>
 
             <MagneticButton strength={0.15} style={{ width: "100%" }}>
               <Button

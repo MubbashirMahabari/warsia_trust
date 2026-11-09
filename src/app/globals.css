@@ -15,10 +15,26 @@
   --border-subtle: #E2E8F0;
 }
 
-* {
+*, *::before, *::after {
   box-sizing: border-box;
-  padding: 0;
+}
+
+html, body {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: clip;
+}
+
+/* Ensure all containers are always centered horizontally across all layers */
+.MuiContainer-root,
+[class*="MuiContainer-root"] {
+  width: 100% !important;
+  margin-inline: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box !important;
 }
 
 html {

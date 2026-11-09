@@ -44,9 +44,8 @@ export default function Reveal({
       case "down":
         return { y: -distance, x: 0 };
       case "left":
-        return { x: distance, y: 0 };
       case "right":
-        return { x: -distance, y: 0 };
+        return { y: Math.min(distance, 24), x: 0 };
       case "none":
       default:
         return { x: 0, y: 0 };
@@ -75,7 +74,7 @@ export default function Reveal({
         ease: easeOutExpo,
       }}
       className={className}
-      style={{ width, ...style }}
+      style={{ width, maxWidth: "100%", ...style }}
     >
       {children}
     </motion.div>

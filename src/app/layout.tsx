@@ -35,9 +35,9 @@ export default function RootLayout({
       <body>
         <ThemeRegistry>
           <ScrollProgress />
-          <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+          <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh", width: "100%", maxWidth: "100%", overflowX: "clip" }}>
             <Header />
-            <main style={{ flex: "1 0 auto" }}>{children}</main>
+            <main style={{ flex: "1 0 auto", width: "100%", maxWidth: "100%", overflowX: "clip" }}>{children}</main>
             <Footer />
           </div>
           <WhatsAppButton />

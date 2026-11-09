@@ -85,7 +85,7 @@ export default function TextReveal({
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-40px" }}
-        style={{ display: "inline-block", overflow: "hidden" }}
+        style={{ display: "inline", overflow: "visible" }}
       >
         {words.map((word, i) => {
           const isHighlighted =

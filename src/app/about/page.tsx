@@ -78,7 +78,7 @@ export default function AboutPage() {
           `,
         }}
       >
-        <Container maxWidth="xl" sx={{ px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
+        <Container maxWidth="xl">
           <Breadcrumbs items={[{ label: "About Us" }]} />
 
           <Reveal direction="down">
@@ -149,13 +149,15 @@ export default function AboutPage() {
       </Box>
 
       {/* Main Content */}
-      <Container maxWidth="xl" sx={{ mt: { xs: 7, md: 10 }, px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
+      <Container maxWidth="xl" sx={{ mt: { xs: 7, md: 10 } }}>
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: { xs: "1fr", lg: "0.8fr 1.2fr" },
+            gridTemplateColumns: { xs: "minmax(0, 1fr)", lg: "1fr 1.5fr" },
             gap: { xs: 5, lg: 8 },
             alignItems: "flex-start",
+            width: "100%",
+            maxWidth: "100%",
           }}
         >
           {/* Left Column: Official Full Logo Card with Slogan */}
@@ -379,7 +381,7 @@ export default function AboutPage() {
           <Box
             sx={{
               display: "grid",
-              gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
+              gridTemplateColumns: { xs: "minmax(0, 1fr)", md: "1fr 1fr" },
               gap: 4,
               mb: 7,
             }}
@@ -482,7 +484,7 @@ export default function AboutPage() {
             sx={{
               display: "grid",
               gridTemplateColumns: {
-                xs: "1fr",
+                xs: "minmax(0, 1fr)",
                 sm: "repeat(2, 1fr)",
                 md: "repeat(4, 1fr)",
               },

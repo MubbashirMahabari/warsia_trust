@@ -52,14 +52,14 @@ export default function Footer() {
         }}
       />
 
-      <Container maxWidth="xl" sx={{ position: "relative", zIndex: 1, px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
+      <Container maxWidth="xl" sx={{ position: "relative", zIndex: 1 }}>
         <Box
           sx={{
             display: "grid",
             gridTemplateColumns: {
-              xs: "1fr",
-              sm: "repeat(2, 1fr)",
-              md: "1.3fr 1fr 0.8fr 1.2fr",
+              xs: "minmax(0, 1fr)",
+              sm: "repeat(2, minmax(0, 1fr))",
+              lg: "1.3fr 1fr 0.8fr 1.2fr",
             },
             gap: { xs: 5, md: 6 },
           }}
@@ -70,25 +70,32 @@ export default function Footer() {
               sx={{
                 mb: 3,
                 bgcolor: "#FFFFFF",
-                p: 2,
-                borderRadius: 3,
-                display: "inline-block",
-                maxWidth: 300,
-                boxShadow: "0 8px 24px rgba(0, 0, 0, 0.2)",
+                p: { xs: 1.2, sm: 1.5 },
+                borderRadius: 4,
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: { xs: 96, sm: 110 },
+                height: { xs: 96, sm: 110 },
+                boxShadow: "0 8px 28px rgba(0, 0, 0, 0.3)",
+                border: "2px solid rgba(255, 255, 255, 0.15)",
+                flexShrink: 0,
               }}
             >
               <Box
                 sx={{
                   position: "relative",
                   width: "100%",
-                  height: 72,
+                  height: "100%",
                 }}
               >
                 <Image
                   src="/logo/warsia-logo-with-slogan.png"
                   alt={`${siteConfig.name} - ${siteConfig.slogan}`}
                   fill
+                  sizes="110px"
                   style={{ objectFit: "contain" }}
+                  priority
                 />
               </Box>
             </Box>
@@ -370,7 +377,7 @@ export default function Footer() {
             variant="caption"
             sx={{ color: "rgba(255, 255, 255, 0.65)", fontSize: "0.82rem" }}
           >
-            &copy; {currentYear} {siteConfig.name}. Registered in Vijayapura, Karnataka. NGO Darphan ID: {siteConfig.darphanId}.
+            &copy; {currentYear} {siteConfig.name}
           </Typography>
 
           <Box sx={{ display: "flex", gap: 3 }}>

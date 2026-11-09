@@ -57,7 +57,7 @@ export default function TemplePanditSupportPage() {
           `,
         }}
       >
-        <Container maxWidth="xl" sx={{ px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
+        <Container maxWidth="xl">
           <Breadcrumbs
             items={[
               { label: "Initiatives", href: "/initiatives" },
@@ -126,11 +126,11 @@ export default function TemplePanditSupportPage() {
       </Box>
 
       {/* Main Narrative & Sidebar */}
-      <Container maxWidth="xl" sx={{ mt: { xs: 7, md: 10 }, px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
+      <Container maxWidth="xl" sx={{ mt: { xs: 7, md: 10 } }}>
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: { xs: "1fr", md: "1.3fr 0.7fr" },
+            gridTemplateColumns: { xs: "minmax(0, 1fr)", md: "1.3fr 0.7fr" },
             gap: { xs: 5, md: 6 },
             alignItems: "flex-start",
           }}

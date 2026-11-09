@@ -53,7 +53,7 @@ export default function EducationSection() {
         position: "relative",
       }}
     >
-      <Container maxWidth="xl" sx={{ px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
+      <Container maxWidth="xl">
         {/* Section Header */}
         <Reveal>
           <Box sx={{ mb: { xs: 6, md: 8 }, maxWidth: 820 }}>
@@ -119,10 +119,12 @@ export default function EducationSection() {
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: { xs: "1fr", md: "0.85fr 1.15fr" },
+            gridTemplateColumns: { xs: "minmax(0, 1fr)", md: "0.85fr 1.15fr" },
             gap: { xs: 5, md: 7 },
             alignItems: "center",
             mb: 8,
+            width: "100%",
+            maxWidth: "100%",
           }}
         >
           {/* Left: Layered Photography & Artwork */}
@@ -294,7 +296,7 @@ export default function EducationSection() {
           sx={{
             display: "grid",
             gridTemplateColumns: {
-              xs: "1fr",
+              xs: "minmax(0, 1fr)",
               sm: "repeat(2, 1fr)",
               md: "repeat(4, 1fr)",
             },

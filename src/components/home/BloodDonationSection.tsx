@@ -54,7 +54,7 @@ export default function BloodDonationSection() {
         }}
       />
 
-      <Container maxWidth="xl" sx={{ position: "relative", zIndex: 1, px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
+      <Container maxWidth="xl" sx={{ position: "relative", zIndex: 1 }}>
         {/* Section Header */}
         <Reveal>
           <Box sx={{ mb: { xs: 6, md: 8 } }}>
@@ -122,9 +122,11 @@ export default function BloodDonationSection() {
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: { xs: "1fr", lg: "1.2fr 0.8fr" },
+            gridTemplateColumns: { xs: "minmax(0, 1fr)", lg: "1.2fr 0.8fr" },
             gap: { xs: 5, lg: 6 },
             alignItems: "center",
+            width: "100%",
+            maxWidth: "100%",
           }}
         >
           {/* Left Column: Storytelling & CTAs */}

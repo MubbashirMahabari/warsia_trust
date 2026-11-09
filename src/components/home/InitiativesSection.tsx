@@ -27,10 +27,10 @@ import { motion, AnimatePresence } from "framer-motion";
 const shortTabLabels: Record<string, string> = {
   "masjid-imam-support": "Masjid Imams",
   "temple-pandit-support": "Temple Pandits",
-  "blood-donation": "Blood Donation",
+  "blood-donation": "Blood Aid",
   education: "Education",
   "social-development": "Social Welfare",
-  "community-development": "Community Aid",
+  "community-development": "Community",
 };
 
 export default function InitiativesSection() {
@@ -82,7 +82,7 @@ export default function InitiativesSection() {
         position: "relative",
       }}
     >
-      <Container maxWidth="xl" sx={{ px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
+      <Container maxWidth="xl">
         {/* Section Header */}
         <Reveal>
           <Box sx={{ textAlign: "center", maxWidth: 840, mx: "auto", mb: { xs: 5, md: 7 } }}>
@@ -149,12 +149,14 @@ export default function InitiativesSection() {
             sx={{
               display: "grid",
               gridTemplateColumns: {
-                xs: "repeat(2, 1fr)",
-                sm: "repeat(3, 1fr)",
-                lg: "repeat(6, 1fr)",
+                xs: "repeat(2, minmax(0, 1fr))",
+                sm: "repeat(3, minmax(0, 1fr))",
+                lg: "repeat(6, minmax(0, 1fr))",
               },
-              gap: 1.5,
+              gap: { xs: 1.5, lg: 1 },
               mb: { xs: 4, md: 6 },
+              width: "100%",
+              maxWidth: "100%",
             }}
           >
             {initiativesData.map((item, idx) => {
@@ -168,7 +170,7 @@ export default function InitiativesSection() {
                   key={item.id}
                   onClick={() => setActiveTab(idx)}
                   sx={{
-                    px: { xs: 1.5, sm: 2 },
+                    px: { xs: 1.5, sm: 2, lg: 1.2 },
                     py: 1.5,
                     borderRadius: 3,
                     bgcolor: isSelected ? "#001B5C" : "#FFFFFF",
@@ -206,8 +208,10 @@ export default function InitiativesSection() {
                     variant="subtitle2"
                     sx={{
                       fontWeight: isSelected ? 800 : 700,
-                      fontSize: "0.9rem",
+                      fontSize: { xs: "0.9rem", lg: "0.82rem" },
                       whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
                     }}
                   >
                     {label}
@@ -251,9 +255,11 @@ export default function InitiativesSection() {
                 <Box
                   sx={{
                     display: "grid",
-                    gridTemplateColumns: { xs: "1fr", md: "1.2fr 0.8fr" },
+                    gridTemplateColumns: { xs: "minmax(0, 1fr)", md: "1.2fr 0.8fr" },
                     gap: { xs: 4, md: 6 },
                     alignItems: "center",
+                    width: "100%",
+                    maxWidth: "100%",
                   }}
                 >
                   {/* Left: Editorial Details */}
@@ -489,9 +495,9 @@ export default function InitiativesSection() {
           sx={{
             display: "grid",
             gridTemplateColumns: {
-              xs: "1fr",
-              sm: "repeat(2, 1fr)",
-              md: "repeat(3, 1fr)",
+              xs: "minmax(0, 1fr)",
+              sm: "repeat(2, minmax(0, 1fr))",
+              md: "repeat(3, minmax(0, 1fr))",
             },
             gap: 3.5,
           }}

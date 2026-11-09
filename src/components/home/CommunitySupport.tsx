@@ -28,7 +28,7 @@ export default function CommunitySupport() {
         overflow: "hidden",
       }}
     >
-      <Container maxWidth="xl" sx={{ px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
+      <Container maxWidth="xl">
         {/* Section Heading per prompt requirement */}
         <Reveal>
           <Box
@@ -148,9 +148,11 @@ export default function CommunitySupport() {
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
+            gridTemplateColumns: { xs: "minmax(0, 1fr)", md: "repeat(2, minmax(0, 1fr))" },
             gap: { xs: 4, md: 5 },
             alignItems: "stretch",
+            width: "100%",
+            maxWidth: "100%",
           }}
         >
           {/* Panel 1: MASJID IMAMS */}

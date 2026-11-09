@@ -77,7 +77,7 @@ export default function ImpactSection() {
         }}
       />
 
-      <Container maxWidth="xl" sx={{ position: "relative", zIndex: 1, px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
+      <Container maxWidth="xl" sx={{ position: "relative", zIndex: 1 }}>
         {/* Editorial Section Header */}
         <Reveal>
           <Box sx={{ textAlign: "center", maxWidth: 820, mx: "auto", mb: { xs: 6, md: 8 } }}>
@@ -145,8 +145,8 @@ export default function ImpactSection() {
             sx={{
               display: "grid",
               gridTemplateColumns: {
-                xs: "repeat(2, 1fr)",
-                md: "repeat(4, 1fr)",
+                xs: "repeat(2, minmax(0, 1fr))",
+                md: "repeat(4, minmax(0, 1fr))",
               },
               gap: 3,
               mb: 7,
@@ -199,9 +199,9 @@ export default function ImpactSection() {
           sx={{
             display: "grid",
             gridTemplateColumns: {
-              xs: "1fr",
-              sm: "repeat(2, 1fr)",
-              md: "repeat(4, 1fr)",
+              xs: "minmax(0, 1fr)",
+              sm: "repeat(2, minmax(0, 1fr))",
+              md: "repeat(4, minmax(0, 1fr))",
             },
             gap: { xs: 3, md: 4 },
           }}

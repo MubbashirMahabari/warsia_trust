@@ -61,7 +61,7 @@ export default function VolunteerSection() {
         position: "relative",
       }}
     >
-      <Container maxWidth="xl" sx={{ px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
+      <Container maxWidth="xl">
         {/* Section Heading */}
         <Reveal>
           <Box sx={{ textAlign: "center", maxWidth: 840, mx: "auto", mb: { xs: 6, md: 8 } }}>
@@ -126,7 +126,7 @@ export default function VolunteerSection() {
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
+            gridTemplateColumns: { xs: "minmax(0, 1fr)", md: "repeat(2, minmax(0, 1fr))" },
             gap: { xs: 5, md: 7 },
             alignItems: "center",
           }}
@@ -226,51 +226,194 @@ export default function VolunteerSection() {
                   <Box
                     sx={{
                       display: "grid",
-                      gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
+                      gridTemplateColumns: { xs: "minmax(0, 1fr)", sm: "repeat(2, minmax(0, 1fr))" },
                       gap: 2.5,
                     }}
                   >
                     <Box>
+                      <Typography
+                        component="label"
+                        htmlFor="volunteer-name"
+                        sx={{
+                          display: "block",
+                          fontSize: "0.86rem",
+                          fontWeight: 700,
+                          color: "#001B5C",
+                          mb: 0.8,
+                          ml: 1.2,
+                        }}
+                      >
+                        Your Full Name <Box component="span" sx={{ color: "#C62828" }}>*</Box>
+                      </Typography>
                       <TextField
+                        id="volunteer-name"
                         fullWidth
                         required
-                        label="Your Full Name"
                         variant="outlined"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="e.g. Ramesh / Farooq"
                         sx={{
                           bgcolor: "#FFFFFF",
-                          "& .MuiOutlinedInput-root": { borderRadius: 3 },
+                          "& .MuiOutlinedInput-root": {
+                            borderRadius: 9999,
+                            height: 52,
+                            transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+                            "& .MuiOutlinedInput-notchedOutline": {
+                              borderColor: "#CBD5E1",
+                              borderWidth: "1.5px",
+                              transition: "all 0.25s ease",
+                            },
+                            "&:hover .MuiOutlinedInput-notchedOutline": {
+                              borderColor: "#002887",
+                            },
+                            "&.Mui-focused": {
+                              boxShadow: "0 0 0 4px rgba(0, 40, 135, 0.15)",
+                              "& .MuiOutlinedInput-notchedOutline": {
+                                borderColor: "#002887 !important",
+                                borderWidth: "2px !important",
+                              },
+                            },
+                          },
+                          "& .MuiOutlinedInput-input": {
+                            px: 2.8,
+                            py: 0,
+                            height: "100%",
+                            display: "flex",
+                            alignItems: "center",
+                            fontSize: "0.95rem",
+                            fontWeight: 500,
+                            color: "#172033",
+                            boxSizing: "border-box",
+                            "&::placeholder": {
+                              color: "#64748B",
+                              opacity: 1,
+                              fontWeight: 400,
+                            },
+                          },
                         }}
                       />
                     </Box>
 
                     <Box>
+                      <Typography
+                        component="label"
+                        htmlFor="volunteer-phone"
+                        sx={{
+                          display: "block",
+                          fontSize: "0.86rem",
+                          fontWeight: 700,
+                          color: "#001B5C",
+                          mb: 0.8,
+                          ml: 1.2,
+                        }}
+                      >
+                        Contact Number <Box component="span" sx={{ color: "#C62828" }}>*</Box>
+                      </Typography>
                       <TextField
+                        id="volunteer-phone"
                         fullWidth
-                        label="Contact Number"
+                        required
                         variant="outlined"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="10-digit mobile number"
                         sx={{
                           bgcolor: "#FFFFFF",
-                          "& .MuiOutlinedInput-root": { borderRadius: 3 },
+                          "& .MuiOutlinedInput-root": {
+                            borderRadius: 9999,
+                            height: 52,
+                            transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+                            "& .MuiOutlinedInput-notchedOutline": {
+                              borderColor: "#CBD5E1",
+                              borderWidth: "1.5px",
+                              transition: "all 0.25s ease",
+                            },
+                            "&:hover .MuiOutlinedInput-notchedOutline": {
+                              borderColor: "#002887",
+                            },
+                            "&.Mui-focused": {
+                              boxShadow: "0 0 0 4px rgba(0, 40, 135, 0.15)",
+                              "& .MuiOutlinedInput-notchedOutline": {
+                                borderColor: "#002887 !important",
+                                borderWidth: "2px !important",
+                              },
+                            },
+                          },
+                          "& .MuiOutlinedInput-input": {
+                            px: 2.8,
+                            py: 0,
+                            height: "100%",
+                            display: "flex",
+                            alignItems: "center",
+                            fontSize: "0.95rem",
+                            fontWeight: 500,
+                            color: "#172033",
+                            boxSizing: "border-box",
+                            "&::placeholder": {
+                              color: "#64748B",
+                              opacity: 1,
+                              fontWeight: 400,
+                            },
+                          },
                         }}
                       />
                     </Box>
 
                     <Box sx={{ gridColumn: { xs: "1 / -1", sm: "1 / -1" } }}>
+                      <Typography
+                        component="label"
+                        htmlFor="volunteer-interest"
+                        sx={{
+                          display: "block",
+                          fontSize: "0.86rem",
+                          fontWeight: 700,
+                          color: "#001B5C",
+                          mb: 0.8,
+                          ml: 1.2,
+                        }}
+                      >
+                        Preferred Area of Contribution <Box component="span" sx={{ color: "#C62828" }}>*</Box>
+                      </Typography>
                       <TextField
+                        id="volunteer-interest"
                         fullWidth
                         select
-                        label="Preferred Area of Contribution"
                         value={interest}
                         onChange={(e) => setInterest(e.target.value)}
                         sx={{
                           bgcolor: "#FFFFFF",
-                          "& .MuiOutlinedInput-root": { borderRadius: 3 },
+                          "& .MuiOutlinedInput-root": {
+                            borderRadius: 9999,
+                            height: 52,
+                            transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+                            "& .MuiOutlinedInput-notchedOutline": {
+                              borderColor: "#CBD5E1",
+                              borderWidth: "1.5px",
+                              transition: "all 0.25s ease",
+                            },
+                            "&:hover .MuiOutlinedInput-notchedOutline": {
+                              borderColor: "#002887",
+                            },
+                            "&.Mui-focused": {
+                              boxShadow: "0 0 0 4px rgba(0, 40, 135, 0.15)",
+                              "& .MuiOutlinedInput-notchedOutline": {
+                                borderColor: "#002887 !important",
+                                borderWidth: "2px !important",
+                              },
+                            },
+                          },
+                          "& .MuiSelect-select": {
+                            px: 2.8,
+                            py: 0,
+                            height: "52px !important",
+                            display: "flex",
+                            alignItems: "center",
+                            fontSize: "0.95rem",
+                            fontWeight: 600,
+                            color: "#172033",
+                            boxSizing: "border-box",
+                          },
                         }}
                       >
                         {volunteerAreas.map((option) => (
@@ -282,15 +425,65 @@ export default function VolunteerSection() {
                     </Box>
 
                     <Box sx={{ gridColumn: { xs: "1 / -1", sm: "1 / -1" } }}>
+                      <Typography
+                        component="label"
+                        htmlFor="volunteer-city"
+                        sx={{
+                          display: "block",
+                          fontSize: "0.86rem",
+                          fontWeight: 700,
+                          color: "#001B5C",
+                          mb: 0.8,
+                          ml: 1.2,
+                        }}
+                      >
+                        Your City / Town
+                      </Typography>
                       <TextField
+                        id="volunteer-city"
                         fullWidth
-                        label="Your City / Town"
                         variant="outlined"
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
+                        placeholder="e.g. Vijayapura"
                         sx={{
                           bgcolor: "#FFFFFF",
-                          "& .MuiOutlinedInput-root": { borderRadius: 3 },
+                          "& .MuiOutlinedInput-root": {
+                            borderRadius: 9999,
+                            height: 52,
+                            transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+                            "& .MuiOutlinedInput-notchedOutline": {
+                              borderColor: "#CBD5E1",
+                              borderWidth: "1.5px",
+                              transition: "all 0.25s ease",
+                            },
+                            "&:hover .MuiOutlinedInput-notchedOutline": {
+                              borderColor: "#002887",
+                            },
+                            "&.Mui-focused": {
+                              boxShadow: "0 0 0 4px rgba(0, 40, 135, 0.15)",
+                              "& .MuiOutlinedInput-notchedOutline": {
+                                borderColor: "#002887 !important",
+                                borderWidth: "2px !important",
+                              },
+                            },
+                          },
+                          "& .MuiOutlinedInput-input": {
+                            px: 2.8,
+                            py: 0,
+                            height: "100%",
+                            display: "flex",
+                            alignItems: "center",
+                            fontSize: "0.95rem",
+                            fontWeight: 500,
+                            color: "#172033",
+                            boxSizing: "border-box",
+                            "&::placeholder": {
+                              color: "#64748B",
+                              opacity: 1,
+                              fontWeight: 400,
+                            },
+                          },
                         }}
                       />
                     </Box>

@@ -57,18 +57,20 @@ export default function AboutSection() {
         overflow: "hidden",
       }}
     >
-      <Container maxWidth="xl" sx={{ px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
+      <Container maxWidth="xl">
         {/* Editorial Split Layout */}
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: { xs: "1fr", lg: "1.15fr 0.85fr" },
-            gap: { xs: 5, lg: 8 },
+            gridTemplateColumns: { xs: "minmax(0, 1fr)", lg: "repeat(2, minmax(0, 1fr))" },
+            gap: { xs: 5, lg: 7 },
             alignItems: "center",
+            width: "100%",
+            maxWidth: "100%",
           }}
         >
           {/* Left Column: Heading, Mission, Leadership Narrative */}
-          <Box>
+          <Box sx={{ minWidth: 0, width: "100%", maxWidth: "100%" }}>
             <Reveal direction="down">
               <Box
                 sx={{
@@ -168,7 +170,7 @@ export default function AboutSection() {
               <Box
                 sx={{
                   display: "grid",
-                  gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
+                  gridTemplateColumns: { xs: "minmax(0, 1fr)", sm: "repeat(2, minmax(0, 1fr))" },
                   gap: 2.5,
                   mb: 4,
                 }}
@@ -255,7 +257,7 @@ export default function AboutSection() {
           </Box>
 
           {/* Right Column: Documentary Photography Composition */}
-          <Box>
+          <Box sx={{ minWidth: 0, width: "100%", maxWidth: "100%" }}>
             <Reveal delay={0.3} direction="left" scale>
               <Box
                 sx={{
@@ -425,9 +427,9 @@ export default function AboutSection() {
             sx={{
               display: "grid",
               gridTemplateColumns: {
-                xs: "1fr",
-                sm: "repeat(2, 1fr)",
-                md: "repeat(4, 1fr)",
+                xs: "minmax(0, 1fr)",
+                sm: "repeat(2, minmax(0, 1fr))",
+                md: "repeat(4, minmax(0, 1fr))",
               },
               gap: 3,
             }}

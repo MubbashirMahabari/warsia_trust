@@ -39,7 +39,7 @@ export default function InitiativesPage() {
           `,
         }}
       >
-        <Container maxWidth="xl" sx={{ px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
+        <Container maxWidth="xl">
           <Breadcrumbs items={[{ label: "Initiatives" }]} />
 
           <Reveal direction="down">
@@ -96,12 +96,12 @@ export default function InitiativesPage() {
       </Box>
 
       {/* Initiatives Grid */}
-      <Container maxWidth="xl" sx={{ mt: { xs: 7, md: 10 }, px: { xs: 2.5, sm: 4, md: 6, lg: 8 } }}>
+      <Container maxWidth="xl" sx={{ mt: { xs: 7, md: 10 } }}>
         <Box
           sx={{
             display: "grid",
             gridTemplateColumns: {
-              xs: "1fr",
+              xs: "minmax(0, 1fr)",
               sm: "repeat(2, 1fr)",
               md: "repeat(3, 1fr)",
             },

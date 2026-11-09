@@ -7,8 +7,6 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import Grid from "@mui/material/Grid";
-import Chip from "@mui/material/Chip";
 import { siteConfig } from "@/config/site";
 import {
   ArrowForwardIcon,
@@ -18,59 +16,48 @@ import {
   TempleHinduIcon,
   BloodtypeIcon,
   SchoolIcon,
-  KeyboardArrowDownIcon,
 } from "@/components/common/Icons";
 import Reveal from "@/components/animations/Reveal";
 import TextReveal from "@/components/animations/TextReveal";
 import MagneticButton from "@/components/animations/MagneticButton";
 import { motion } from "framer-motion";
-import { easeOutExpo } from "@/lib/animations";
 
 export default function Hero() {
   return (
     <Box
       sx={{
         position: "relative",
-        bgcolor: "#001B5C", // Deep Navy
+        bgcolor: "#001B5C",
         color: "#FFFFFF",
-        minHeight: { xs: "auto", lg: "calc(100vh - 116px)" },
+        minHeight: { xs: "auto", md: "calc(100vh - 78px)" },
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
+        justifyContent: "center",
         overflow: "hidden",
-        pt: { xs: 4, sm: 5, lg: 6 },
-        pb: { xs: 3, sm: 4, lg: 4 },
       }}
     >
-      {/* Cinematic ambient background glow and patterns */}
+      {/* Background gradient */}
       <Box
         sx={{
           position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
+          inset: 0,
           backgroundImage: `
-            radial-gradient(circle at 18% 22%, rgba(0, 96, 0, 0.38) 0%, transparent 48%),
-            radial-gradient(circle at 82% 78%, rgba(242, 117, 1, 0.28) 0%, transparent 52%),
-            radial-gradient(circle at 50% 50%, rgba(0, 40, 135, 0.5) 0%, transparent 70%),
-            linear-gradient(180deg, #001B5C 0%, #002887 100%)
+            radial-gradient(ellipse at 20% 30%, rgba(0, 96, 0, 0.35) 0%, transparent 50%),
+            radial-gradient(ellipse at 80% 70%, rgba(242, 117, 1, 0.25) 0%, transparent 50%),
+            linear-gradient(160deg, #001B5C 0%, #002887 60%, #001B5C 100%)
           `,
           pointerEvents: "none",
         }}
       />
 
-      {/* Subtle modern geometric dot grid overlay */}
+      {/* Dot grid pattern */}
       <Box
         sx={{
           position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          opacity: 0.04,
-          backgroundImage: `radial-gradient(#FFFFFF 1.2px, transparent 1.2px)`,
-          backgroundSize: "28px 28px",
+          inset: 0,
+          opacity: 0.03,
+          backgroundImage: `radial-gradient(#FFFFFF 1px, transparent 1px)`,
+          backgroundSize: "24px 24px",
           pointerEvents: "none",
         }}
       />
@@ -80,77 +67,75 @@ export default function Hero() {
         sx={{
           position: "relative",
           zIndex: 2,
-          px: { xs: 2.5, sm: 4, md: 6, lg: 8 },
           flexGrow: 1,
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          py: { xs: 4, md: 6 },
+          py: { xs: 10, md: 8 },
+          mt: { xs: 0, md: 2 },
         }}
       >
+        {/* Two-column editorial layout */}
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: {
-              xs: "1fr",
-              lg: "1.08fr 0.92fr",
-              xl: "1.05fr 0.95fr",
-            },
-            gap: { xs: 4, lg: 6, xl: 8 },
+            gridTemplateColumns: { xs: "minmax(0, 1fr)", lg: "repeat(2, minmax(0, 1fr))" },
+            gap: { xs: 5, lg: 7 },
             alignItems: "center",
+            minHeight: { lg: "80vh" },
+            width: "100%",
+            maxWidth: "100%",
           }}
         >
-          {/* Left Column: Editorial Headline & Storytelling */}
-          <Box>
-            {/* Step 2: Organization Identity Badges */}
-            <Reveal delay={0.1} direction="down">
+          {/* LEFT: Headline + CTAs */}
+          <Box sx={{ minWidth: 0, width: "100%", maxWidth: "100%" }}>
+            {/* Identity label */}
+            <Reveal delay={0.05} direction="down">
               <Box
                 sx={{
                   display: "inline-flex",
                   alignItems: "center",
-                  gap: 1.2,
-                  p: 0.7,
-                  px: 1.8,
+                  gap: 1,
+                  px: { xs: 1.5, sm: 2 },
+                  py: 0.8,
                   borderRadius: 9999,
-                  bgcolor: "rgba(255, 255, 255, 0.1)",
-                  border: "1px solid rgba(255, 255, 255, 0.18)",
-                  backdropFilter: "blur(12px)",
-                  mb: 3.5,
+                  bgcolor: "rgba(255,255,255,0.1)",
+                  border: "1px solid rgba(255,255,255,0.18)",
+                  mb: 4,
                   flexWrap: "wrap",
+                  maxWidth: "100%",
                 }}
               >
-                <Box sx={{ display: "flex", alignItems: "center", gap: 0.8 }}>
-                  <VerifiedIcon sx={{ fontSize: 17, color: "warning.main" }} />
-                  <Typography
-                    variant="caption"
-                    sx={{
-                      fontWeight: 800,
-                      color: "#FFFFFF",
-                      letterSpacing: "0.06em",
-                      textTransform: "uppercase",
-                      fontSize: "0.74rem",
-                    }}
-                  >
-                    DARPHAN ID: {siteConfig.darphanId}
-                  </Typography>
-                </Box>
-
-                <Box
-                  sx={{
-                    width: 4,
-                    height: 4,
-                    borderRadius: "50%",
-                    bgcolor: "warning.main",
-                  }}
-                />
-
+                <VerifiedIcon sx={{ fontSize: 16, color: "#F27501" }} />
                 <Typography
                   variant="caption"
                   sx={{
-                    color: "warning.light",
                     fontWeight: 700,
-                    fontSize: "0.74rem",
-                    letterSpacing: "0.03em",
+                    color: "#FFFFFF",
+                    letterSpacing: "0.04em",
+                    textTransform: "uppercase",
+                    fontSize: { xs: "0.68rem", sm: "0.72rem" },
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  Govt. NGO · {siteConfig.darphanId}
+                </Typography>
+                <Box
+                  sx={{
+                    display: { xs: "none", sm: "block" },
+                    width: 4,
+                    height: 4,
+                    borderRadius: "50%",
+                    bgcolor: "rgba(255,255,255,0.4)",
+                  }}
+                />
+                <Typography
+                  variant="caption"
+                  sx={{
+                    display: { xs: "none", sm: "block" },
+                    color: "#FFA040",
+                    fontWeight: 600,
+                    fontSize: "0.72rem",
                   }}
                 >
                   Vijayapura, Karnataka
@@ -158,97 +143,88 @@ export default function Hero() {
               </Box>
             </Reveal>
 
-            {/* Step 3: Word-by-word headline reveal */}
-            <Box sx={{ mb: 2 }}>
+            {/* Main headline */}
+            <Box sx={{ mb: 3, maxWidth: "100%" }}>
               <TextReveal
                 text="Humanity Has No Boundaries."
                 as="h1"
-                delay={0.2}
-                stagger={0.06}
-                highlightWord="Boundaries"
+                delay={0.15}
+                stagger={0.055}
+                highlightWord="Boundaries."
                 highlightColor="#F27501"
                 style={{
-                  fontSize: "clamp(2.4rem, 5.2vw, 4.4rem)",
+                  fontSize: "clamp(2rem, 5vw, 4.4rem)",
                   fontWeight: 900,
                   lineHeight: 1.08,
                   letterSpacing: "-0.03em",
                   color: "#FFFFFF",
+                  wordBreak: "break-word",
                 }}
               />
             </Box>
 
-            {/* Supporting Headline */}
-            <Reveal delay={0.4} direction="up">
+            {/* Sub-headline */}
+            <Reveal delay={0.35} direction="up">
               <Typography
-                variant="h3"
                 sx={{
-                  fontSize: { xs: "1.3rem", sm: "1.65rem", md: "1.9rem" },
-                  fontWeight: 800,
-                  color: "rgba(255, 255, 255, 0.95)",
-                  letterSpacing: "-0.015em",
-                  lineHeight: 1.25,
+                  fontSize: { xs: "1.1rem", sm: "1.3rem", md: "1.5rem" },
+                  fontWeight: 700,
+                  color: "rgba(255,255,255,0.9)",
+                  lineHeight: 1.35,
                   mb: 2.5,
+                  letterSpacing: "-0.01em",
+                  wordBreak: "break-word",
                 }}
               >
                 Together, We Serve.{" "}
-                <Box
-                  component="span"
-                  sx={{
-                    color: "secondary.light",
-                    display: "inline",
-                  }}
-                >
+                <Box component="span" sx={{ color: "#0A8A0A" }}>
                   Together, We Grow.
                 </Box>
               </Typography>
             </Reveal>
 
-            {/* Step 4: Description */}
-            <Reveal delay={0.5} direction="up">
+            {/* Description */}
+            <Reveal delay={0.45} direction="up">
               <Typography
-                variant="body1"
                 sx={{
-                  color: "rgba(255, 255, 255, 0.82)",
-                  fontSize: { xs: "1.05rem", md: "1.18rem" },
+                  color: "rgba(255,255,255,0.78)",
+                  fontSize: { xs: "0.95rem", md: "1.1rem" },
                   lineHeight: 1.75,
-                  fontWeight: 400,
-                  maxWidth: 620,
-                  mb: 3.5,
+                  maxWidth: 560,
+                  mb: 3,
                 }}
               >
-                Creating meaningful change through education, community support,
-                blood donation, and service beyond boundaries.
+                Creating meaningful change through education, community
+                support, blood donation, and service beyond boundaries.
               </Typography>
             </Reveal>
 
-            {/* Official Slogan Banner with refined editorial typography */}
-            <Reveal delay={0.6} direction="up">
+            {/* Slogan */}
+            <Reveal delay={0.55} direction="up">
               <Box
                 sx={{
-                  p: 2,
-                  px: 2.6,
-                  borderRadius: 3.5,
-                  bgcolor: "rgba(255, 255, 255, 0.08)",
-                  border: "1px solid rgba(255, 255, 255, 0.16)",
-                  backdropFilter: "blur(14px)",
-                  display: "inline-flex",
+                  display: "flex",
                   alignItems: "center",
-                  gap: 1.8,
+                  gap: 1.5,
+                  px: { xs: 2, sm: 2.5 },
+                  py: 1.4,
+                  borderRadius: 3,
+                  bgcolor: "rgba(255,255,255,0.07)",
+                  border: "1px solid rgba(255,255,255,0.14)",
                   mb: 4.5,
                   maxWidth: "100%",
+                  boxSizing: "border-box",
                 }}
               >
-                <Diversity3Icon
-                  sx={{ color: "warning.main", fontSize: 26, flexShrink: 0 }}
-                />
+                <Diversity3Icon sx={{ color: "#F27501", fontSize: 22, flexShrink: 0 }} />
                 <Typography
-                  variant="body1"
                   sx={{
                     fontStyle: "italic",
-                    fontWeight: 700,
-                    color: "#FFFFFF",
-                    fontSize: { xs: "0.95rem", sm: "1.05rem" },
-                    letterSpacing: "0.01em",
+                    fontWeight: 600,
+                    color: "rgba(255,255,255,0.9)",
+                    fontSize: { xs: "0.85rem", sm: "0.95rem" },
+                    lineHeight: 1.4,
+                    wordBreak: "break-word",
                   }}
                 >
                   &ldquo;{siteConfig.slogan}&rdquo;
@@ -256,17 +232,17 @@ export default function Hero() {
               </Box>
             </Reveal>
 
-            {/* Step 5: Animate CTA buttons */}
-            <Reveal delay={0.7} direction="up">
+            {/* CTAs */}
+            <Reveal delay={0.65} direction="up">
               <Box
                 sx={{
                   display: "flex",
                   flexWrap: "wrap",
+                  gap: 2,
                   alignItems: "center",
-                  gap: 2.2,
                 }}
               >
-                <MagneticButton strength={0.25}>
+                <MagneticButton strength={0.2}>
                   <Button
                     component={Link}
                     href="/about"
@@ -275,17 +251,13 @@ export default function Hero() {
                     size="large"
                     endIcon={<ArrowForwardIcon />}
                     sx={{
-                      px: 4,
-                      py: 1.7,
+                      px: { xs: 3, sm: 4 },
+                      py: 1.6,
                       fontWeight: 800,
-                      fontSize: "1.02rem",
-                      bgcolor: "warning.main",
-                      color: "#FFFFFF",
+                      fontSize: "1rem",
                       borderRadius: 9999,
-                      boxShadow: "0 10px 30px rgba(242, 117, 1, 0.4)",
-                      "&:hover": {
-                        bgcolor: "warning.dark",
-                      },
+                      boxShadow: "0 8px 28px rgba(242,117,1,0.4)",
+                      "&:hover": { bgcolor: "#C75F00" },
                     }}
                   >
                     Discover Our Mission
@@ -298,18 +270,17 @@ export default function Hero() {
                   variant="outlined"
                   size="large"
                   sx={{
-                    px: 3.5,
-                    py: 1.6,
+                    px: { xs: 3, sm: 3.5 },
+                    py: 1.5,
                     fontWeight: 700,
-                    fontSize: "1.02rem",
-                    borderColor: "rgba(255, 255, 255, 0.5)",
+                    fontSize: "1rem",
+                    borderColor: "rgba(255,255,255,0.45)",
                     color: "#FFFFFF",
                     borderRadius: 9999,
-                    backdropFilter: "blur(8px)",
-                    bgcolor: "rgba(255, 255, 255, 0.05)",
+                    bgcolor: "rgba(255,255,255,0.05)",
                     "&:hover": {
                       borderColor: "#FFFFFF",
-                      bgcolor: "rgba(255, 255, 255, 0.15)",
+                      bgcolor: "rgba(255,255,255,0.12)",
                     },
                   }}
                 >
@@ -319,266 +290,212 @@ export default function Hero() {
             </Reveal>
           </Box>
 
-          {/* Right Column: Layered Editorial Glass Showcase */}
-          <Box>
-            <Reveal delay={0.4} direction="left" scale>
+          {/* RIGHT: Image showcase card */}
+          <Box sx={{ display: "block", mt: { xs: 5, lg: 0 }, minWidth: 0, width: "100%", maxWidth: "100%" }}>
+            <Reveal delay={0.3} direction="left" scale>
               <Box
                 sx={{
                   position: "relative",
                   width: "100%",
+                  borderRadius: 5,
+                  overflow: "hidden",
+                  boxShadow: "0 24px 64px rgba(0,0,0,0.4)",
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  bgcolor: "#001B5C",
                 }}
               >
-                {/* Main Glass Showcase Card */}
+                {/* Main photo */}
                 <Box
                   sx={{
-                    borderRadius: 5,
-                    bgcolor: "rgba(255, 255, 255, 0.07)",
-                    border: "1px solid rgba(255, 255, 255, 0.18)",
-                    backdropFilter: "blur(20px)",
-                    WebkitBackdropFilter: "blur(20px)",
-                    p: { xs: 3, sm: 4 },
-                    boxShadow: "0 30px 60px rgba(0, 0, 0, 0.35)",
                     position: "relative",
+                    width: "100%",
+                    height: { xs: 240, sm: 320, md: 380, lg: 440, xl: 480 },
                     overflow: "hidden",
                   }}
                 >
-                  {/* Real Community Outreach Photo Composition */}
+                  <Image
+                    src="/images/gallery/ramzan-food-kit.png"
+                    alt="Warsia Trust humanitarian community outreach in Vijayapura"
+                    fill
+                    priority
+                    sizes="(max-width: 1200px) 100vw, 600px"
+                    style={{
+                      objectFit: "cover",
+                      objectPosition: "center 20%",
+                    }}
+                  />
+                  {/* Gradient overlay */}
                   <Box
                     sx={{
-                      position: "relative",
-                      width: "100%",
-                      height: { xs: 200, sm: 240 },
-                      borderRadius: 3.5,
-                      overflow: "hidden",
-                      mb: 3,
-                      border: "1px solid rgba(255, 255, 255, 0.2)",
+                      position: "absolute",
+                      inset: 0,
+                      background:
+                        "linear-gradient(180deg, rgba(0,27,92,0.08) 0%, rgba(0,27,92,0.75) 100%)",
+                    }}
+                  />
+
+                  {/* Top badge */}
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      top: { xs: 12, sm: 16 },
+                      right: { xs: 12, sm: 16 },
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 0.8,
+                      bgcolor: "rgba(255,255,255,0.95)",
+                      px: { xs: 1.4, sm: 1.8 },
+                      py: 0.6,
+                      borderRadius: 9999,
+                      boxShadow: "0 4px 16px rgba(0,0,0,0.2)",
                     }}
                   >
-                    <Image
-                      src="/images/gallery/ramzan-food-kit.png"
-                      alt="Warsia Trust community outreach and food kit distribution in Vijayapura"
-                      fill
-                      priority
-                      sizes="(max-width: 1200px) 100vw, 480px"
-                      style={{
-                        objectFit: "cover",
-                        filter: "brightness(0.95)",
-                      }}
-                    />
-                    {/* Gradient Overlay */}
-                    <Box
+                    <VerifiedIcon sx={{ color: "#F27501", fontSize: { xs: 14, sm: 16 } }} />
+                    <Typography
                       sx={{
-                        position: "absolute",
-                        inset: 0,
-                        background:
-                          "linear-gradient(180deg, rgba(0, 27, 92, 0.1) 0%, rgba(0, 27, 92, 0.8) 100%)",
-                      }}
-                    />
-
-                    {/* Tag badge on image */}
-                    <Box
-                      sx={{
-                        position: "absolute",
-                        bottom: 14,
-                        left: 14,
-                        right: 14,
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
+                        fontWeight: 800,
+                        color: "#002887",
+                        fontSize: { xs: "0.65rem", sm: "0.72rem" },
+                        letterSpacing: "0.04em",
                       }}
                     >
-                      <Box
-                        sx={{
-                          px: 1.5,
-                          py: 0.5,
-                          borderRadius: 9999,
-                          bgcolor: "rgba(0, 27, 92, 0.85)",
-                          backdropFilter: "blur(8px)",
-                          color: "#FFFFFF",
-                          fontSize: "0.75rem",
-                          fontWeight: 700,
-                          border: "1px solid rgba(255, 255, 255, 0.2)",
-                        }}
-                      >
-                        Vijayapura Community Outreach
-                      </Box>
-                      <Box
-                        sx={{
-                          px: 1.2,
-                          py: 0.4,
-                          borderRadius: 9999,
-                          bgcolor: "rgba(242, 117, 1, 0.9)",
-                          color: "#FFFFFF",
-                          fontSize: "0.72rem",
-                          fontWeight: 800,
-                        }}
-                      >
-                        Active
-                      </Box>
-                    </Box>
+                      DARPHAN CERTIFIED NGO
+                    </Typography>
                   </Box>
 
-                  {/* 3 Balanced Pillars with Icons & Micro-Interactions */}
-                  <Typography
-                    variant="overline"
+                  {/* Bottom info */}
+                  <Box
                     sx={{
-                      color: "warning.main",
+                      position: "absolute",
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      px: { xs: 2, sm: 3 },
+                      py: { xs: 1.8, sm: 2.5 },
+                      bgcolor: "rgba(0,27,92,0.92)",
+                      backdropFilter: "blur(12px)",
+                      borderTop: "1px solid rgba(255,255,255,0.1)",
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        color: "#F27501",
+                        fontWeight: 800,
+                        fontSize: "0.68rem",
+                        letterSpacing: "0.1em",
+                        textTransform: "uppercase",
+                        mb: 0.4,
+                      }}
+                    >
+                      Vijayapura Community Initiative
+                    </Typography>
+                    <Typography
+                      sx={{
+                        color: "#FFFFFF",
+                        fontWeight: 700,
+                        fontSize: { xs: "0.92rem", sm: "1rem" },
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {siteConfig.president}
+                    </Typography>
+                    <Typography
+                      sx={{ color: "rgba(255,255,255,0.7)", fontSize: { xs: "0.75rem", sm: "0.82rem" }, lineHeight: 1.4 }}
+                    >
+                      President, Warsia Educational & Social Development Trust
+                    </Typography>
+                  </Box>
+                </Box>
+
+                {/* Initiative pillars */}
+                <Box sx={{ p: { xs: 2, sm: 2.5 }, bgcolor: "rgba(0,20,80,0.8)" }}>
+                  <Typography
+                    sx={{
+                      color: "#F27501",
                       fontWeight: 800,
-                      letterSpacing: "0.08em",
-                      fontSize: "0.75rem",
-                      display: "block",
+                      fontSize: "0.68rem",
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
                       mb: 1.5,
                     }}
                   >
-                    PILLARS OF EQUALITY &amp; SERVICE
+                    Core Pillars of Service
                   </Typography>
-
-                  <Box sx={{ display: "flex", flexDirection: "column", gap: 1.6 }}>
-                    {/* Harmony Pillar: Equal Imam & Pandit */}
-                    <Box
-                      sx={{
-                        p: 1.8,
-                        borderRadius: 3,
-                        bgcolor: "rgba(0, 40, 135, 0.55)",
-                        border: "1px solid rgba(255, 255, 255, 0.14)",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 1.8,
-                        transition: "all 0.3s ease",
-                        "&:hover": {
-                          bgcolor: "rgba(0, 40, 135, 0.8)",
-                          borderColor: "rgba(242, 117, 1, 0.5)",
-                          transform: "translateX(4px)",
-                        },
-                      }}
-                    >
+                  <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+                    {[
+                      {
+                        icon: <MosqueIcon sx={{ color: "#81C784", fontSize: 18 }} />,
+                        alt: <TempleHinduIcon sx={{ color: "#FFB74D", fontSize: 18 }} />,
+                        label: "Religious Harmony Honorarium",
+                        sub: "Equal monthly support: Masjid Imams & Temple Pandits",
+                        bg: "rgba(0,40,135,0.5)",
+                      },
+                      {
+                        icon: <BloodtypeIcon sx={{ color: "#FF8A80", fontSize: 18 }} />,
+                        label: "Emergency Blood Network",
+                        sub: "Voluntary donors serving Vijayapura hospitals",
+                        bg: "rgba(198,40,40,0.2)",
+                      },
+                      {
+                        icon: <SchoolIcon sx={{ color: "#81C784", fontSize: 18 }} />,
+                        label: "Education & Social Welfare",
+                        sub: "Schooling support, youth mentoring & community relief",
+                        bg: "rgba(0,96,0,0.25)",
+                      },
+                    ].map((pillar, i) => (
                       <Box
+                        key={i}
                         sx={{
-                          width: 44,
-                          height: 44,
-                          borderRadius: 2.5,
-                          bgcolor: "rgba(255, 255, 255, 0.12)",
                           display: "flex",
                           alignItems: "center",
-                          justifyContent: "center",
-                          flexShrink: 0,
-                          gap: 0.4,
-                        }}
-                      >
-                        <MosqueIcon sx={{ color: "#81C784", fontSize: 18 }} />
-                        <TempleHinduIcon sx={{ color: "#FFB74D", fontSize: 18 }} />
-                      </Box>
-                      <Box sx={{ flexGrow: 1 }}>
-                        <Typography
-                          variant="subtitle2"
-                          sx={{ color: "#FFFFFF", fontWeight: 800, fontSize: "0.92rem" }}
-                        >
-                          Religious Harmony Honorarium
-                        </Typography>
-                        <Typography
-                          variant="caption"
-                          sx={{ color: "rgba(255, 255, 255, 0.75)", display: "block" }}
-                        >
-                          Equal monthly financial support for Masjid Imams &amp; Temple Pandits.
-                        </Typography>
-                      </Box>
-                    </Box>
-
-                    {/* Blood Network Pillar */}
-                    <Box
-                      sx={{
-                        p: 1.8,
-                        borderRadius: 3,
-                        bgcolor: "rgba(198, 40, 40, 0.22)",
-                        border: "1px solid rgba(198, 40, 40, 0.35)",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 1.8,
-                        transition: "all 0.3s ease",
-                        "&:hover": {
-                          bgcolor: "rgba(198, 40, 40, 0.35)",
-                          borderColor: "rgba(198, 40, 40, 0.6)",
-                          transform: "translateX(4px)",
-                        },
-                      }}
-                    >
-                      <Box
-                        sx={{
-                          width: 44,
-                          height: 44,
+                          gap: 1.5,
+                          p: { xs: 1.1, sm: 1.4 },
                           borderRadius: 2.5,
-                          bgcolor: "rgba(198, 40, 40, 0.3)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          flexShrink: 0,
+                          bgcolor: pillar.bg,
+                          border: "1px solid rgba(255,255,255,0.08)",
                         }}
                       >
-                        <BloodtypeIcon sx={{ color: "#FF8A80", fontSize: 24 }} />
-                      </Box>
-                      <Box sx={{ flexGrow: 1 }}>
-                        <Typography
-                          variant="subtitle2"
-                          sx={{ color: "#FFFFFF", fontWeight: 800, fontSize: "0.92rem" }}
+                        <Box
+                          sx={{
+                            width: { xs: 32, sm: 36 },
+                            height: { xs: 32, sm: 36 },
+                            borderRadius: 2,
+                            bgcolor: "rgba(255,255,255,0.1)",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: 0.3,
+                            flexShrink: 0,
+                          }}
                         >
-                          Emergency Blood Network
-                        </Typography>
-                        <Typography
-                          variant="caption"
-                          sx={{ color: "rgba(255, 255, 255, 0.75)", display: "block" }}
-                        >
-                          Mobilizing voluntary donors for patients in Vijayapura hospitals.
-                        </Typography>
+                          {pillar.icon}
+                          {pillar.alt}
+                        </Box>
+                        <Box sx={{ minWidth: 0, flexGrow: 1 }}>
+                          <Typography
+                            sx={{
+                              color: "#FFFFFF",
+                              fontWeight: 700,
+                              fontSize: { xs: "0.78rem", sm: "0.82rem" },
+                              lineHeight: 1.25,
+                              wordBreak: "break-word",
+                            }}
+                          >
+                            {pillar.label}
+                          </Typography>
+                          <Typography
+                            sx={{
+                              color: "rgba(255,255,255,0.65)",
+                              fontSize: { xs: "0.68rem", sm: "0.72rem" },
+                              lineHeight: 1.4,
+                              wordBreak: "break-word",
+                            }}
+                          >
+                            {pillar.sub}
+                          </Typography>
+                        </Box>
                       </Box>
-                    </Box>
-
-                    {/* Education Pillar */}
-                    <Box
-                      sx={{
-                        p: 1.8,
-                        borderRadius: 3,
-                        bgcolor: "rgba(0, 96, 0, 0.3)",
-                        border: "1px solid rgba(0, 96, 0, 0.45)",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 1.8,
-                        transition: "all 0.3s ease",
-                        "&:hover": {
-                          bgcolor: "rgba(0, 96, 0, 0.45)",
-                          borderColor: "rgba(0, 96, 0, 0.7)",
-                          transform: "translateX(4px)",
-                        },
-                      }}
-                    >
-                      <Box
-                        sx={{
-                          width: 44,
-                          height: 44,
-                          borderRadius: 2.5,
-                          bgcolor: "rgba(0, 96, 0, 0.4)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          flexShrink: 0,
-                        }}
-                      >
-                        <SchoolIcon sx={{ color: "#81C784", fontSize: 22 }} />
-                      </Box>
-                      <Box sx={{ flexGrow: 1 }}>
-                        <Typography
-                          variant="subtitle2"
-                          sx={{ color: "#FFFFFF", fontWeight: 800, fontSize: "0.92rem" }}
-                        >
-                          Education &amp; Social Welfare
-                        </Typography>
-                        <Typography
-                          variant="caption"
-                          sx={{ color: "rgba(255, 255, 255, 0.75)", display: "block" }}
-                        >
-                          Encouraging schooling, mentoring youth, and food ration relief.
-                        </Typography>
-                      </Box>
-                    </Box>
+                    ))}
                   </Box>
                 </Box>
               </Box>
@@ -586,54 +503,44 @@ export default function Hero() {
           </Box>
         </Box>
 
-        {/* Step 7: Scroll Indicator */}
+        {/* Scroll indicator */}
         <Reveal delay={1} direction="up">
           <Box
             sx={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              mt: { xs: 3, md: 4 },
-              opacity: 0.85,
+              mt: { xs: 6, md: 4 },
+              mb: { xs: 3, md: 0 },
+              opacity: 0.7,
             }}
           >
             <Typography
-              variant="caption"
               sx={{
                 fontWeight: 700,
-                letterSpacing: "0.15em",
+                letterSpacing: "0.14em",
                 textTransform: "uppercase",
-                fontSize: "0.68rem",
-                color: "rgba(255, 255, 255, 0.7)",
+                fontSize: "0.65rem",
+                color: "rgba(255,255,255,0.65)",
                 mb: 1,
               }}
             >
-              SCROLL TO EXPLORE
+              Scroll to Explore
             </Typography>
-
-            {/* Mouse indicator with pulsing dot */}
             <Box
               sx={{
                 width: 22,
                 height: 36,
-                borderRadius: 12,
-                border: "2px solid rgba(255, 255, 255, 0.4)",
-                position: "relative",
+                borderRadius: 11,
+                border: "2px solid rgba(255,255,255,0.35)",
                 display: "flex",
                 justifyContent: "center",
                 pt: 1,
               }}
             >
               <motion.div
-                animate={{
-                  y: [0, 10, 0],
-                  opacity: [0.8, 0.2, 0.8],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
+                animate={{ y: [0, 10, 0], opacity: [0.7, 0.2, 0.7] }}
+                transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
                 style={{
                   width: 4,
                   height: 4,
