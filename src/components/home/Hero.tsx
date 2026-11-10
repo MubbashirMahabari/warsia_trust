@@ -118,7 +118,7 @@ export default function Hero() {
                     whiteSpace: "nowrap",
                   }}
                 >
-                  Govt. NGO · {siteConfig.darphanId}
+                  Registered Humanitarian Trust
                 </Typography>
                 <Box
                   sx={{
@@ -314,14 +314,14 @@ export default function Hero() {
                   }}
                 >
                   <Image
-                    src="/images/gallery/ramzan-food-kit.png"
-                    alt="Warsia Trust humanitarian community outreach in Vijayapura"
+                    src="/images/generic/hero-humanitarian.jpg"
+                    alt="Warsia Trust humanitarian community outreach and care in Vijayapura"
                     fill
                     priority
                     sizes="(max-width: 1200px) 100vw, 600px"
                     style={{
                       objectFit: "cover",
-                      objectPosition: "center 20%",
+                      objectPosition: "center 30%",
                     }}
                   />
                   {/* Gradient overlay */}
@@ -359,7 +359,7 @@ export default function Hero() {
                         letterSpacing: "0.04em",
                       }}
                     >
-                      DARPHAN CERTIFIED NGO
+                      OFFICIAL TRUST MISSION
                     </Typography>
                   </Box>
 

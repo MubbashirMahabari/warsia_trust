@@ -21,6 +21,7 @@ import {
   KeyboardArrowDownIcon,
   PhoneIcon,
   WhatsAppIcon,
+  LocationOnIcon,
   VerifiedIcon,
   MosqueIcon,
   TempleHinduIcon,
@@ -91,9 +92,9 @@ export default function Header() {
         >
           <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
             <Box sx={{ display: "flex", alignItems: "center", gap: 0.8 }}>
-              <VerifiedIcon sx={{ fontSize: 16, color: "#F27501" }} />
+              <LocationOnIcon sx={{ fontSize: 15, color: "#F27501" }} />
               <Typography variant="caption" sx={{ color: "#E2E8F0", fontWeight: 600 }}>
-                Govt. NGO Darphan ID: <strong>{siteConfig.darphanId}</strong>
+                Vijayapura, Karnataka
               </Typography>
             </Box>
 

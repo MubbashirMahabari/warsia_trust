@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import Chip from "@mui/material/Chip";
-import { constructMetadata } from "@/lib/seo";
+import { constructMetadata, generateInitiativeSchema } from "@/lib/seo";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
 import ContactCard from "@/components/common/ContactCard";
 import Reveal from "@/components/animations/Reveal";
@@ -31,6 +31,15 @@ export const metadata: Metadata = constructMetadata({
 });
 
 export default function BloodDonationPage() {
+  const initiativeSchema = generateInitiativeSchema({
+    title: "Voluntary Blood Donation & Emergency Assistance",
+    description:
+      "Warsia Trust mobilizes voluntary blood donors, organizes awareness campaigns, and assists patients in critical need of blood across Vijayapura hospitals.",
+    path: "/initiatives/blood-donation",
+    category: "Emergency Medical & Blood Donation Assistance",
+    image: "/images/generic/blood-donation.jpg",
+  });
+
   const donorWhatsApp = getWhatsAppLink(
     "Hello Warsia Trust, I would like to register as a voluntary blood donor in Vijayapura."
   );
@@ -60,6 +69,11 @@ export default function BloodDonationPage() {
 
   return (
     <Box sx={{ pb: { xs: 9, md: 14 }, bgcolor: "#FFFFFF" }}>
+      {/* Service Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(initiativeSchema) }}
+      />
       {/* Editorial Header Banner */}
       <Box
         sx={{
@@ -169,8 +183,8 @@ export default function BloodDonationPage() {
                 }}
               >
                 <Image
-                  src="/images/initiatives/blood-donation.svg"
-                  alt="Blood Donation in Vijayapura"
+                  src="/images/generic/blood-donation.jpg"
+                  alt="Voluntary Blood Donation Drive in Vijayapura"
                   fill
                   style={{ objectFit: "cover" }}
                   priority

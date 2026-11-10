@@ -18,10 +18,10 @@ import {
 const verifiedPillars = [
   {
     icon: <VerifiedIcon sx={{ fontSize: 38, color: "warning.main" }} />,
-    tag: "DARPHAN ACCREDITATION",
-    title: "Government Registered",
-    highlight: `ID: ${siteConfig.darphanId}`,
-    desc: "Officially registered and recognized under NGO Darphan, Government of India, adhering strictly to public trust compliance and transparency standards.",
+    tag: "PUBLIC TRUST GOVERNANCE",
+    title: "Registered Trust",
+    highlight: "Ethical Community Stewardship",
+    desc: "Formally registered humanitarian and educational trust adhering strictly to public trust compliance, audited integrity, and transparent community stewardship.",
   },
   {
     icon: <BalanceIcon sx={{ fontSize: 38, color: "#81C784" }} />,

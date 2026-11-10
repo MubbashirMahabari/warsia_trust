@@ -192,8 +192,8 @@ export default function CommunitySupport() {
                   }}
                 >
                   <Image
-                    src="/images/initiatives/masjid-support.svg"
-                    alt="Masjid Imam Support illustration"
+                    src="/images/monuments/jama-masjid.jpg"
+                    alt="Historic Jumma Masjid in Vijayapura - Masjid Imam Monthly Support"
                     fill
                     sizes="(max-width: 768px) 100vw, 550px"
                     style={{ objectFit: "cover" }}
@@ -348,8 +348,8 @@ export default function CommunitySupport() {
                   }}
                 >
                   <Image
-                    src="/images/initiatives/temple-support.svg"
-                    alt="Temple Pandit Support illustration"
+                    src="/images/monuments/shivagiri-monument.jpg"
+                    alt="Historic Shivagiri Monument in Vijayapura - Temple Pandit Monthly Support"
                     fill
                     sizes="(max-width: 768px) 100vw, 550px"
                     style={{ objectFit: "cover" }}

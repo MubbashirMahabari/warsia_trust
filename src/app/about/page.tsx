@@ -12,6 +12,7 @@ import { siteConfig } from "@/config/site";
 import { constructMetadata } from "@/lib/seo";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
 import SectionHeading from "@/components/common/SectionHeading";
+import FAQSection from "@/components/common/FAQSection";
 import Reveal from "@/components/animations/Reveal";
 import TextReveal from "@/components/animations/TextReveal";
 import {
@@ -29,7 +30,7 @@ import { getWhatsAppLink } from "@/lib/utils";
 export const metadata: Metadata = constructMetadata({
   title: "About Us - Mission, Leadership & Vision",
   description:
-    "Learn about Warsia Educational & Social Development Trust, our president Mohammed Shafi H Mahabari, government Darphan ID KA/2026/0996453, and our humanitarian commitment in Vijayapura, Karnataka.",
+    "Learn about Warsia Educational & Social Development Trust, our president Mohammed Shafi H Mahabari, and our humanitarian commitment in Vijayapura, Karnataka.",
   path: "/about",
 });
 
@@ -49,7 +50,7 @@ const valuesList = [
   {
     title: "Accountability & Transparency",
     description:
-      "Operating with zero commercial interest and strictly verified humanitarian documentation under NGO Darphan.",
+      "Operating with zero commercial interest, full transparency, and public trust accountability.",
     icon: <VerifiedIcon sx={{ fontSize: 32, color: "secondary.main" }} />,
   },
   {
@@ -107,7 +108,7 @@ export default function AboutPage() {
                   lineHeight: 1,
                 }}
               >
-                GOVERNMENT DARPHAN ID: {siteConfig.darphanId}
+                OFFICIAL TRUST PROFILE
               </Typography>
             </Box>
           </Reveal>
@@ -266,6 +267,60 @@ export default function AboutPage() {
                     sx={{ color: "text.primary", fontWeight: 600, lineHeight: 1.6 }}
                   >
                     {siteConfig.contact.address.formatted}
+                  </Typography>
+                </Box>
+              </Card>
+            </Reveal>
+
+            {/* Historic Bijapur Heritage Card */}
+            <Reveal delay={0.2} direction="right" scale>
+              <Card
+                sx={{
+                  borderRadius: 5,
+                  border: "2px solid #E2E8F0",
+                  mt: 3.5,
+                  overflow: "hidden",
+                  bgcolor: "#FFFFFF",
+                  boxShadow: "0 14px 35px rgba(0, 40, 135, 0.08)",
+                }}
+              >
+                <Box sx={{ position: "relative", width: "100%", height: 180 }}>
+                  <Image
+                    src="/images/monuments/gol-gumbaz.jpg"
+                    alt="Gol Gumbaz, historic landmark of Vijayapura (Bijapur), Karnataka"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      inset: 0,
+                      background: "linear-gradient(to top, rgba(0,27,92,0.85) 0%, transparent 60%)",
+                    }}
+                  />
+                  <Box sx={{ position: "absolute", bottom: 12, left: 16, right: 16 }}>
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        color: "#FFB74D",
+                        fontWeight: 800,
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      Our Cultural Roots
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      sx={{ color: "#FFFFFF", fontWeight: 800, lineHeight: 1.2 }}
+                    >
+                      Historic Vijayapura (Bijapur)
+                    </Typography>
+                  </Box>
+                </Box>
+                <Box sx={{ p: 2.5 }}>
+                  <Typography variant="body2" sx={{ color: "text.secondary", lineHeight: 1.6 }}>
+                    Standing in the shadow of world-famous monuments like Gol Gumbaz, Ibrahim Rauza, and Bara Kaman, Warsia Trust draws strength from Vijayapura&apos;s rich tradition of cultural unity and mutual respect.
                   </Typography>
                 </Box>
               </Card>
@@ -531,6 +586,9 @@ export default function AboutPage() {
               </Reveal>
             ))}
           </Box>
+
+          {/* Official FAQs with Google FAQPage Schema */}
+          <FAQSection />
         </Box>
       </Container>
     </Box>

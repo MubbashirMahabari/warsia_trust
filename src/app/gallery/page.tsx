@@ -11,7 +11,7 @@ import TextReveal from "@/components/animations/TextReveal";
 export const metadata: Metadata = constructMetadata({
   title: "Photo Gallery - Service, Unity & Community Fellowship",
   description:
-    "Visual gallery of Warsia Educational & Social Development Trust: festive celebrations of communal harmony, food kit distribution, and humanitarian service in Vijayapura.",
+    "Visual gallery of Warsia Educational & Social Development Trust: community welfare, voluntary blood donation drives, educational support, and interfaith harmony in Vijayapura.",
   path: "/gallery",
 });
 
@@ -81,8 +81,8 @@ export default function GalleryPage() {
                 lineHeight: 1.7,
               }}
             >
-              Documentary photographs of our relief work, interfaith festival celebrations,
-              food ration distribution, and official trust compliance in Vijayapura, Karnataka.
+              Documentary photographs of our relief work, interfaith harmony, voluntary blood care,
+              and the enduring historic heritage of Vijayapura (Bijapur), Karnataka.
             </Typography>
           </Reveal>
         </Container>

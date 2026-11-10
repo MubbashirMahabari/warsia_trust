@@ -5,6 +5,7 @@ import Link from "next/link";
 import MuiBreadcrumbs from "@mui/material/Breadcrumbs";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import { generateBreadcrumbSchema } from "@/lib/seo";
 
 export interface BreadcrumbItem {
   label: string;
@@ -17,8 +18,18 @@ interface BreadcrumbsProps {
 }
 
 export default function Breadcrumbs({ items, light = true }: BreadcrumbsProps) {
+  const schemaData = generateBreadcrumbSchema(
+    items.map((item) => ({ name: item.label, path: item.href }))
+  );
+
   return (
     <Box sx={{ py: 1.5 }}>
+      {/* Search Engine BreadcrumbList Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      />
+
       <MuiBreadcrumbs
         separator={
           <span

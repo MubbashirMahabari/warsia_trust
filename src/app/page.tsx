@@ -12,10 +12,10 @@ import VolunteerSection from "@/components/home/VolunteerSection";
 import FinalCTA from "@/components/home/FinalCTA";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Warsia Educational & Social Development Trust | Vijayapura",
+  title: "Warsia Educational & Social Development Trust – Official Portal | Vijayapura, Karnataka",
   description:
     "Warsia Educational & Social Development Trust in Vijayapura, Karnataka, works towards humanitarian support, monthly assistance for Masjid Imams and Temple Pandits, blood donation awareness, education, and social development.",
-  path: "",
+  path: "/",
 });
 
 export default function HomePage() {
@@ -28,7 +28,7 @@ export default function HomePage() {
       <BloodDonationSection />
       <EducationSection />
       <ImpactSection />
-      <GallerySection limit={3} />
+      <GallerySection limit={6} />
       <VolunteerSection />
       <FinalCTA />
     </>

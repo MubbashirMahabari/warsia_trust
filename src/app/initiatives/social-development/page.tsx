@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import Chip from "@mui/material/Chip";
-import { constructMetadata } from "@/lib/seo";
+import { constructMetadata, generateInitiativeSchema } from "@/lib/seo";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
 import ContactCard from "@/components/common/ContactCard";
 import Reveal from "@/components/animations/Reveal";
@@ -31,6 +31,15 @@ export const metadata: Metadata = constructMetadata({
 export default function SocialDevelopmentPage() {
   const whatsAppLink = getInitiativeWhatsAppLink("Social Welfare & Humanitarian Aid");
 
+  const initiativeSchema = generateInitiativeSchema({
+    title: "Social Welfare & Humanitarian Aid",
+    description:
+      "Warsia Educational & Social Development Trust extends food kits, emergency relief, and social assistance to vulnerable individuals in Vijayapura, Karnataka.",
+    path: "/initiatives/social-development",
+    category: "Community Welfare & Humanitarian Food Aid",
+    image: "/images/generic/food-distribution.jpg",
+  });
+
   const welfareAreas = [
     {
       title: "Festive & Emergency Food Kits",
@@ -52,6 +61,11 @@ export default function SocialDevelopmentPage() {
 
   return (
     <Box sx={{ pb: { xs: 9, md: 14 }, bgcolor: "#FFFFFF" }}>
+      {/* Service Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(initiativeSchema) }}
+      />
       {/* Editorial Header Banner */}
       <Box
         sx={{
@@ -161,8 +175,8 @@ export default function SocialDevelopmentPage() {
                 }}
               >
                 <Image
-                  src="/images/initiatives/social-welfare.svg"
-                  alt="Social Welfare & Humanitarian Aid in Vijayapura"
+                  src="/images/generic/food-distribution.jpg"
+                  alt="Social Welfare, Food Relief, and Community Outreach in Vijayapura"
                   fill
                   style={{ objectFit: "cover" }}
                   priority
@@ -217,8 +231,8 @@ export default function SocialDevelopmentPage() {
                 variant="body1"
                 sx={{ color: "text.secondary", lineHeight: 1.8, mb: 2.5, fontSize: "1rem" }}
               >
-                From distribution of essential grocery and food kits during festivals like
-                Ramzan, Diwali, and Ugadi to emergency welfare aid for elderly citizens and
+                From distribution of essential grocery and food kits throughout the year and
+                during seasonal occasions to emergency welfare aid for elderly citizens and
                 widows, our outreach touches real human lives with honor and respect.
               </Typography>
 

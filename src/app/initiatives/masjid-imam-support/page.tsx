@@ -8,7 +8,7 @@ import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import Chip from "@mui/material/Chip";
 import Divider from "@mui/material/Divider";
-import { constructMetadata } from "@/lib/seo";
+import { constructMetadata, generateInitiativeSchema } from "@/lib/seo";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
 import ContactCard from "@/components/common/ContactCard";
 import Reveal from "@/components/animations/Reveal";
@@ -34,6 +34,15 @@ export const metadata: Metadata = constructMetadata({
 export default function MasjidImamSupportPage() {
   const whatsAppLink = getInitiativeWhatsAppLink("Masjid Imam Monthly Support");
 
+  const initiativeSchema = generateInitiativeSchema({
+    title: "Masjid Imam Monthly Support Initiative",
+    description:
+      "Providing monthly financial assistance to Masjid Imams in Vijayapura in recognition of their spiritual dedication, guidance, and community service.",
+    path: "/initiatives/masjid-imam-support",
+    category: "Religious Harmony & Spiritual Dignity Assistance",
+    image: "/images/monuments/jama-masjid.jpg",
+  });
+
   const highlights = [
     "Dignified monthly financial assistance directly honoring Masjid Imams",
     "Balanced alongside Temple Pandit support to celebrate communal brotherhood",
@@ -43,6 +52,11 @@ export default function MasjidImamSupportPage() {
 
   return (
     <Box sx={{ pb: { xs: 9, md: 14 }, bgcolor: "#FFFFFF" }}>
+      {/* Service Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(initiativeSchema) }}
+      />
       {/* Editorial Header Banner */}
       <Box
         sx={{
@@ -152,8 +166,8 @@ export default function MasjidImamSupportPage() {
                 }}
               >
                 <Image
-                  src="/images/initiatives/masjid-support.svg"
-                  alt="Masjid Imam Support illustration"
+                  src="/images/monuments/jama-masjid.jpg"
+                  alt="Historic Jumma Masjid in Vijayapura (Bijapur) - Honoring Spiritual Guardianship"
                   fill
                   style={{ objectFit: "cover" }}
                   priority

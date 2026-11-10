@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import Chip from "@mui/material/Chip";
-import { constructMetadata } from "@/lib/seo";
+import { constructMetadata, generateInitiativeSchema } from "@/lib/seo";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
 import ContactCard from "@/components/common/ContactCard";
 import Reveal from "@/components/animations/Reveal";
@@ -33,6 +33,15 @@ export const metadata: Metadata = constructMetadata({
 export default function TemplePanditSupportPage() {
   const whatsAppLink = getInitiativeWhatsAppLink("Temple Pandit Monthly Support");
 
+  const initiativeSchema = generateInitiativeSchema({
+    title: "Temple Pandit Monthly Support Initiative",
+    description:
+      "Providing monthly financial assistance to Temple Pandits in Vijayapura in recognition of their spiritual dedication, cultural rites, and community service.",
+    path: "/initiatives/temple-pandit-support",
+    category: "Religious Harmony & Cultural Heritage Assistance",
+    image: "/images/monuments/shivagiri-monument.jpg",
+  });
+
   const highlights = [
     "Dignified monthly financial assistance directly honoring Temple Pandits",
     "Balanced alongside Masjid Imam support to celebrate communal brotherhood",
@@ -42,6 +51,11 @@ export default function TemplePanditSupportPage() {
 
   return (
     <Box sx={{ pb: { xs: 9, md: 14 }, bgcolor: "#FFFFFF" }}>
+      {/* Service Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(initiativeSchema) }}
+      />
       {/* Editorial Header Banner */}
       <Box
         sx={{
@@ -151,8 +165,8 @@ export default function TemplePanditSupportPage() {
                 }}
               >
                 <Image
-                  src="/images/initiatives/temple-support.svg"
-                  alt="Temple Pandit Support illustration"
+                  src="/images/monuments/shivagiri-monument.jpg"
+                  alt="Historic Shivagiri Monument in Vijayapura (Bijapur) - Honoring Cultural & Spiritual Guardianship"
                   fill
                   style={{ objectFit: "cover" }}
                   priority

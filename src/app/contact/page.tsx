@@ -12,7 +12,7 @@ import TextReveal from "@/components/animations/TextReveal";
 export const metadata: Metadata = constructMetadata({
   title: "Contact Us - Office Address & Direct Numbers",
   description:
-    "Get in touch with Warsia Educational & Social Development Trust in Vijayapura, Karnataka. Official phone numbers: 9449779786, 9620304427, 9606406210. Darphan ID: KA/2026/0996453.",
+    "Get in touch with Warsia Educational & Social Development Trust in Vijayapura, Karnataka. Official phone numbers: 9449779786, 9620304427, 9606406210.",
   path: "/contact",
 });
 

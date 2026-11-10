@@ -99,15 +99,12 @@ export default function MobileNavigation({
             >
               WARSIA TRUST
             </Typography>
-            <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
-              <VerifiedIcon sx={{ fontSize: 14, color: "warning.main" }} />
-              <Typography
-                variant="caption"
-                sx={{ color: "text.secondary", fontSize: "0.74rem", fontWeight: 600 }}
-              >
-                ID: {siteConfig.darphanId}
-              </Typography>
-            </Box>
+            <Typography
+              variant="caption"
+              sx={{ color: "text.secondary", fontSize: "0.74rem", fontWeight: 600 }}
+            >
+              Vijayapura, Karnataka
+            </Typography>
           </Box>
         </Box>
 

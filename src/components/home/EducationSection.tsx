@@ -150,8 +150,8 @@ export default function EducationSection() {
                   }}
                 >
                   <Image
-                    src="/images/initiatives/education.svg"
-                    alt="Educational Development in Vijayapura"
+                    src="/images/generic/education-learning.jpg"
+                    alt="Educational Development and Student Learning in Vijayapura"
                     fill
                     sizes="(max-width: 1200px) 100vw, 500px"
                     style={{ objectFit: "cover" }}

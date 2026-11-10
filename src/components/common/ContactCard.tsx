@@ -52,7 +52,7 @@ export default function ContactCard() {
           variant="body2"
           sx={{ color: "text.secondary", mb: 2.5, fontWeight: 600 }}
         >
-          Government Darphan ID: <strong>{siteConfig.darphanId}</strong>
+          Registered Humanitarian Organization · Vijayapura, Karnataka
         </Typography>
 
         <Divider sx={{ my: 2.5 }} />

@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import Chip from "@mui/material/Chip";
-import { constructMetadata } from "@/lib/seo";
+import { constructMetadata, generateInitiativeSchema } from "@/lib/seo";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
 import ContactCard from "@/components/common/ContactCard";
 import Reveal from "@/components/animations/Reveal";
@@ -31,6 +31,15 @@ export const metadata: Metadata = constructMetadata({
 export default function EducationPage() {
   const whatsAppLink = getInitiativeWhatsAppLink("Educational Development");
 
+  const initiativeSchema = generateInitiativeSchema({
+    title: "Educational Development Initiatives",
+    description:
+      "Warsia Educational & Social Development Trust encourages learning, student guidance, and community education in Vijayapura, Karnataka.",
+    path: "/initiatives/education",
+    category: "Educational Guidance & Child Learning",
+    image: "/images/generic/education-learning.jpg",
+  });
+
   const pillars = [
     {
       title: "Encouraging School Retention",
@@ -52,6 +61,11 @@ export default function EducationPage() {
 
   return (
     <Box sx={{ pb: { xs: 9, md: 14 }, bgcolor: "#FFFFFF" }}>
+      {/* Service Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(initiativeSchema) }}
+      />
       {/* Editorial Header Banner */}
       <Box
         sx={{
@@ -161,8 +175,8 @@ export default function EducationPage() {
                 }}
               >
                 <Image
-                  src="/images/initiatives/education.svg"
-                  alt="Educational Development in Vijayapura"
+                  src="/images/generic/education-learning.jpg"
+                  alt="Educational Development and Youth Learning in Vijayapura"
                   fill
                   style={{ objectFit: "cover" }}
                   priority

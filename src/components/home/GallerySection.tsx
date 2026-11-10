@@ -26,7 +26,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export interface GalleryItem {
   id: string;
   title: string;
-  category: "all" | "religious-harmony" | "community" | "compliance";
+  category: "all" | "religious-harmony" | "community" | "compliance" | "health" | "education" | "monuments";
   categoryLabel: string;
   image: string;
   description: string;
@@ -35,50 +35,104 @@ export interface GalleryItem {
 
 export const galleryItems: GalleryItem[] = [
   {
-    id: "ramzan-food-kit",
-    title: "Food Kit & Essential Ration Distribution",
-    category: "community",
-    categoryLabel: "Community Welfare",
-    image: "/images/gallery/ramzan-food-kit.png",
+    id: "gol-gumbaz-heritage",
+    title: "Gol Gumbaz – Pride of Vijayapura",
+    category: "monuments",
+    categoryLabel: "Historic Bijapur Heritage",
+    image: "/images/monuments/gol-gumbaz.jpg",
     description:
-      "Dignified distribution of food ration kits to underprivileged families in Vijayapura, ensuring no home goes hungry.",
+      "The world-renowned 17th-century Adil Shahi architectural marvel and monumental dome in Vijayapura, standing as the historic cradle and inspiration of our trust.",
     featured: true,
   },
   {
-    id: "diwali-wishes",
-    title: "Diwali Celebration of Harmony",
-    category: "religious-harmony",
-    categoryLabel: "Religious Harmony",
-    image: "/images/gallery/diwali-wishes.png",
+    id: "ibrahim-rauza-heritage",
+    title: "Ibrahim Rauza – Jewel of Deccan Architecture",
+    category: "monuments",
+    categoryLabel: "Historic Bijapur Heritage",
+    image: "/images/monuments/ibrahim-rauza.jpg",
     description:
-      "Extending joyous Diwali wishes and fostering shared brotherhood and goodwill across all faiths in Vijayapura.",
+      "Exquisite symmetrical Deccan mausoleum and garden complex in Vijayapura, revered as the Deccan's architectural jewel of harmony and grace.",
   },
   {
-    id: "eid-mubarak",
-    title: "Eid Mubarak Community Fellowship",
-    category: "religious-harmony",
-    categoryLabel: "Religious Harmony",
-    image: "/images/gallery/eid-mubarak.png",
+    id: "bara-kaman-heritage",
+    title: "Bara Kaman – Twelve Arches of Unity",
+    category: "monuments",
+    categoryLabel: "Historic Bijapur Heritage",
+    image: "/images/monuments/bara-kaman.jpg",
     description:
-      "Sharing the spirit of charity, love, and compassion with all communities on the blessed occasion of Eid.",
+      "The majestic unfinished stone arches of Bara Kaman in Vijayapura, symbolizing enduring strength, unity, and timeless cultural heritage.",
   },
   {
-    id: "ugadi-wishes",
-    title: "Ugadi New Year Celebrations",
-    category: "religious-harmony",
-    categoryLabel: "Religious Harmony",
-    image: "/images/gallery/ugadi-wishes.png",
+    id: "jama-masjid-heritage",
+    title: "Historic Jumma Masjid – Vijayapura",
+    category: "monuments",
+    categoryLabel: "Historic Bijapur Heritage",
+    image: "/images/monuments/jama-masjid.jpg",
     description:
-      "Celebrating Karnataka's Ugadi festival with cultural respect, warmth, and communal harmony.",
+      "One of the grandest mosques in the Deccan plateau, representing Vijayapura's rich legacy of spiritual devotion and peaceful coexistence.",
   },
   {
-    id: "darpan-certificate",
-    title: "Official NGO Darphan Accreditation",
-    category: "compliance",
-    categoryLabel: "Government Compliance",
-    image: "/images/darpan-certificate.png",
+    id: "shivagiri-heritage",
+    title: "Shivagiri Monument – Vijayapura",
+    category: "monuments",
+    categoryLabel: "Historic Bijapur Heritage",
+    image: "/images/monuments/shivagiri-monument.jpg",
     description:
-      "Official registration certificate KA/2026/0996453 under NGO Darphan, NITI Aayog, Government of India.",
+      "The landmark 85-foot Shivagiri statue in Vijayapura, honoring Karnataka's vibrant cultural heritage and spiritual harmony.",
+  },
+  {
+    id: "food-relief-outreach",
+    title: "Essential Food Relief & Ration Distribution",
+    category: "community",
+    categoryLabel: "Community Welfare",
+    image: "/images/generic/food-distribution.jpg",
+    description:
+      "Dignified distribution of food ration kits and essential provisions to underprivileged families in Vijayapura.",
+  },
+  {
+    id: "interfaith-fellowship",
+    title: "Interfaith Brotherhood & Social Harmony",
+    category: "religious-harmony",
+    categoryLabel: "Religious Harmony",
+    image: "/images/generic/community-unity.jpg",
+    description:
+      "Bringing citizens together across diverse backgrounds to celebrate enduring unity, shared respect, and brotherhood.",
+  },
+  {
+    id: "blood-donation-network",
+    title: "Voluntary Blood Donor Network",
+    category: "health",
+    categoryLabel: "Emergency Blood Care",
+    image: "/images/generic/blood-donation.jpg",
+    description:
+      "Mobilizing compassionate voluntary blood donors for hospital patients during critical medical emergencies.",
+  },
+  {
+    id: "education-empowerment",
+    title: "Foundational Education & Child Learning",
+    category: "education",
+    categoryLabel: "Youth & Learning",
+    image: "/images/generic/education-learning.jpg",
+    description:
+      "Empowering students and underprivileged youth through foundational study support, moral values, and academic guidance.",
+  },
+  {
+    id: "vulnerable-welfare",
+    title: "Senior Citizen & Vulnerable Aid",
+    category: "community",
+    categoryLabel: "Community Welfare",
+    image: "/images/generic/elderly-care.jpg",
+    description:
+      "Direct humanitarian care, winter relief, and assistance for struggling seniors, widows, and distressed families.",
+  },
+  {
+    id: "spiritual-harmony-honorarium",
+    title: "Spiritual Leadership Honorarium",
+    category: "religious-harmony",
+    categoryLabel: "Religious Harmony",
+    image: "/images/generic/spiritual-guidance.jpg",
+    description:
+      "Providing dignified monthly financial assistance to both Masjid Imams and Temple Pandits with absolute parity.",
   },
 ];
 
@@ -87,10 +141,12 @@ export default function GallerySection({ limit }: { limit?: number }) {
   const [activeLightboxItem, setActiveLightboxItem] = useState<GalleryItem | null>(null);
 
   const categories = [
-    { id: "all", label: "All Moments" },
-    { id: "religious-harmony", label: "Religious Harmony" },
+    { id: "all", label: "All Works & Heritage" },
+    { id: "monuments", label: "Historic Bijapur Heritage" },
     { id: "community", label: "Community Welfare" },
-    { id: "compliance", label: "Official Accreditation" },
+    { id: "religious-harmony", label: "Religious Harmony" },
+    { id: "health", label: "Emergency & Blood Care" },
+    { id: "education", label: "Youth & Education" },
   ];
 
   const filteredItems = galleryItems

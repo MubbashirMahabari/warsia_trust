@@ -291,14 +291,14 @@ export default function AboutSection() {
                     }}
                   >
                     <Image
-                      src="/images/gallery/ramzan-food-kit.png"
-                      alt="Warsia Trust community food kit distribution documentary photo"
+                      src="/images/monuments/gol-gumbaz.jpg"
+                      alt="Gol Gumbaz, historic landmark of Vijayapura (Bijapur), Karnataka - Home of Warsia Trust"
                       fill
                       priority
                       sizes="(max-width: 1200px) 100vw, 650px"
                       style={{
                         objectFit: "cover",
-                        objectPosition: "center 25%",
+                        objectPosition: "center 30%",
                       }}
                     />
                   </Box>
@@ -343,7 +343,7 @@ export default function AboutSection() {
                         fontSize: "0.78rem",
                       }}
                     >
-                      DARPHAN ID: {siteConfig.darphanId}
+                      ESTABLISHED HUMANITARIAN TRUST
                     </Typography>
                   </Box>
 
